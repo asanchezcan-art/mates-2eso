@@ -3,696 +3,143 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mates 2º ESO • Portal Ninja y Laboratorio Interactivo</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <title>Matemáticas 2º ESO - Centro de Mando Interactivo</title>
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #050814 0%, #0d1226 50%, #080a18 100%);
-      color: #f8fafc;
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --card-border: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-green: #10b981;
+      --accent-purple: #8b5cf6;
+      --accent-orange: #f59e0b;
+      --accent-red: #ef4444;
+      --accent-cyan: #06b6d4;
+      --accent-pink: #ec4899;
     }
-    .font-friendly {
-      font-family: 'Fredoka', cursive, sans-serif;
-    }
-    .font-code {
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .glass-panel {
-      background: rgba(17, 24, 43, 0.78);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .glass-card-hover {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .glass-card-hover:hover {
-      transform: translateY(-4px);
-      border-color: rgba(99, 102, 241, 0.4);
-      box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.6), 0 0 24px -4px rgba(99, 102, 241, 0.2);
-    }
-    /* Estilos del modal y lector de guías */
-    .prose-custom table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      margin: 1rem 0;
-      border-radius: 0.75rem;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .prose-custom th {
-      background: rgba(30, 41, 59, 0.9);
-      color: #38bdf8;
-      padding: 0.75rem 1rem;
-      font-size: 0.8rem;
-      text-align: left;
-      font-family: 'Fredoka', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .prose-custom td {
-      padding: 0.75rem 1rem;
-      font-size: 0.85rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      background: rgba(15, 23, 42, 0.6);
-    }
-    .prose-custom pre {
-      background: #020617;
-      border: 1px solid #1e293b;
-      padding: 1rem;
-      border-radius: 0.75rem;
-      overflow-x: auto;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      color: #a7f3d0;
-      line-height: 1.5;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: var(--bg); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
+    header { background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%); border-bottom: 1px solid var(--card-border); padding: 2.5rem 1.5rem; text-align: center; position: relative; }
+    .badge { display: inline-block; background: rgba(37, 99, 235, 0.2); border: 1px solid rgba(37, 99, 235, 0.4); color: #60a5fa; font-size: 0.85rem; font-weight: 700; padding: 0.35rem 0.85rem; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
+    h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+    p.subtitle { color: var(--text-muted); font-size: 1.05rem; max-width: 650px; margin: 0 auto; line-height: 1.5; }
+    main { flex: 1; max-width: 1200px; width: 100%; margin: 0 auto; padding: 2.5rem 1.5rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+    .card { background-color: var(--card-bg); border: 1px solid var(--card-border); border-radius: 1rem; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s ease, border-color 0.2s ease; position: relative; overflow: hidden; }
+    .card:hover { transform: translateY(-4px); border-color: #64748b; }
+    .card-top { margin-bottom: 1.25rem; }
+    .card-tag { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.25rem 0.5rem; border-radius: 0.375rem; display: inline-block; margin-bottom: 0.75rem; }
+    .b1 { background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); border: 1px solid rgba(6, 182, 212, 0.3); }
+    .b2 { background: rgba(239, 68, 68, 0.15); color: var(--accent-red); border: 1px solid rgba(239, 68, 68, 0.3); }
+    .b3 { background: rgba(245, 158, 11, 0.15); color: var(--accent-orange); border: 1px solid rgba(245, 158, 11, 0.3); }
+    .b4 { background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); border: 1px solid rgba(139, 92, 246, 0.3); }
+    .b5 { background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.3); }
+    .b6 { background: rgba(236, 72, 153, 0.15); color: var(--accent-pink); border: 1px solid rgba(236, 72, 153, 0.3); }
+    .card h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .card p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.45; }
+    .card-actions { display: grid; grid-template-columns: 1fr; gap: 0.6rem; margin-top: 1.25rem; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem 1rem; border-radius: 0.5rem; font-size: 0.9rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: all 0.2s ease; border: none; }
+    .btn-primary { background-color: var(--primary); color: #fff; }
+    .btn-primary:hover { background-color: var(--primary-dark); }
+    .btn-secondary { background-color: #334155; color: #f8fafc; border: 1px solid #475569; }
+    .btn-secondary:hover { background-color: #475569; }
+    footer { border-top: 1px solid var(--card-border); padding: 1.5rem; text-align: center; color: var(--text-muted); font-size: 0.85rem; background-color: #0b1120; }
   </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased selection:bg-indigo-500 selection:text-white">
-
-  <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
-  <header class="sticky top-0 z-40 glass-panel border-b border-white/10 px-4 lg:px-8 py-3.5">
-    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
-      <div class="flex items-center gap-3">
-        <span class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-indigo-500 to-cyan-400 flex items-center justify-center text-xl shadow-lg shadow-indigo-500/30">
-          📐
-        </span>
-        <div>
-          <span class="font-friendly font-bold text-lg md:text-xl text-white tracking-wide block leading-tight">
-            Mates 2º ESO <span class="text-cyan-400 font-normal text-xs uppercase px-2 py-0.5 rounded-full bg-cyan-950/80 border border-cyan-500/40 ml-1">Centro de Mando</span>
-          </span>
-          <span class="text-xs text-slate-400 hidden sm:block">Kit Integral para Padres y Alumnos • 6 Unidades Temáticas</span>
-        </div>
-      </div>
-
-      <div class="flex items-center gap-2">
-        <button onclick="abrirModalAyuda()" class="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition border border-slate-700">
-          <span>💡</span> <span class="hidden md:inline">¿Cómo usar este portal?</span>
-        </button>
-        <button onclick="copiarEnlaceWeb()" id="btnCopiarURL" class="px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold font-friendly flex items-center gap-1.5 transition shadow-lg shadow-indigo-600/30">
-          <span>🔗</span> <span class="hidden sm:inline">Compartir Web</span>
-        </button>
-      </div>
-    </div>
+<body>
+  <header>
+    <div class="badge">Ecosistema Didáctico Digital</div>
+    <h1>Matemáticas 2º ESO: Números Enteros y Potencias</h1>
+    <p class="subtitle">Guías didácticas visuales y laboratorios interactivos táctiles para dominar cada concepto paso a paso desde el móvil, tablet u ordenador.</p>
   </header>
 
-  <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-8 space-y-8">
-
-    <!-- HERO DE BIENVENIDA -->
-    <section class="glass-panel rounded-3xl p-6 md:p-10 border border-indigo-500/20 shadow-2xl relative overflow-hidden">
-      <div class="absolute -right-16 -top-16 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="absolute -left-16 -bottom-16 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-      <div class="relative z-10 max-w-3xl space-y-4">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-xs font-semibold">
-          <span>🚀</span> PREPARACIÓN DE EXAMEN • 2º DE ESO
+  <main>
+    <div class="grid">
+      <!-- BLOQUE 1 -->
+      <article class="card">
+        <div class="card-top">
+          <span class="card-tag b1">Bloque 1</span>
+          <h2>Los Números Enteros y el Rascacielos</h2>
+          <p>Concepto del conjunto ℤ, ordenación, recta numérica, sótanos vs. áticos y valor absoluto con la distancia a la calle.</p>
         </div>
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-friendly font-bold tracking-tight text-white leading-tight">
-          Aprende, experimenta y acompaña sin <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-rose-300 to-cyan-300">frustraciones</span>
-        </h1>
-        <p class="text-slate-300 text-sm md:text-base leading-relaxed">
-          Cada bloque incluye su <strong>Guía Didáctica paso a paso</strong> (diseñada con metáforas cotidianas para que padres e hijos entiendan el porqué de cada regla) y su <strong>Laboratorio Interactivo táctil</strong> para comprobar los cálculos con simuladores en tiempo real.
-        </p>
-      </div>
-
-      <!-- Métricas rápidas de los recursos -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t border-white/10 text-xs">
-        <div class="p-3 rounded-2xl bg-slate-900/60 border border-slate-800">
-          <span class="text-slate-400 block mb-0.5">Unidades Clave</span>
-          <span class="font-friendly font-bold text-lg text-cyan-300">6 Bloques</span>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="infograf_a_interactiva_n_meros_enteros.html">🎮 Abrir Laboratorio Táctil</a>
+          <a class="btn btn-secondary" href="gu_a_did_ctica_bloque_1_los_n_meros_enteros_y_el_rascacielos.md" target="_blank">📖 Ver Guía Didáctica</a>
         </div>
-        <div class="p-3 rounded-2xl bg-slate-900/60 border border-slate-800">
-          <span class="text-slate-400 block mb-0.5">Simuladores Táctiles</span>
-          <span class="font-friendly font-bold text-lg text-emerald-300">100% Offline</span>
+      </article>
+
+      <!-- BLOQUE 2 -->
+      <article class="card">
+        <div class="card-top">
+          <span class="card-tag b2">Bloque 2</span>
+          <h2>Operaciones y la Danza de Signos</h2>
+          <p>La regla de los dos equipos para sumas y restas, y la regla de amigos/enemigos para multiplicación y división.</p>
         </div>
-        <div class="p-3 rounded-2xl bg-slate-900/60 border border-slate-800">
-          <span class="text-slate-400 block mb-0.5">Método de Explicación</span>
-          <span class="font-friendly font-bold text-lg text-amber-300">Cero Tecnicismos</span>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="infograf_a_interactiva_operaciones_y_signos.html">🎮 Abrir Laboratorio Táctil</a>
+          <a class="btn btn-secondary" href="gu_a_did_ctica_bloque_2_operaciones_y_signos.md" target="_blank">📖 Ver Guía Didáctica</a>
         </div>
-        <div class="p-3 rounded-2xl bg-slate-900/60 border border-slate-800">
-          <span class="text-slate-400 block mb-0.5">Autocorrección</span>
-          <span class="font-friendly font-bold text-lg text-rose-300">Paso a Paso</span>
+      </article>
+
+      <!-- BLOQUE 3 -->
+      <article class="card">
+        <div class="card-top">
+          <span class="card-tag b3">Bloque 3</span>
+          <h2>Jerarquía Militar y el Superglú</h2>
+          <p>Orden estricto de operaciones: corchetes VIP, superglú de multiplicaciones y el peligro de los signos menos ladrones.</p>
         </div>
-      </div>
-    </section>
-
-    <!-- REJILLA DE LOS 6 BLOQUES TEMÁTICOS -->
-    <section class="space-y-4">
-      <div class="flex items-center justify-between flex-wrap gap-2">
-        <div>
-          <h2 class="text-2xl font-friendly font-bold text-white flex items-center gap-2">
-            <span>📚</span> Unidades Temáticas del Temario
-          </h2>
-          <p class="text-xs sm:text-sm text-slate-400">Selecciona el bloque que estés repasando en clase o con los deberes</p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="infograf_a_interactiva_jerarqu_a_de_operaciones.html">🎮 Abrir Laboratorio Táctil</a>
+          <a class="btn btn-secondary" href="gu_a_did_ctica_bloque_3_jerarqu_a_militar_y_supergl.md" target="_blank">📖 Ver Guía Didáctica</a>
         </div>
-      </div>
+      </article>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="gridBloques">
-        
-        <!-- BLOQUE 1 -->
-        <article class="glass-panel glass-card-hover rounded-3xl p-6 border border-slate-800 flex flex-col justify-between space-y-5">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 text-xs font-friendly font-bold">BLOQUE 1</span>
-              <span class="text-2xl">🏢</span>
-            </div>
-            <h3 class="text-xl font-friendly font-bold text-white">El Rascacielos Infinito de ℤ</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              El ascensor de cristal, los pisos luminosos (+), los sótanos profundos (-), el cuentapasos del valor absoluto |a| y el espejo del opuesto.
-            </p>
-            <div class="flex flex-wrap gap-1.5 pt-1 text-[11px] font-code text-cyan-300">
-              <span class="px-2 py-0.5 rounded-md bg-cyan-950/60 border border-cyan-500/20">|a| Lavadora</span>
-              <span class="px-2 py-0.5 rounded-md bg-cyan-950/60 border border-cyan-500/20">op(a) Espejo</span>
-              <span class="px-2 py-0.5 rounded-md bg-cyan-950/60 border border-cyan-500/20">-2 > -8</span>
-            </div>
-          </div>
-
-          <div class="space-y-2 pt-2 border-t border-slate-800">
-            <a href="infografia_enteros.html" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white text-xs font-friendly font-bold flex items-center justify-center gap-2 shadow-lg transition">
-              <span>🎮</span> Abrir Laboratorio Táctil
-            </a>
-            <button onclick="verGuia('b1')" class="w-full py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-medium border border-slate-700/80 transition flex items-center justify-center gap-1.5">
-              <span>📖</span> Leer Guía Explicada
-            </button>
-          </div>
-        </article>
-
-        <!-- BLOQUE 2 -->
-        <article class="glass-panel glass-card-hover rounded-3xl p-6 border border-slate-800 flex flex-col justify-between space-y-5">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-friendly font-bold">BLOQUE 2</span>
-              <span class="text-2xl">👛</span>
-            </div>
-            <h3 class="text-xl font-friendly font-bold text-white">La Batalla de Signos y el Monedero</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Monedas en el bolsillo vs deudas, los porteros de la discoteca al quitar paréntesis (+ y -) y la táctica ninja por equipos para cadenas largas.
-            </p>
-            <div class="flex flex-wrap gap-1.5 pt-1 text-[11px] font-code text-amber-300">
-              <span class="px-2 py-0.5 rounded-md bg-amber-950/60 border border-amber-500/20">Monedero</span>
-              <span class="px-2 py-0.5 rounded-md bg-amber-950/60 border border-amber-500/20">Porteros VIP</span>
-              <span class="px-2 py-0.5 rounded-md bg-amber-950/60 border border-amber-500/20">Equipo + vs -</span>
-            </div>
-          </div>
-
-          <div class="space-y-2 pt-2 border-t border-slate-800">
-            <a href="infografia_signos.html" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-amber-600 to-rose-600 hover:from-amber-500 hover:to-rose-500 text-white text-xs font-friendly font-bold flex items-center justify-center gap-2 shadow-lg transition">
-              <span>🎮</span> Abrir Laboratorio Táctil
-            </a>
-            <button onclick="verGuia('b2')" class="w-full py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-medium border border-slate-700/80 transition flex items-center justify-center gap-1.5">
-              <span>📖</span> Leer Guía Explicada
-            </button>
-          </div>
-        </article>
-
-        <!-- BLOQUE 3 -->
-        <article class="glass-panel glass-card-hover rounded-3xl p-6 border border-slate-800 flex flex-col justify-between space-y-5">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full bg-violet-500/20 text-violet-300 border border-violet-500/30 text-xs font-friendly font-bold">BLOQUE 3</span>
-              <span class="text-2xl">🛡️</span>
-            </div>
-            <h3 class="text-xl font-friendly font-bold text-white">Jerarquía Militar y el Superglú</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              La pirámide de mando (búnkeres VIP, artillería y soldados), la trampa del pegamento en multiplicaciones y el desarme de muñecas rusas.
-            </p>
-            <div class="flex flex-wrap gap-1.5 pt-1 text-[11px] font-code text-violet-300">
-              <span class="px-2 py-0.5 rounded-md bg-violet-950/60 border border-violet-500/20">Superglú (· y :)</span>
-              <span class="px-2 py-0.5 rounded-md bg-violet-950/60 border border-violet-500/20">Muñeca Rusa [ ]</span>
-              <span class="px-2 py-0.5 rounded-md bg-violet-950/60 border border-violet-500/20">Ley del Barrio</span>
-            </div>
-          </div>
-
-          <div class="space-y-2 pt-2 border-t border-slate-800">
-            <a href="infografia_jerarquia.html" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white text-xs font-friendly font-bold flex items-center justify-center gap-2 shadow-lg transition">
-              <span>🎮</span> Abrir Laboratorio Táctil
-            </a>
-            <button onclick="verGuia('b3')" class="w-full py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-medium border border-slate-700/80 transition flex items-center justify-center gap-1.5">
-              <span>📖</span> Leer Guía Explicada
-            </button>
-          </div>
-        </article>
-
-        <!-- BLOQUE 4 -->
-        <article class="glass-panel glass-card-hover rounded-3xl p-6 border border-slate-800 flex flex-col justify-between space-y-5">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full bg-fuchsia-500/20 text-fuchsia-300 border border-fuchsia-500/30 text-xs font-friendly font-bold">BLOQUE 4</span>
-              <span class="text-2xl">⚡</span>
-            </div>
-            <h3 class="text-xl font-friendly font-bold text-white">Laboratorio de Potencias y Parejas</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              La cabina de clonación, el baile de parejas que decide el signo (+ si es par, - si es impar), la trampa del casco protector y los 3 superpoderes.
-            </p>
-            <div class="flex flex-wrap gap-1.5 pt-1 text-[11px] font-code text-fuchsia-300">
-              <span class="px-2 py-0.5 rounded-md bg-fuchsia-950/60 border border-fuchsia-500/20">(-3)² vs -3²</span>
-              <span class="px-2 py-0.5 rounded-md bg-fuchsia-950/60 border border-fuchsia-500/20">Par/Impar</span>
-              <span class="px-2 py-0.5 rounded-md bg-fuchsia-950/60 border border-fuchsia-500/20">Mochila Ninja</span>
-            </div>
-          </div>
-
-          <div class="space-y-2 pt-2 border-t border-slate-800">
-            <a href="infografia_potencias.html" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-fuchsia-600 to-pink-600 hover:from-fuchsia-500 hover:to-pink-500 text-white text-xs font-friendly font-bold flex items-center justify-center gap-2 shadow-lg transition">
-              <span>🎮</span> Abrir Laboratorio Táctil
-            </a>
-            <button onclick="verGuia('b4')" class="w-full py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-medium border border-slate-700/80 transition flex items-center justify-center gap-1.5">
-              <span>📖</span> Leer Guía Explicada
-            </button>
-          </div>
-        </article>
-
-        <!-- BLOQUE 5 -->
-        <article class="glass-panel glass-card-hover rounded-3xl p-6 border border-slate-800 flex flex-col justify-between space-y-5">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-friendly font-bold">BLOQUE 5</span>
-              <span class="text-2xl">🧱</span>
-            </div>
-            <h3 class="text-xl font-friendly font-bold text-white">Fábrica de LEGO y Despiece</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              La máquina desmontadora de la raya vertical, el reparto de mochilas con multiplicador y el combate de soldados supervivientes en fracciones.
-            </p>
-            <div class="flex flex-wrap gap-1.5 pt-1 text-[11px] font-code text-emerald-300">
-              <span class="px-2 py-0.5 rounded-md bg-emerald-950/60 border border-emerald-500/20">Raya Vertical</span>
-              <span class="px-2 py-0.5 rounded-md bg-emerald-950/60 border border-emerald-500/20">Mochilas (a·b)ⁿ</span>
-              <span class="px-2 py-0.5 rounded-md bg-emerald-950/60 border border-emerald-500/20">Incógnita «a»</span>
-            </div>
-          </div>
-
-          <div class="space-y-2 pt-2 border-t border-slate-800">
-            <a href="infografia_bloque5_descomposicion.html" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white text-xs font-friendly font-bold flex items-center justify-center gap-2 shadow-lg transition">
-              <span>🎮</span> Abrir Laboratorio Táctil
-            </a>
-            <button onclick="verGuia('b5')" class="w-full py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-medium border border-slate-700/80 transition flex items-center justify-center gap-1.5">
-              <span>📖</span> Leer Guía Explicada
-            </button>
-          </div>
-        </article>
-
-        <!-- BLOQUE 6 -->
-        <article class="glass-panel glass-card-hover rounded-3xl p-6 border border-slate-800 flex flex-col justify-between space-y-5">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30 text-xs font-friendly font-bold">BLOQUE 6</span>
-              <span class="text-2xl">📦</span>
-            </div>
-            <h3 class="text-xl font-friendly font-bold text-white">Detective de Baldosas y Raíces</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Cuadrados perfectos, por qué √-16 no existe pero ∛-8 sí, la raíz entera por tanteo en ℤ y el algoritmo tradicional de la caja paso a paso.
-            </p>
-            <div class="flex flex-wrap gap-1.5 pt-1 text-[11px] font-code text-rose-300">
-              <span class="px-2 py-0.5 rounded-md bg-rose-950/60 border border-rose-500/20">Caja Pizarra</span>
-              <span class="px-2 py-0.5 rounded-md bg-rose-950/60 border border-rose-500/20">Resto Máx</span>
-              <span class="px-2 py-0.5 rounded-md bg-rose-950/60 border border-rose-500/20">Decimales</span>
-            </div>
-          </div>
-
-          <div class="space-y-2 pt-2 border-t border-slate-800">
-            <a href="infografia_bloque6_raices.html" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-orange-600 hover:from-rose-500 hover:to-orange-500 text-white text-xs font-friendly font-bold flex items-center justify-center gap-2 shadow-lg transition">
-              <span>🎮</span> Abrir Laboratorio Táctil
-            </a>
-            <button onclick="verGuia('b6')" class="w-full py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-medium border border-slate-700/80 transition flex items-center justify-center gap-1.5">
-              <span>📖</span> Leer Guía Explicada
-            </button>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- CONSEJOS PRÁCTICOS PARA FAMILIAS Y ESTUDIANTES -->
-    <section class="glass-panel rounded-3xl p-6 md:p-8 border border-white/10 space-y-4">
-      <h3 class="text-xl font-friendly font-bold text-white flex items-center gap-2">
-        <span>👨‍👩‍👧‍👦</span> ¿Cómo acompañar el estudio en casa en 3 pasos?
-      </h3>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs leading-relaxed text-slate-300">
-        <div class="p-4 rounded-2xl bg-slate-950/60 border border-slate-800 space-y-2">
-          <span class="w-6 h-6 rounded-full bg-cyan-500 text-slate-950 font-bold flex items-center justify-center font-friendly">1</span>
-          <h4 class="font-friendly font-bold text-white text-sm">Primero la historia (5 min)</h4>
-          <p>Abre la <strong>Guía Explicada</strong> del bloque. No le hables de axiomas ni fórmulas; leed la metáfora del ascensor, el monedero o el superglú.</p>
+      <!-- BLOQUE 4 -->
+      <article class="card">
+        <div class="card-top">
+          <span class="card-tag b4">Bloque 4</span>
+          <h2>Laboratorio de Potencias y Cascos VIP</h2>
+          <p>Propiedades de potencias de la misma base, exponente cero, potencias negativas y la regla del casco con bases negativas.</p>
         </div>
-        <div class="p-4 rounded-2xl bg-slate-950/60 border border-slate-800 space-y-2">
-          <span class="w-6 h-6 rounded-full bg-amber-500 text-slate-950 font-bold flex items-center justify-center font-friendly">2</span>
-          <h4 class="font-friendly font-bold text-white text-sm">Tocar el simulador (5 min)</h4>
-          <p>Entrad en el <strong>Laboratorio Táctil</strong> desde el móvil o tablet. Que mueva los mandos y descubra el resultado por sí mismo antes de escribir.</p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="infograf_a_interactiva_potencias_y_signos.html">🎮 Abrir Laboratorio Táctil</a>
+          <a class="btn btn-secondary" href="gu_a_did_ctica_bloque_4_laboratorio_de_potencias_y_parejas.md" target="_blank">📖 Ver Guía Didáctica</a>
         </div>
-        <div class="p-4 rounded-2xl bg-slate-950/60 border border-slate-800 space-y-2">
-          <span class="w-6 h-6 rounded-full bg-emerald-500 text-slate-950 font-bold flex items-center justify-center font-friendly">3</span>
-          <h4 class="font-friendly font-bold text-white text-sm">Comprobar la Misión (10 min)</h4>
-          <p>Que resuelva la misión en su cuaderno. Al terminar, cotejad con el <strong>Solucionario Guiado</strong> al final de la guía para ver la justificación.</p>
-        </div>
-      </div>
-    </section>
+      </article>
 
+      <!-- BLOQUE 5 -->
+      <article class="card">
+        <div class="card-top">
+          <span class="card-tag b5">Bloque 5</span>
+          <h2>La Fábrica LEGO y Descomposición</h2>
+          <p>Despiece en números primos con la raya vertical, simplificación de fracciones de potencias y resolución del caso del detective.</p>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="infograf_a_interactiva_descomposici_n_y_fracciones_de_potencias.html">🎮 Abrir Laboratorio Táctil</a>
+          <a class="btn btn-secondary" href="gu_a_did_ctica_bloque_5_descomposici_n_y_fracciones_de_potencias.md" target="_blank">📖 Ver Guía Didáctica</a>
+        </div>
+      </article>
+
+      <!-- BLOQUE 6 -->
+      <article class="card">
+        <div class="card-top">
+          <span class="card-tag b6">Bloque 6</span>
+          <h2>El Detective de Raíces Cuadradas y Cúbicas</h2>
+          <p>El suelo de baldosas, signos prohibidos, cálculo mental, tanteo de resto y el algoritmo tradicional de la caja paso a paso.</p>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="infograf_a_interactiva_ra_ces_cuadradas_y_c_bicas.html">🎮 Abrir Laboratorio Táctil</a>
+          <a class="btn btn-secondary" href="gu_a_did_ctica_bloque_6_ra_ces_cuadradas_y_c_bicas.md" target="_blank">📖 Ver Guía Didáctica</a>
+        </div>
+      </article>
+    </div>
   </main>
 
-  <!-- MODAL INTEGRADO PARA LECTURA DE GUÍAS SIN SALIR DEL NAVEGADOR -->
-  <div id="modalLector" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-6">
-    <div class="bg-slate-900 border border-slate-700/80 rounded-3xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-fadeIn">
-      
-      <!-- Cabecera del lector -->
-      <div class="p-4 sm:p-5 border-b border-slate-800 flex items-center justify-between bg-slate-950/80 gap-3">
-        <div class="flex items-center gap-2.5">
-          <span id="modalIcono" class="text-2xl">📖</span>
-          <div>
-            <h3 id="modalTitulo" class="font-friendly font-bold text-base sm:text-lg text-white">Guía Didáctica</h3>
-            <span id="modalSubtitulo" class="text-xs text-slate-400 block font-mono">Bloque de estudio</span>
-          </div>
-        </div>
-        <div class="flex items-center gap-2">
-          <button onclick="imprimirGuiaActual()" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium border border-slate-700 transition flex items-center gap-1.5" title="Imprimir o guardar en PDF">
-            <span>🖨️</span> <span class="hidden sm:inline">Imprimir / PDF</span>
-          </button>
-          <button onclick="cerrarModalGuia()" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-rose-600 text-slate-300 hover:text-white flex items-center justify-center text-sm font-bold transition">
-            ✕
-          </button>
-        </div>
-      </div>
-
-      <!-- Contenedor del texto maquetado -->
-      <div id="modalCuerpo" class="p-5 sm:p-8 overflow-y-auto space-y-4 prose-custom text-slate-200">
-        <!-- El contenido formateado se inyecta dinámicamente con JS -->
-      </div>
-
-      <!-- Pie del modal -->
-      <div class="p-4 border-t border-slate-800 bg-slate-950/60 flex items-center justify-between text-xs text-slate-400">
-        <span>Mates 2º ESO • Material de Apoyo</span>
-        <button onclick="cerrarModalGuia()" class="px-4 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold font-friendly transition">
-          Cerrar Lectura
-        </button>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- MODAL DE AYUDA Y PROCEDIMIENTO -->
-  <div id="modalAyuda" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
-    <div class="bg-slate-900 border border-slate-700 rounded-3xl w-full max-w-lg p-6 space-y-4 shadow-2xl">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-        <h3 class="font-friendly font-bold text-lg text-white flex items-center gap-2">
-          <span>💡</span> Cómo usar y distribuir este Portal
-        </h3>
-        <button onclick="cerrarModalAyuda()" class="text-slate-400 hover:text-white text-lg">✕</button>
-      </div>
-      <div class="text-xs text-slate-300 space-y-3 leading-relaxed">
-        <p><strong>1. Uso inmediato en tu ordenador:</strong> Puedes abrir este archivo <code>index.html</code> directamente haciendo doble clic. Todos los enlaces y simuladores funcionan sin necesidad de internet.</p>
-        <p><strong>2. Compartir con las familias:</strong> Sube la carpeta completa con los archivos a <em>Netlify Drop (app.netlify.com/drop)</em> o <em>GitHub Pages</em>. Te darán un enlace web que podrás enviar por el grupo de WhatsApp del colegio o insertar en un código QR.</p>
-        <p><strong>3. En el móvil:</strong> Los simuladores son 100% táctiles y las guías se adaptan a cualquier tamaño de pantalla sin desbordarse.</p>
-      </div>
-      <div class="pt-2">
-        <button onclick="cerrarModalAyuda()" class="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs font-friendly transition">
-          ¡Entendido!
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- PIE DE PÁGINA -->
-  <footer class="glass-panel border-t border-white/10 p-6 text-center text-xs text-slate-400 space-y-2 mt-8">
-    <div class="flex flex-wrap items-center justify-center gap-4 text-slate-300 font-medium">
-      <span class="hover:text-cyan-400 transition">Bloque 1: Enteros</span>
-      <span>•</span>
-      <span class="hover:text-amber-400 transition">Bloque 2: Signos</span>
-      <span>•</span>
-      <span class="hover:text-violet-400 transition">Bloque 3: Jerarquía</span>
-      <span>•</span>
-      <span class="hover:text-fuchsia-400 transition">Bloque 4: Potencias</span>
-      <span>•</span>
-      <span class="hover:text-emerald-400 transition">Bloque 5: Despiece</span>
-      <span>•</span>
-      <span class="hover:text-rose-400 transition">Bloque 6: Raíces</span>
-    </div>
-    <p>Proyecto pedagógico de refuerzo para 2º de Educación Secundaria Obligatoria. Diseñado para estudio autónomo y apoyo familiar.</p>
+  <footer>
+    <p>Material pedagógico de refuerzo para 2º de ESO. Diseñado para acompañamiento familiar y trabajo autónomo.</p>
   </footer>
-
-  <script>
-    // Datos completos y formateados de las 6 Guías Didácticas para visualización en modal
-    const guiasData = {
-      b1: {
-        titulo: "Bloque 1: El Rascacielos Infinito de los Números Enteros (ℤ)",
-        subtitulo: "Ascensor, alturas, cocodrilo comilón, lavadora |a| y espejo op(a)",
-        icono: "🏢",
-        html: `
-          <div class="space-y-4">
-            <p>Los números naturales servían para contar ovejas o lápices, pero el mundo real necesita expresar cosas que están por debajo de cero: plantas de sótano, deudas en la panadería o temperaturas bajo cero en invierno.</p>
-            
-            <h4 class="text-cyan-400 font-friendly font-bold text-base mt-4">1. Anatomía del Rascacielos</h4>
-            <table>
-              <tr><th>Zona</th><th>Símbolo</th><th>Ejemplos</th><th>Significado</th></tr>
-              <tr><td><strong>Pisos Luminosos</strong></td><td>ℤ⁺</td><td>+1, +2, +3...</td><td>Pisos altos, ahorros en el bolsillo, calor sobre cero.</td></tr>
-              <tr><td><strong>La Entrada (Calle)</strong></td><td>0</td><td>0</td><td>Nivel neutral. Ni sube ni baja, no tiene signo (+ ni -).</td></tr>
-              <tr><td><strong>Los Sótanos</strong></td><td>ℤ⁻</td><td>-1, -2, -3...</td><td>Aparcamientos subterráneos, deudas, grados bajo cero.</td></tr>
-            </table>
-
-            <h4 class="text-cyan-400 font-friendly font-bold text-base mt-4">2. La Ley del Ascensor y el Cocodrilo</h4>
-            <p><strong>«Cuanto más arriba esté un número en el rascacielos, mayor es su valor.»</strong></p>
-            <p>El sótano -2 está <strong>más alto</strong> (más cerca del sol) que el sótano -8. Por tanto: <strong>-2 > -8</strong>. El cocodrilo comilón siempre abre la boca hacia el piso más alto.</p>
-
-            <h4 class="text-cyan-400 font-friendly font-bold text-base mt-4">3. Los Dos Superpoderes</h4>
-            <table>
-              <tr><th>Superpoder</th><th>Notación</th><th>Metáfora</th><th>Acción</th><th>Regla de Oro</th></tr>
-              <tr><td><strong>Valor Absoluto</strong></td><td>|a|</td><td>La Lavadora / Cuentapasos</td><td>Mide la distancia de pisos al cero.</td><td><strong>NUNCA</strong> da negativo. |-7| = 7.</td></tr>
-              <tr><td><strong>Opuesto</strong></td><td>op(a)</td><td>El Espejo Mágico</td><td>Refleja a la misma distancia al otro lado.</td><td>Cambia la camiseta: op(-6) = +6.</td></tr>
-            </table>
-
-            <h4 class="text-cyan-400 font-friendly font-bold text-base mt-4">4. Esquema Visual de Pizarra</h4>
-            <pre>  [ Cielos ]
-      ▲
-     +5 | ☀️ Ático (+5)
-     +3 | D = -4 + 7 = +3  -------------------------> [Pisos Altos]
-     +1 |
-  ======+============================================ [Calle / Nivel 0]
-      0 | Entrada Neutral (Sin signo)
-  ======+============================================
-     -3 |
-     -9 | (Distancia al 0 = 9 pasos -> |-9| = 9)
-    -13 | B = op(+13) = -13 ------------------------> [Sótano Medio]
-    -17 | A = -11 - 6 = -17 ------------------------> [Sótano Hondo]
-      ▼
-  [ Profundo ]</pre>
-
-            <h4 class="text-cyan-400 font-friendly font-bold text-base mt-4">5. Misiones y Soluciones</h4>
-            <p><strong>Misión Letras:</strong> Ordena de menor a mayor: A = -15 + 8 (-7), B = op(-10) (+10), C = |-12| (+12), D = -3 - 9 (-12).</p>
-            <p class="text-emerald-400 font-bold">Solución ordenada: D < A < B < C  (-12 < -7 < +10 < +12).</p>
-          </div>
-        `
-      },
-      b2: {
-        titulo: "Bloque 2: La Batalla de los Signos y los Porteros VIP",
-        subtitulo: "Monedero mágico, guardianes de la puerta y táctica ninja por equipos",
-        icono: "👛",
-        html: `
-          <div class="space-y-4">
-            <p>El error más repetido no son las tablas de multiplicar, sino confundir cuándo se suma, cuándo se resta y qué signo queda al final.</p>
-
-            <h4 class="text-amber-400 font-friendly font-bold text-base mt-4">1. Las Reglas del Monedero Mágico</h4>
-            <p>• <strong>Mismo signo (Mismo bando):</strong> Juntas dinero con dinero (+8 +6 = +14) o juntas deudas con deudas (-5 -9 = -14). Se suman cantidades y queda el mismo signo.</p>
-            <p>• <strong>Distinto signo (Combate):</strong> Ahorros vs deudas. Se restan las cantidades y <strong>gana el signo del más fuerte</strong> (+20 - 7 = +13; +5 - 12 = -7).</p>
-
-            <h4 class="text-amber-400 font-friendly font-bold text-base mt-4">2. Los Porteros de la Sala VIP (Quitar Paréntesis)</h4>
-            <table>
-              <tr><th>Portero</th><th>Nombre</th><th>Qué ordena</th><th>Ejemplo</th></tr>
-              <tr><td><strong>+</strong></td><td>Portero Simpático</td><td>Nadie se cambia de ropa. Conserva los signos.</td><td>+(-7) = -7<br>+(+5) = +5</td></tr>
-              <tr><td><strong>-</strong></td><td>Mago Travieso</td><td>¡Varita mágica! Todos se ponen la camiseta al revés.</td><td>-(-8) = +8<br>-(+6) = -6</td></tr>
-            </table>
-
-            <h4 class="text-amber-400 font-friendly font-bold text-base mt-4">3. La Táctica Ninja por Equipos</h4>
-            <pre>  CADENA:   -8  +12  -5  -4  +7  -2  +10
-  EQUIPO AZUL (Ahorros):   +12 +7 +10 = +29
-  EQUIPO ROJO (Deudas):    -8 -5 -4 -2 = -19
-  COMBATE FINAL:           +29 - 19 = +10</pre>
-
-            <h4 class="text-amber-400 font-friendly font-bold text-base mt-4">4. Amplitud Térmica</h4>
-            <p>Máxima +13ºC y mínima -6ºC: <strong>Amplitud = 13 - (-6) = 13 + 6 = 19ºC</strong> (6 grados de subir al cero más 13 grados de subir al calor).</p>
-          </div>
-        `
-      },
-      b3: {
-        titulo: "Bloque 3: La Jerarquía Militar y el Secreto del Superglú",
-        subtitulo: "Cadena de mando, corchetes, amigos y enemigos, y despiece seguro",
-        icono: "🛡️",
-        html: `
-          <div class="space-y-4">
-            <p>Una operación combinada es un protocolo militar estricto: nadie puede actuar antes de su turno de mando.</p>
-
-            <h4 class="text-violet-400 font-friendly font-bold text-base mt-4">1. La Pirámide del Poder</h4>
-            <table>
-              <tr><th>Rango</th><th>División</th><th>Elementos</th><th>Protocolo</th></tr>
-              <tr><td><strong>1 (VIP)</strong></td><td>Búnkeres Blindados</td><td>( ... ) y [ ... ]</td><td>Se resuelve de dentro hacia afuera.</td></tr>
-              <tr><td><strong>2</strong></td><td>Radares Espías</td><td>|a| y op(a)</td><td>Se limpian de inmediato.</td></tr>
-              <tr><td><strong>3</strong></td><td>Artillería Pesada</td><td>· (Por) y : (Entre)</td><td><strong>¡Llevan superglú!</strong> Antes que sumas o restas.</td></tr>
-              <tr><td><strong>4</strong></td><td>Soldados de a Pie</td><td>+ (Más) y - (Menos)</td><td>Esperan formados hasta el final.</td></tr>
-            </table>
-
-            <h4 class="text-violet-400 font-friendly font-bold text-base mt-4">2. La Trampa Mortal del Superglú</h4>
-            <p>En <strong>20 - 2 · 6</strong>: ¡Prohibido hacer 20 - 2! El 2 y el 6 están unidos con pegamento instantáneo indestructible: 2 · 6 = 12 ➔ 20 - 12 = <strong>8</strong>.</p>
-
-            <h4 class="text-violet-400 font-friendly font-bold text-base mt-4">3. Flujo de Despiece de la Muñeca Rusa</h4>
-            <pre>  OPERACIÓN:   20 - 2 · [ 7 - ( -4 + 9 ) · 2 ]
-  PASO 1:                       = +5  (Cajita redonda interior)
-               20 - 2 · [ 7 -   ( +5 )   · 2 ]
-  PASO 2:                       = 10  (Superglú dentro del corchete)
-               20 - 2 · [ 7  -   10 ]
-  PASO 3:                 = -3        (Cierre del corchete completo)
-               20 - 2 · ( -3 )
-  PASO 4:           = +6              (Multiplicación exterior: -2 · -3)
-               20 + 6
-  RESULTADO:     26                   (Suma limpia final)</pre>
-          </div>
-        `
-      },
-      b4: {
-        titulo: "Bloque 4: El Laboratorio de Potencias y el Baile de Parejas",
-        subtitulo: "Cabina de clones, pista de baile, casco protector y superpoderes de base gemela",
-        icono: "⚡",
-        html: `
-          <div class="space-y-4">
-            <p>Una potencia no es una multiplicación de la base por el exponente. Es una <strong>máquina de clonación repetida</strong>: 2⁴ = 2 · 2 · 2 · 2 = 16 (¡no 8!).</p>
-
-            <h4 class="text-fuchsia-400 font-friendly font-bold text-base mt-4">1. La Ley del Baile de Parejas</h4>
-            <table>
-              <tr><th>Exponente</th><th>Metáfora</th><th>Signo Final</th><th>Ejemplo</th></tr>
-              <tr><td><strong>PAR (2,4,6...)</strong></td><td>Todos los menos encuentran pareja de baile.</td><td><strong>POSITIVO (+)</strong></td><td>(-2)⁴ = +16<br>(-1)¹⁰⁴ = +1</td></tr>
-              <tr><td><strong>IMPAR (1,3,5...)</strong></td><td>Sobra un signo menos solitario que amarga la fiesta.</td><td><strong>NEGATIVO (-)</strong></td><td>(-2)³ = -8<br>(-1)²¹³ = -1</td></tr>
-            </table>
-
-            <h4 class="text-fuchsia-400 font-friendly font-bold text-base mt-4">2. La Trampa del Casco Protector</h4>
-            <p>• <strong>(-3)² (Con Casco):</strong> Clona todo el búnker: (-3) · (-3) = <strong>+9</strong>.<br>
-            • <strong>-3² (Sin Casco):</strong> El menos está al aire libre: -(3 · 3) = <strong>-9</strong>.</p>
-            <p>• <strong>Hechizos:</strong> a⁰ = 1 (agujero negro) y a⁻ⁿ = 1/aⁿ (hacer el pino).</p>
-
-            <h4 class="text-fuchsia-400 font-friendly font-bold text-base mt-4">3. Los 3 Superpoderes de la Misma Base</h4>
-            <p>1. <strong>Fusión (Multiplicar):</strong> aⁿ · aᵐ = aⁿ⁺ᵐ (Se suman exponentes: 2³ · 2⁵ = 2⁸).<br>
-            2. <strong>Duelo Láser (Dividir):</strong> aⁿ : aᵐ = aⁿ⁻ᵐ (Se restan exponentes: 5⁷ : 5³ = 5⁴).<br>
-            3. <strong>Turbocompresor:</strong> (aⁿ)ᵐ = aⁿ·ᵐ (Se multiplican exponentes: (3²)⁴ = 3⁸).</p>
-          </div>
-        `
-      },
-      b5: {
-        titulo: "Bloque 5: La Fábrica de LEGO y el Gran Despiece de Potencias",
-        subtitulo: "La raya vertical, reparto de mochilas, trampilla y combate de supervivientes",
-        icono: "🧱",
-        html: `
-          <div class="space-y-4">
-            <p>Los números grandes no existen; solo son construcciones montadas con piezas pequeñas de LEGO (los números primos 2, 3, 5, 7...).</p>
-
-            <h4 class="text-emerald-400 font-friendly font-bold text-base mt-4">1. La Máquina de la Raya Vertical</h4>
-            <pre>  12 | 2   (12 es par -> 12 : 2 = 6)
-   6 | 2   (6 es par  -> 6 : 2 = 3)
-   3 | 3   (al 3 solo le cabe el primo 3 -> 3 : 3 = 1)
-   1 |     Fórmula LEGO: 12 = 2² · 3</pre>
-
-            <h4 class="text-emerald-400 font-friendly font-bold text-base mt-4">2. Las 4 Estaciones de la Fábrica</h4>
-            <p>1. <strong>Despiece de bases:</strong> 18 = 2 · 3², 15 = 3 · 5, 10 = 2 · 5.<br>
-            2. <strong>Reparto de mochilas:</strong> (18)³ = (2 · 3²)³ = 2³ · 3⁶ (el exponente exterior multiplica a todos los de dentro).<br>
-            3. <strong>Trampilla de negativos:</strong> Si está arriba negativo cae abajo positivo; si está abajo negativo sube arriba positivo.<br>
-            4. <strong>Batalla de supervivientes:</strong> En 3⁶ / 3⁴ ganan los de arriba por 2 -> 3².</p>
-
-            <h4 class="text-emerald-400 font-friendly font-bold text-base mt-4">3. El Caso del Detective (Incógnita a)</h4>
-            <p>En (2⁵ · 2ᵃ)² = 2¹⁶: operamos el lado izquierdo ➔ 2¹⁰⁺²ᵃ = 2¹⁶. Como las bases son gemelas, igualamos exponentes: 10 + 2a = 16 ➔ 2a = 6 ➔ <strong>a = 3</strong>.</p>
-          </div>
-        `
-      },
-      b6: {
-        titulo: "Bloque 6: El Detective de las Baldosas y el Secreto de las Raíces en ℤ",
-        subtitulo: "Habitación cuadrada, por qué √-16 no existe, raíz entera por tanteo y la caja de pizarra",
-        icono: "📦",
-        html: `
-          <div class="space-y-4">
-            <p>La raíz cuadrada es la máquina del tiempo puesta marcha atrás: nos dan el total de baldosas y buscamos qué número multiplicado por sí mismo da esa superficie.</p>
-
-            <h4 class="text-rose-400 font-friendly font-bold text-base mt-4">1. El Semáforo de Signos en ℤ</h4>
-            <p>• <strong>Doble Solución en ℤ:</strong> √25 = ±5 (porque (+5)² = 25 y (-5)² = 25).<br>
-            • <strong>√-16 NO existe en ℝ:</strong> Cualquier número al cuadrado da positivo (+4·+4 = 16, -4·-4 = 16). ¡Prohibido!<br>
-            • <strong>∛-8 SÍ existe y vale -2:</strong> Porque (-2) · (-2) · (-2) = -8 (exponente impar conserva el signo).</p>
-
-            <h4 class="text-rose-400 font-friendly font-bold text-base mt-4">2. Raíz Entera y Resto por Tanteo</h4>
-            <p>Para √46: 6² = 36 < 46 < 49 = 7². Raíz entera = <strong>6</strong>, Resto = 46 - 36 = <strong>10</strong>.<br>
-            Comprobación: 46 = 6² + 10 = 46. Resto máximo = 2 · 6 = 12 (10 ≤ 12 ¡Correcto!).</p>
-
-            <h4 class="text-rose-400 font-friendly font-bold text-base mt-4">3. Algoritmo Tradicional de la Caja (√592)</h4>
-            <pre>    √ 5 . 92   |  2 4
-     -4        |---------------
-     ---       |  44 x 4 = 176
-      1   92   |
-     -1   76   |
-     -------   |
-          16   |  <-- Resto
-  Resultado: Raíz entera = 24 | Resto = 16</pre>
-
-            <h4 class="text-rose-400 font-friendly font-bold text-base mt-4">4. Truco Rápido de Decimales</h4>
-            <p>Divide entre dos el número de decimales: √0,25 ➔ √25 = 5 (2 dec : 2 = 1 dec) ➔ <strong>0,5</strong>.</p>
-          </div>
-        `
-      }
-    };
-
-    // Funciones del Lector Modal de Guías
-    function verGuia(key) {
-      const g = guiasData[key];
-      if (!g) return;
-
-      document.getElementById('modalTitulo').innerText = g.titulo;
-      document.getElementById('modalSubtitulo').innerText = g.subtitulo;
-      document.getElementById('modalIcono').innerText = g.icono;
-      document.getElementById('modalCuerpo').innerHTML = g.html;
-
-      document.getElementById('modalLector').classList.remove('hidden');
-      document.body.classList.add('overflow-hidden');
-    }
-
-    function cerrarModalGuia() {
-      document.getElementById('modalLector').classList.add('hidden');
-      document.body.classList.remove('overflow-hidden');
-    }
-
-    function imprimirGuiaActual() {
-      window.print();
-    }
-
-    // Funciones del Modal de Ayuda
-    function abrirModalAyuda() {
-      document.getElementById('modalAyuda').classList.remove('hidden');
-      document.body.classList.add('overflow-hidden');
-    }
-
-    function cerrarModalAyuda() {
-      document.getElementById('modalAyuda').classList.add('hidden');
-      document.body.classList.remove('overflow-hidden');
-    }
-
-    // Copiar enlace web al portapapeles
-    function copiarEnlaceWeb() {
-      const url = window.location.href;
-      const dummy = document.createElement('input');
-      document.body.appendChild(dummy);
-      dummy.value = url;
-      dummy.select();
-      document.execCommand('copy');
-      document.body.removeChild(dummy);
-
-      const btn = document.getElementById('btnCopiarURL');
-      const originalHTML = btn.innerHTML;
-      btn.innerHTML = '<span>✅</span> <span>¡Enlace Copiado!</span>';
-      btn.className = 'px-3.5 py-1.5 rounded-xl bg-emerald-600 text-white text-xs font-bold font-friendly flex items-center gap-1.5 transition shadow-lg shadow-emerald-600/30';
-      
-      setTimeout(() => {
-        btn.innerHTML = originalHTML;
-        btn.className = 'px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold font-friendly flex items-center gap-1.5 transition shadow-lg shadow-indigo-600/30';
-      }, 2500);
-    }
-
-    // Cerrar modales con tecla Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        cerrarModalGuia();
-        cerrarModalAyuda();
-      }
-    });
-  </script>
 </body>
 </html>
