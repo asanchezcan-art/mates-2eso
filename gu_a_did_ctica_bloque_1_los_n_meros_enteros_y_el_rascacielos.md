@@ -10,7 +10,6 @@
       --card-bg: #1e293b;
       --card-border: #334155;
       --primary: #06b6d4;
-      --primary-dark: #0891b2;
       --pos: #10b981;
       --neg: #ef4444;
       --zero: #f59e0b;
@@ -19,42 +18,45 @@
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     body { background-color: var(--bg); color: var(--text); line-height: 1.6; padding: 1.5rem; max-width: 950px; margin: 0 auto; }
-    
     header { text-align: center; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--card-border); }
     .badge { display: inline-block; background: rgba(6, 182, 212, 0.15); border: 1px solid rgba(6, 182, 212, 0.4); color: var(--primary); font-size: 0.85rem; font-weight: 700; padding: 0.35rem 0.85rem; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
-    h1 { font-size: 2.1rem; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+    h1 { font-size: 2.1rem; font-weight: 800; margin-bottom: 0.5rem; }
     p.sub { color: var(--muted); font-size: 1.05rem; }
-
     .section-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.75rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3); }
     h2 { font-size: 1.35rem; margin-bottom: 1rem; color: var(--primary); display: flex; align-items: center; gap: 0.5rem; }
 
-    /* MÓDULO 1: ASCENSOR DINÁMICO */
+    /* 1. ASCENSOR */
     .elevator-container { display: grid; grid-template-columns: 160px 1fr; gap: 1.5rem; align-items: center; }
     .shaft { background: #0b1120; border-radius: 0.75rem; padding: 0.5rem; border: 2px dashed #475569; display: flex; flex-direction: column; gap: 0.35rem; }
-    .floor-btn { padding: 0.5rem; text-align: center; font-weight: 700; border-radius: 0.4rem; font-size: 0.9rem; cursor: pointer; border: none; transition: transform 0.15s ease; color: inherit; width: 100%; }
+    .floor-btn { padding: 0.5rem; text-align: center; font-weight: 700; border-radius: 0.4rem; font-size: 0.9rem; cursor: pointer; border: none; color: inherit; width: 100%; transition: transform 0.15s; }
     .floor-btn:hover { transform: scale(1.02); }
     .f-pos { background: rgba(16, 185, 129, 0.2); color: #34d399; }
     .f-zero { background: rgba(245, 158, 11, 0.25); color: #fbbf24; border: 1px solid #f59e0b; }
     .f-neg { background: rgba(239, 68, 68, 0.2); color: #f87171; }
     .floor-btn.active { outline: 3px solid #38bdf8; font-weight: 900; transform: scale(1.05); }
-
     .display-panel { background: #0b1120; border: 1px solid var(--card-border); border-radius: 0.75rem; padding: 1.5rem; }
     .status-pill { font-size: 0.8rem; text-transform: uppercase; font-weight: 800; letter-spacing: 0.05em; padding: 0.25rem 0.6rem; border-radius: 0.25rem; display: inline-block; margin-bottom: 0.75rem; }
     .big-value { font-size: 3.5rem; font-weight: 900; line-height: 1; margin-bottom: 0.75rem; }
     .meta-box { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--card-border); border-radius: 0.5rem; padding: 0.75rem; margin-top: 1rem; font-size: 0.9rem; }
 
-    /* MÓDULO 2: COMPARADOR COCODRILO */
+    /* 2. TERMÓMETRO */
+    .thermo-box { display: flex; align-items: center; justify-content: center; gap: 2rem; background: #0b1120; padding: 1.5rem; border-radius: 0.75rem; border: 1px solid var(--card-border); flex-wrap: wrap; }
+    .thermo-slider { -webkit-appearance: none; appearance: none; width: 220px; height: 10px; border-radius: 5px; background: linear-gradient(to right, #3b82f6, #f59e0b, #ef4444); outline: none; }
+    .thermo-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; border-radius: 50%; background: #ffffff; cursor: pointer; border: 2px solid #0f172a; }
+    .temp-readout { font-size: 2.5rem; font-weight: 900; min-width: 120px; text-align: center; }
+
+    /* 3. COMPARADOR */
     .compare-wrapper { display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 1.5rem 0; flex-wrap: wrap; }
     .num-select { background: #0b1120; border: 1px solid var(--card-border); color: #fff; padding: 0.75rem 1rem; border-radius: 0.5rem; font-size: 1.2rem; font-weight: 700; outline: none; }
     .croc-box { font-size: 2.2rem; font-weight: 900; padding: 0.5rem 1.25rem; background: #0b1120; border-radius: 0.5rem; border: 2px solid var(--primary); min-width: 70px; text-align: center; }
     .rule-callout { background: rgba(6, 182, 212, 0.1); border-left: 4px solid var(--primary); padding: 0.75rem 1rem; border-radius: 0 0.5rem 0.5rem 0; font-size: 0.95rem; }
 
-    /* MÓDULO 3: SUPERPODERES */
+    /* 4. SUPERPODERES */
     .powers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
     .power-card { background: #0b1120; border: 1px solid var(--card-border); border-radius: 0.75rem; padding: 1.25rem; text-align: center; }
     .power-res { font-size: 1.7rem; font-weight: 800; margin: 0.6rem 0; color: #38bdf8; font-family: monospace; }
 
-    /* MÓDULO 4: DESAFÍO RÁPIDO */
+    /* 5. DESAFÍO NINJA */
     .quiz-box { background: #0b1120; border-radius: 0.75rem; padding: 1.25rem; border: 1px solid var(--card-border); }
     .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1rem; }
     .quiz-btn { background: #1e293b; border: 1px solid var(--card-border); color: #f8fafc; padding: 0.75rem; border-radius: 0.5rem; font-weight: 700; cursor: pointer; transition: all 0.2s; font-size: 1rem; }
@@ -81,8 +83,7 @@
   <!-- SECCIÓN 1: EL ASCENSOR -->
   <section class="section-card">
     <h2>🏢 1. El Ascensor de Cristal</h2>
-    <p style="color:var(--muted); margin-bottom: 1rem;">Selecciona una planta para observar su comportamiento visual y su altura respecto a la acera:</p>
-    
+    <p style="color:var(--muted); margin-bottom: 1rem;">Selecciona una planta para observar su altura respecto a la calle:</p>
     <div class="elevator-container">
       <div class="shaft">
         <button class="floor-btn f-pos" onclick="moverAscensor(3)">+3 Ático</button>
@@ -93,7 +94,6 @@
         <button class="floor-btn f-neg" onclick="moverAscensor(-2)">-2 Parking 2</button>
         <button class="floor-btn f-neg" onclick="moverAscensor(-3)">-3 Calderas</button>
       </div>
-      
       <div class="display-panel">
         <span id="tagPiso" class="status-pill" style="background:#f59e0b; color:#000;">Nivel Neutral</span>
         <div id="numPiso" class="big-value" style="color:#fbbf24;">0</div>
@@ -105,11 +105,23 @@
     </div>
   </section>
 
-  <!-- SECCIÓN 2: COMPARADOR (LEY DEL COCODRILO) -->
+  <!-- SECCIÓN 2: EL TERMÓMETRO AMBIENTAL -->
   <section class="section-card">
-    <h2>🐊 2. La Ley de la Altura y el Cocodrilo Comilón</h2>
-    <p style="color:var(--muted);">El cocodrilo siempre abre su boca hacia el número situado en el piso más alto.</p>
-    
+    <h2>🌡️ 2. El Termómetro y el Congelador</h2>
+    <p style="color:var(--muted); margin-bottom: 1rem;">Desliza la barra para ver la transición entre grados sobre cero y temperaturas de congelación:</p>
+    <div class="thermo-box">
+      <input type="range" id="tempSlider" min="-15" max="35" value="0" class="thermo-slider" oninput="cambiarTemp(this.value)">
+      <div id="tempVal" class="temp-readout" style="color:#fbbf24;">0°C</div>
+      <div id="tempDesc" style="flex:1; min-width:200px; font-size:0.95rem;">
+        Punto de congelación del agua. 0 no es frío ni calor extremo, es el punto frontera.
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3: COMPARADOR (COCODRILO) -->
+  <section class="section-card">
+    <h2>🐊 3. La Ley de la Altura y el Cocodrilo Comilón</h2>
+    <p style="color:var(--muted);">El cocodrilo abre sus fauces hacia el número situado en el piso más alto.</p>
     <div class="compare-wrapper">
       <select id="pisoA" class="num-select" onchange="comparar()">
         <option value="3">+3</option>
@@ -120,9 +132,7 @@
         <option value="-2" selected>-2</option>
         <option value="-3">-3</option>
       </select>
-
       <div id="simboloComp" class="croc-box">&gt;</div>
-
       <select id="pisoB" class="num-select" onchange="comparar()">
         <option value="3">+3</option>
         <option value="2">+2</option>
@@ -133,30 +143,26 @@
         <option value="-3" selected>-3</option>
       </select>
     </div>
-
     <div id="razonComp" class="rule-callout">
       El sótano <strong>-2</strong> está más arriba (más cerca de la luz) que el sótano <strong>-3</strong>. Por eso: <strong>-2 &gt; -3</strong>.
     </div>
   </section>
 
-  <!-- SECCIÓN 3: SUPERPODERES -->
+  <!-- SECCIÓN 4: SUPERPODERES -->
   <section class="section-card">
-    <h2>⚡ 3. Los Dos Superpoderes Matemáticos</h2>
+    <h2>⚡ 4. Los Dos Superpoderes Matemáticos</h2>
     <p style="color:var(--muted); margin-bottom: 1rem;">Escribe cualquier valor entero para activar el cuentapasos y el espejo:</p>
-    
     <div style="text-align:center; margin-bottom:1.25rem;">
       <label style="font-weight:700; margin-right:0.5rem;">Introduce un número:</label>
       <input type="number" id="superInput" value="-14" style="background:#0b1120; border:1px solid var(--card-border); color:#fff; padding:0.5rem 1rem; border-radius:0.5rem; font-size:1.1rem; width:110px; text-align:center;" oninput="actualizarPoderes()">
     </div>
-
     <div class="powers-grid">
       <div class="power-card">
         <h3>🧺 Valor Absoluto: |a|</h3>
-        <p style="font-size:0.85rem; color:var(--muted);">Mide la distancia física hasta el cero. Lava el signo:</p>
+        <p style="font-size:0.85rem; color:var(--muted);">Mide la distancia física hasta el cero:</p>
         <div id="resAbs" class="power-res">|-14| = 14</div>
         <p style="font-size:0.8rem; color:#94a3b8;">Nunca da negativo; cuenta plantas de separación.</p>
       </div>
-
       <div class="power-card">
         <h3>🪞 Opuesto: op(a)</h3>
         <p style="font-size:0.85rem; color:var(--muted);">El reflejo simétrico al otro lado de la calle:</p>
@@ -166,9 +172,9 @@
     </div>
   </section>
 
-  <!-- SECCIÓN 4: DESAFÍO NINJA -->
+  <!-- SECCIÓN 5: DESAFÍO NINJA -->
   <section class="section-card">
-    <h2>🎯 4. Mini-Desafío Rápido</h2>
+    <h2>🎯 5. Mini-Desafío Rápido</h2>
     <div class="quiz-box">
       <p id="preguntaTexto" style="font-size:1.05rem; font-weight:700;">¿Cuál de las siguientes relaciones es VERDADERA?</p>
       <div class="quiz-options">
@@ -221,6 +227,26 @@
         num.style.color = "#fbbf24";
         desc.textContent = "La calle es la frontera neutral. Ni sube ni baja, no tiene signo positivo ni negativo.";
         extra.innerHTML = `📍 <strong>Ejemplo real:</strong> Nivel del mar (0 m) o saldo exacto sin deudas ni ahorros.`;
+      }
+    }
+
+    function cambiarTemp(val) {
+      const t = parseInt(val, 10);
+      const visor = document.getElementById('tempVal');
+      const desc = document.getElementById('tempDesc');
+
+      if (t > 0) {
+        visor.textContent = "+" + t + "°C";
+        visor.style.color = t > 25 ? "#ef4444" : "#10b981";
+        desc.innerHTML = `Temperatura cálida o veraniega. Por encima de cero los grados son enteros positivos (+${t}).`;
+      } else if (t < 0) {
+        visor.textContent = t + "°C";
+        visor.style.color = "#38bdf8";
+        desc.innerHTML = `Temperatura de congelador bajo cero. El frío aumenta a medida que el número negativo se aleja del cero (${t}).`;
+      } else {
+        visor.textContent = "0°C";
+        visor.style.color = "#fbbf24";
+        desc.innerHTML = "Punto de congelación del agua. 0 no es frío ni calor extremo, es el punto frontera.";
       }
     }
 
