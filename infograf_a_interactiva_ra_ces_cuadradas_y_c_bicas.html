@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infografía: El Detective de las Baldosas y las Raíces en ℤ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #060913 0%, #111428 50%, #080f1d 100%);
+      color: #f8fafc;
+    }
+    .font-friendly {
+      font-family: 'Fredoka', cursive, sans-serif;
+    }
+    .font-code {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .glass-card {
+      background: rgba(20, 27, 47, 0.82);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .tile-grid {
+      display: grid;
+      transition: all 0.3s ease;
+    }
+    .tile-cell {
+      aspect-ratio: 1 / 1;
+      border-radius: 3px;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+    .tile-cell:hover {
+      transform: scale(1.15);
+      z-index: 10;
+    }
+    @keyframes pulseRadical {
+      0%, 100% { border-color: rgba(56, 189, 248, 0.4); box-shadow: 0 0 15px rgba(56, 189, 248, 0.2); }
+      50% { border-color: rgba(56, 189, 248, 0.9); box-shadow: 0 0 25px rgba(56, 189, 248, 0.5); }
+    }
+    .radical-highlight {
+      animation: pulseRadical 2s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+  <!-- CABECERA -->
+  <header class="max-w-6xl mx-auto mb-8 text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/20 border border-cyan-400/30 text-cyan-300 text-sm font-semibold mb-3">
+      <span>📐</span> MATES 2º ESO • BLOQUE 6
+    </div>
+    <h1 class="text-3xl md:text-5xl font-friendly font-bold tracking-tight text-white mb-3">
+      El Detective de las Baldosas y el <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-amber-300 to-emerald-400">Secreto de las Raíces en ℤ</span>
+    </h1>
+    <p class="max-w-2xl mx-auto text-slate-300 text-sm md:text-base leading-relaxed">
+      La máquina del tiempo puesta marcha atrás: averigua qué número multiplicado por sí mismo da el área del suelo, descubre los secretos de los signos y domina la caja tradicional.
+    </p>
+  </header>
+
+  <main class="max-w-6xl mx-auto space-y-8">
+
+    <!-- SECCIÓN 1: ANATOMÍA Y EL SUELO DE BALDOSAS INTERACTIVO -->
+    <section class="glass-card rounded-3xl p-6 md:p-8 border border-cyan-500/30 shadow-2xl">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="p-3 bg-cyan-500/20 text-cyan-400 rounded-2xl text-2xl">🏛️</span>
+        <div>
+          <h2 class="text-2xl font-friendly font-bold text-white">1. El Suelo de Baldosas y la Anatomía de una Raíz</h2>
+          <p class="text-slate-400 text-sm">El radicando es el total de baldosas del suelo; la raíz es lo que mide cada fila de la pared.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        
+        <!-- Tarjeta de partes de la raíz -->
+        <div class="lg:col-span-6 space-y-4">
+          <div class="p-5 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-3">
+            <span class="text-xs font-friendly font-bold text-cyan-300 block uppercase tracking-wider">🔬 Quién es quién en el laboratorio</span>
+            
+            <div class="p-4 rounded-xl bg-slate-900 border border-cyan-500/30 flex items-center justify-around font-code text-center">
+              <div class="space-y-1">
+                <span class="text-rose-400 text-xs font-sans block">Índice (n)</span>
+                <span id="badgeIndice" class="text-2xl font-bold text-rose-300">2</span>
+                <span class="text-[10px] text-slate-500 font-sans block">(¿Parejas o tríos?)</span>
+              </div>
+              <span class="text-4xl text-cyan-400 font-sans">√</span>
+              <div class="space-y-1">
+                <span class="text-amber-400 text-xs font-sans block">Radicando (a)</span>
+                <span id="badgeRadicando" class="text-2xl font-bold text-amber-300">25</span>
+                <span class="text-[10px] text-slate-500 font-sans block">(Total baldosas)</span>
+              </div>
+              <span class="text-2xl text-slate-400">=</span>
+              <div class="space-y-1">
+                <span class="text-emerald-400 text-xs font-sans block">Raíz (b)</span>
+                <span id="badgeRaiz" class="text-2xl font-bold text-emerald-300">5</span>
+                <span class="text-[10px] text-slate-500 font-sans block">(Lado de la pared)</span>
+              </div>
+            </div>
+
+            <div class="text-xs text-slate-300 space-y-1.5 pt-1">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-rose-400"></span>
+                <span><strong>Índice invisible:</strong> Si el tejado no lleva número, hay un <strong>2 invisible</strong> ($\sqrt{a} = \sqrt[2]{a}$).</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                <span><strong>Pregunta detective:</strong> «¿Qué número multiplicado por sí mismo da este total?»</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slider interactivo de tamaño de habitación -->
+          <div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-3">
+            <div class="flex items-center justify-between text-xs font-friendly">
+              <span class="text-slate-300 font-bold">Cambia el lado de la habitación:</span>
+              <span id="sliderValueLbl" class="text-cyan-300 font-code font-bold text-sm">Lado = 5 baldosas</span>
+            </div>
+            <input id="sliderTileSide" type="range" min="1" max="10" value="5" oninput="actualizarHabitacion(this.value)" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400">
+            <div class="flex justify-between text-[11px] text-slate-500 font-code">
+              <span>1x1=1</span>
+              <span>3x3=9</span>
+              <span>5x5=25</span>
+              <span>8x8=64</span>
+              <span>10x10=100</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visualizador interactivo de cuadrícula de baldosas -->
+        <div class="lg:col-span-6 bg-slate-950/90 rounded-2xl p-5 border border-slate-800 flex flex-col items-center justify-center shadow-inner min-h-[300px]">
+          <div class="text-xs font-friendly font-bold text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+            <span>🏠 Suelo de la Habitación Cuadrada</span>
+            <span id="gridDimText" class="text-cyan-400 font-code font-bold">5 x 5</span>
+          </div>
+
+          <div id="tileBoard" class="tile-grid gap-1.5 p-3 rounded-2xl bg-slate-900/90 border border-slate-800 max-w-[260px] w-full aspect-square flex items-center justify-center">
+            <!-- Celdas inyectadas con JS -->
+          </div>
+
+          <div class="mt-4 text-center">
+            <span class="text-xs font-code text-slate-300">
+              Área total = <strong id="lblAreaTot" class="text-amber-300 text-sm">25</strong> baldosas ➔ 
+              <span class="text-emerald-400 font-bold text-base">√25 = 5</span>
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: EL SEMÁFORO DE LOS SIGNOS EN Z (PAR VS IMPAR) -->
+    <section class="glass-card rounded-3xl p-6 md:p-8 border border-amber-500/30 shadow-2xl">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="p-3 bg-amber-500/20 text-amber-400 rounded-2xl text-2xl">🚦</span>
+        <div>
+          <h2 class="text-2xl font-friendly font-bold text-white">2. El Semáforo de los Signos en ℤ: ¿Existe o es Imposible?</h2>
+          <p class="text-slate-400 text-sm">Las dos soluciones opuestas ($\pm$), la prohibición de $\sqrt{-16}$ y la sorpresa de la raíz cúbica.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Caso A: Doble Solución en Z -->
+        <div class="p-5 rounded-2xl bg-slate-900/80 border border-emerald-500/30 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold font-friendly">Doble Solución</span>
+            <span class="text-2xl">🎭</span>
+          </div>
+          <h3 class="font-friendly font-bold text-emerald-300 text-base">Las Dos Caras de la Raíz en ℤ</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            En números enteros hay <strong>dos números opuestos</strong> que al multiplicarse por sí mismos dan $25$:
+          </p>
+          <div class="p-3 rounded-xl bg-black/60 font-code text-xs space-y-1.5 border border-emerald-500/20">
+            <div class="text-emerald-300">(+5) · (+5) = <strong>+25</strong></div>
+            <div class="text-emerald-300">(-5) · (-5) = <strong>+25</strong> <span class="text-[10px] text-slate-400">(menos · menos = +)</span></div>
+            <div class="text-white font-bold border-t border-slate-800 pt-1 text-center">√25 = ± 5</div>
+          </div>
+          <p class="text-[11px] text-slate-400 italic">En 2º de ESO se suele trabajar con la raíz principal positiva (+5), salvo que te pidan las dos en ℤ.</p>
+        </div>
+
+        <!-- Caso B: Prohibido Índice Par Negativo -->
+        <div class="p-5 rounded-2xl bg-slate-900/80 border border-rose-500/30 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-rose-500/20 text-rose-300 font-bold font-friendly">¡Prohibido!</span>
+            <span class="text-2xl">🚫</span>
+          </div>
+          <h3 class="font-friendly font-bold text-rose-400 text-base">¿Por qué √-16 NO existe en ℝ?</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Buscamos un número que multiplicado por sí mismo dé negativo:
+          </p>
+          <div class="p-3 rounded-xl bg-black/60 font-code text-xs space-y-1.5 border border-rose-500/20">
+            <div class="text-slate-300">(+4) · (+4) = +16 (no da -16)</div>
+            <div class="text-slate-300">(-4) · (-4) = +16 (¡tampoco da -16!)</div>
+            <div class="text-rose-400 font-bold border-t border-slate-800 pt-1 text-center">¡NO TIENE SOLUCIÓN REAL!</div>
+          </div>
+          <div class="p-2 rounded-lg bg-rose-500/10 border border-rose-500/20 text-xs text-rose-200">
+            💥 <strong>Regla sagrada:</strong> Cualquier número al cuadrado da positivo. ¡El interior no puede ser negativo!
+          </div>
+        </div>
+
+        <!-- Caso C: Raíz Cúbica Negativa Sí Existe -->
+        <div class="p-5 rounded-2xl bg-slate-900/80 border border-cyan-500/30 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-bold font-friendly">¡Sorpresa Impar!</span>
+            <span class="text-2xl">🧊</span>
+          </div>
+          <h3 class="font-friendly font-bold text-cyan-300 text-base">¿Por qué ³√-8 SÍ existe?</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            En la raíz cúbica el índice es <strong>3 (impar)</strong>. Recuerda el baile de parejas del Bloque 4:
+          </p>
+          <div class="p-3 rounded-xl bg-black/60 font-code text-xs space-y-1.5 border border-cyan-500/20">
+            <div class="text-cyan-300">(-2) · (-2) · (-2) = (+4) · (-2) = <strong>-8</strong></div>
+            <div class="text-white font-bold border-t border-slate-800 pt-1 text-center">∛-8 = -2</div>
+          </div>
+          <div class="p-2 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-xs text-cyan-200">
+            ✨ <strong>Regla sagrada:</strong> El exponente impar conserva el signo solitario del radicando.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Probador interactivo de raíces con signo -->
+      <div class="mt-6 p-4 rounded-2xl bg-slate-950/80 border border-slate-800">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 mb-3">
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-400 font-friendly">🧪 Inspector Rápido de Existencia</span>
+          <span class="text-xs text-slate-400">Pulsa en cada caso típico del examen</span>
+        </div>
+        <div class="flex flex-wrap gap-2 text-xs font-code">
+          <button onclick="testSignCase('sqrt64')" id="btnSign1" class="px-3 py-1.5 rounded-xl bg-indigo-600 text-white font-bold transition">√64</button>
+          <button onclick="testSignCase('sqrtNeg49')" id="btnSign2" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition">√-49</button>
+          <button onclick="testSignCase('cbrtNeg27')" id="btnSign3" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition">∛-27</button>
+          <button onclick="testSignCase('cbrtPos64')" id="btnSign4" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition">∛+64</button>
+          <button onclick="testSignCase('cbrtNeg125')" id="btnSign5" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition">∛-125</button>
+        </div>
+
+        <div id="signCaseFeedback" class="mt-3 p-3.5 rounded-xl bg-black/60 border border-indigo-500/30 font-code text-xs md:text-sm text-slate-200 flex items-center justify-between flex-wrap gap-2">
+          <span>Caso analizado: <strong>√64</strong></span>
+          <span class="text-emerald-400 font-bold text-sm bg-emerald-950/40 px-3 py-1 rounded-lg border border-emerald-500/30">√64 = 8 (en ℤ admite ±8 porque 8² = 64)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: RAÍZ ENTERA Y RESTO POR TANTEO (EN Z) -->
+    <section class="glass-card rounded-3xl p-6 md:p-8 border border-emerald-500/30 shadow-2xl">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="p-3 bg-emerald-500/20 text-emerald-400 rounded-2xl text-2xl">🧱</span>
+        <div>
+          <h2 class="text-2xl font-friendly font-bold text-white">3. Raíz Entera y Resto por Tanteo (Atrapado entre Cuadrados)</h2>
+          <p class="text-slate-400 text-sm">Cuando sobran baldosas: construimos el mayor cuadrado perfecto posible y contamos el resto.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        
+        <!-- Panel explicativo y controles -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2 text-xs">
+            <span class="font-friendly font-bold text-emerald-300 text-sm block">📋 La Fórmula Obligatoria del Examen</span>
+            <div class="p-2.5 rounded-xl bg-black/60 font-code text-center text-sm font-bold text-emerald-300 border border-emerald-500/30">
+              Radicando = Raíz² + Resto
+            </div>
+            <p class="text-slate-300">
+              <strong>Ley del Resto Máximo:</strong> El resto jamás puede superar el doble de la raíz:
+              <span class="font-code text-amber-300 font-bold block mt-0.5">Resto Máximo = 2 · Raíz</span>
+            </p>
+          </div>
+
+          <!-- Selector de número para tanteo -->
+          <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+            <span class="text-xs text-slate-400 block font-friendly font-bold">🎯 Elige o escribe un radicando:</span>
+            <div class="flex flex-wrap gap-2">
+              <button onclick="setTanteoVal(46)" class="px-3 py-1 bg-slate-800 hover:bg-emerald-500/20 hover:border-emerald-400/50 border border-slate-700 rounded-xl text-xs font-code font-bold text-emerald-300 transition">46</button>
+              <button onclick="setTanteoVal(70)" class="px-3 py-1 bg-slate-800 hover:bg-emerald-500/20 hover:border-emerald-400/50 border border-slate-700 rounded-xl text-xs font-code font-bold text-emerald-300 transition">70</button>
+              <button onclick="setTanteoVal(230)" class="px-3 py-1 bg-slate-800 hover:bg-emerald-500/20 hover:border-emerald-400/50 border border-slate-700 rounded-xl text-xs font-code font-bold text-emerald-300 transition">230</button>
+              <button onclick="setTanteoVal(400)" class="px-3 py-1 bg-slate-800 hover:bg-emerald-500/20 hover:border-emerald-400/50 border border-slate-700 rounded-xl text-xs font-code font-bold text-emerald-300 transition">400</button>
+            </div>
+            <div class="flex items-center gap-2 pt-1">
+              <input id="inputTanteoCustom" type="number" min="1" max="999" value="46" oninput="calcularTanteo(this.value)" class="w-24 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1 text-center font-code text-white text-sm focus:border-emerald-400 outline-none">
+              <span class="text-xs text-slate-400 font-sans">Escribe cualquier número</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visualizador interactivo de intervalo y comprobación -->
+        <div class="lg:col-span-7 bg-slate-950/90 rounded-2xl p-5 border border-slate-800 flex flex-col justify-between space-y-4 shadow-inner">
+          
+          <div>
+            <span class="text-xs font-friendly font-bold text-slate-400 uppercase tracking-wider block mb-2">1. Entre qué dos cuadrados perfectos queda atrapado</span>
+            <div id="boxIntervaloTanteo" class="p-3.5 rounded-xl bg-slate-900 border border-emerald-500/30 font-code text-sm text-center font-bold text-emerald-300">
+              6² = 36 &lt; 46 &lt; 49 = 7²
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 text-center font-code">
+            <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
+              <span class="text-slate-400 text-xs font-sans block mb-1">Raíz Entera (r)</span>
+              <span id="resRaizEntera" class="text-2xl font-bold text-cyan-300">6</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
+              <span class="text-slate-400 text-xs font-sans block mb-1">Resto (Sobran)</span>
+              <span id="resRestoEntero" class="text-2xl font-bold text-amber-300">10</span>
+            </div>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-emerald-950/30 border border-emerald-500/30 font-code text-xs space-y-1">
+            <div class="text-slate-300">
+              ✓ Comprobación: <span id="formulaComprobacion" class="text-emerald-300 font-bold">46 = 6² + 10 = 36 + 10 = 46</span>
+            </div>
+            <div class="text-slate-400">
+              ✓ Resto máximo permitido: <span id="formulaRestoMax" class="text-amber-300 font-bold">2 · 6 = 12 (10 ≤ 12 ¡Correcto!)</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: EL SIMULADOR MAESTRO DE LA CAJA TRADICIONAL -->
+    <section class="glass-card rounded-3xl p-6 md:p-8 border border-indigo-500/30 shadow-2xl">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="p-3 bg-indigo-500/20 text-indigo-400 rounded-2xl text-2xl">📦</span>
+        <div>
+          <h2 class="text-2xl font-friendly font-bold text-white">4. El Algoritmo Tradicional de la Caja (Paso a Paso en Pizarra)</h2>
+          <p class="text-slate-400 text-sm">Visualiza la estructura de la caja tradicional con sus pisos y líneas auxiliares exactamente como en tu libreta.</p>
+        </div>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-slate-950/90 border border-slate-800 space-y-5">
+        
+        <!-- Selector de Ejercicios del Examen -->
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-3">
+          <span class="text-xs font-friendly font-bold text-indigo-300 uppercase tracking-wider">Ejercicios Reales del Examen:</span>
+          <div class="flex flex-wrap gap-2 text-xs font-code">
+            <button onclick="seleccionarCasoCaja('592')" id="btnCaja592" class="px-3 py-1 rounded-xl bg-indigo-600 text-white font-bold transition">√592</button>
+            <button onclick="seleccionarCasoCaja('234')" id="btnCaja234" class="px-3 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition">√234</button>
+            <button onclick="seleccionarCasoCaja('3502')" id="btnCaja3502" class="px-3 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition">√3502</button>
+            <button onclick="seleccionarCasoCaja('4096')" id="btnCaja4096" class="px-3 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition">√4096 (Exacta)</button>
+            <button onclick="seleccionarCasoCaja('7923')" id="btnCaja7923" class="px-3 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition">√7923</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          
+          <!-- Pizarra visual de la caja tradicional -->
+          <div class="lg:col-span-6 bg-slate-900/90 p-5 rounded-2xl border border-indigo-500/40 shadow-inner flex flex-col items-center">
+            <span class="text-xs font-friendly font-bold text-indigo-300 uppercase tracking-wider mb-3">Pizarra de Cálculo</span>
+            
+            <div class="w-full max-w-sm bg-black/70 p-4 rounded-xl border border-slate-800 font-code text-sm leading-relaxed overflow-x-auto">
+              <pre id="boxAsciiArt" class="text-emerald-300 font-bold select-none"></pre>
+            </div>
+
+            <div class="mt-4 w-full flex items-center justify-between text-xs font-code bg-slate-950/80 p-2.5 rounded-xl border border-slate-800">
+              <span class="text-slate-400">Resultado:</span>
+              <span id="boxSummaryText" class="text-cyan-300 font-bold">Raíz entera = 24 | Resto = 16</span>
+            </div>
+          </div>
+
+          <!-- Explicación del paso actual y controles del reproductor -->
+          <div class="lg:col-span-6 space-y-4">
+            
+            <div class="p-4 rounded-2xl bg-slate-900 border border-indigo-500/30 space-y-2 min-h-[140px] flex flex-col justify-center">
+              <div class="flex items-center justify-between">
+                <span id="stepTitleBox" class="text-xs font-friendly font-bold text-amber-300 uppercase tracking-wider">Paso 1: Separar en parejas</span>
+                <span id="stepBadgeBox" class="text-[11px] font-code bg-indigo-500/20 text-indigo-300 px-2 py-0.5 rounded-full border border-indigo-500/40">Paso 1 de 5</span>
+              </div>
+              <p id="stepDescBox" class="text-xs text-slate-200 leading-relaxed font-sans">
+                Separamos de derecha a izquierda en parejas de dos cifras: <strong>5 . 92</strong>.
+              </p>
+              <div id="stepFormulaDetail" class="text-xs font-code text-cyan-300 bg-black/40 p-2 rounded-lg border border-slate-800">
+                Primer grupo a calcular: 5
+              </div>
+            </div>
+
+            <!-- Controles del paso a paso -->
+            <div class="flex items-center justify-between gap-3 pt-2">
+              <button onclick="prevCajaStep()" id="btnPrevCaja" class="flex-1 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs font-friendly transition disabled:opacity-30 disabled:cursor-not-allowed">
+                ◀ Paso Anterior
+              </button>
+              <button onclick="resetCajaStep()" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 font-bold text-xs font-friendly transition" title="Reiniciar pasos">
+                🔄
+              </button>
+              <button onclick="nextCajaStep()" id="btnNextCaja" class="flex-1 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs font-friendly transition disabled:opacity-30 disabled:cursor-not-allowed">
+                Avanzar Paso ▶
+              </button>
+            </div>
+
+            <!-- Regla mnemotécnica de la caja -->
+            <div class="p-3 rounded-xl bg-indigo-950/30 border border-indigo-500/20 text-xs text-indigo-200 space-y-1">
+              <span class="font-friendly font-bold block">💡 La secuencia mágica de la caja:</span>
+              <p class="text-[11px] text-slate-300 leading-snug">
+                1º Parejas ➔ 2º Raíz del primero ➔ 3º Bajar pareja ➔ 4º Doble auxiliar y probar hueco (4_ · _) ➔ 5º Restar y subir número.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECCIÓN 5: EL TRUCO RÁPIDO DE LOS DECIMALES (CÁLCULO MENTAL) -->
+    <section class="glass-card rounded-3xl p-6 md:p-8 border border-rose-500/30 shadow-2xl">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="p-3 bg-rose-500/20 text-rose-400 rounded-2xl text-2xl">⚡</span>
+        <div>
+          <h2 class="text-2xl font-friendly font-bold text-white">5. El Truco Rápido de los Decimales (Cálculo Mental en 3 Segundos)</h2>
+          <p class="text-slate-400 text-sm">La regla ninja: la raíz cuadrada <strong>divide exactamente entre dos</strong> el número de decimales.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 font-code text-xs">
+        
+        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-rose-400 font-bold font-friendly text-sm">√0,25</span>
+            <span class="text-xs bg-rose-500/20 text-rose-300 px-2 py-0.5 rounded-full font-sans">2 decimales</span>
+          </div>
+          <p class="font-sans text-slate-300 text-xs">1. Ignora la coma: $\sqrt{25} = 5$</p>
+          <p class="font-sans text-slate-300 text-xs">2. Divide decimales: $2 : 2 = \mathbf{1 \text{ decimal}}$</p>
+          <div class="p-2 rounded-xl bg-black/60 border border-rose-500/30 text-emerald-300 text-center font-bold text-sm">
+            = 0,5
+          </div>
+          <span class="text-[10px] text-slate-500 block text-center font-sans">Comprobación: 0,5 · 0,5 = 0,25</span>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-amber-400 font-bold font-friendly text-sm">√2,25</span>
+            <span class="text-xs bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-full font-sans">2 decimales</span>
+          </div>
+          <p class="font-sans text-slate-300 text-xs">1. Ignora la coma: $\sqrt{225} = 15$</p>
+          <p class="font-sans text-slate-300 text-xs">2. Divide decimales: $2 : 2 = \mathbf{1 \text{ decimal}}$</p>
+          <div class="p-2 rounded-xl bg-black/60 border border-amber-500/30 text-emerald-300 text-center font-bold text-sm">
+            = 1,5
+          </div>
+          <span class="text-[10px] text-slate-500 block text-center font-sans">Comprobación: 1,5 · 1,5 = 2,25</span>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-cyan-400 font-bold font-friendly text-sm">√0,0009</span>
+            <span class="text-xs bg-cyan-500/20 text-cyan-300 px-2 py-0.5 rounded-full font-sans">4 decimales</span>
+          </div>
+          <p class="font-sans text-slate-300 text-xs">1. Ignora la coma: $\sqrt{9} = 3$</p>
+          <p class="font-sans text-slate-300 text-xs">2. Divide decimales: $4 : 2 = \mathbf{2 \text{ decimales}}$</p>
+          <div class="p-2 rounded-xl bg-black/60 border border-cyan-500/30 text-emerald-300 text-center font-bold text-sm">
+            = 0,03
+          </div>
+          <span class="text-[10px] text-slate-500 block text-center font-sans">Comprobación: 0,03 · 0,03 = 0,0009</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROTOCOLO ANTI-ERRORES -->
+    <footer class="p-6 rounded-3xl bg-gradient-to-r from-cyan-950/40 via-slate-900 to-indigo-950/40 border border-cyan-500/30 text-center space-y-3">
+      <h4 class="font-friendly font-bold text-lg text-cyan-300">📋 Protocolo Anti-Errores para Raíces (Bloque 6)</h4>
+      <div class="flex flex-wrap items-center justify-center gap-3 text-xs md:text-sm text-slate-200">
+        <span class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700">🚫 Raíz par de número negativo = NO EXISTE en ℝ</span>
+        <span class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700">🧊 Raíz cúbica de negativo = SÍ existe y da (-)</span>
+        <span class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700">📏 Resto Máximo = 2 · Raíz</span>
+        <span class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700">📦 Caja: separa en parejas de derecha a izquierda</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // 1. Habitación Cuadrada de Baldosas
+    function actualizarHabitacion(side) {
+      side = parseInt(side);
+      document.getElementById('sliderValueLbl').innerText = `Lado = ${side} baldosas`;
+      document.getElementById('badgeRadicando').innerText = side * side;
+      document.getElementById('badgeRaiz').innerText = side;
+      document.getElementById('gridDimText').innerText = `${side} x ${side}`;
+      document.getElementById('lblAreaTot').innerText = side * side;
+
+      const board = document.getElementById('tileBoard');
+      board.innerHTML = '';
+      board.style.gridTemplateColumns = `repeat(${side}, minmax(0, 1fr))`;
+
+      for (let i = 0; i < side * side; i++) {
+        const cell = document.createElement('div');
+        cell.className = 'tile-cell bg-gradient-to-br from-cyan-400 to-blue-600 shadow-sm border border-cyan-300/30 cursor-pointer';
+        cell.title = `Baldosa ${i + 1}`;
+        board.appendChild(cell);
+      }
+    }
+
+    // 2. Inspector de Signos
+    const signCases = {
+      sqrt64: {
+        expr: "√64",
+        status: "success",
+        badge: "√64 = 8 (en ℤ admite ±8)",
+        expl: "El radicando es positivo. Dos números al cuadrado dan 64: (+8)² = 64 y (-8)² = 64."
+      },
+      sqrtNeg49: {
+        expr: "√-49",
+        status: "error",
+        badge: "NO EXISTE en ℝ",
+        expl: "Índice par (2) de número negativo. Ningún número real al cuadrado da -49 (+7·+7=+49, -7·-7=+49)."
+      },
+      cbrtNeg27: {
+        expr: "∛-27",
+        status: "cube",
+        badge: "∛-27 = -3",
+        expl: "Índice impar (3). El signo negativo sobrevive: (-3) · (-3) · (-3) = (+9) · (-3) = -27."
+      },
+      cbrtPos64: {
+        expr: "∛+64",
+        status: "cube",
+        badge: "∛+64 = +4",
+        expl: "Índice impar de número positivo: 4 · 4 · 4 = 64."
+      },
+      cbrtNeg125: {
+        expr: "∛-125",
+        status: "cube",
+        badge: "∛-125 = -5",
+        expl: "Índice impar de número negativo: (-5) · (-5) · (-5) = -125."
+      }
+    };
+
+    function testSignCase(key) {
+      const c = signCases[key];
+      ['btnSign1', 'btnSign2', 'btnSign3', 'btnSign4', 'btnSign5'].forEach(id => {
+        document.getElementById(id).className = "px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition";
+      });
+
+      const btnMap = {
+        sqrt64: 'btnSign1', sqrtNeg49: 'btnSign2', cbrtNeg27: 'btnSign3',
+        cbrtPos64: 'btnSign4', cbrtNeg125: 'btnSign5'
+      };
+      document.getElementById(btnMap[key]).className = "px-3 py-1.5 rounded-xl bg-indigo-600 text-white font-bold transition";
+
+      const fb = document.getElementById('signCaseFeedback');
+      let badgeClass = "text-emerald-400 bg-emerald-950/40 border-emerald-500/30";
+      if (c.status === 'error') badgeClass = "text-rose-400 bg-rose-950/40 border-rose-500/30";
+      if (c.status === 'cube') badgeClass = "text-cyan-400 bg-cyan-950/40 border-cyan-500/30";
+
+      fb.innerHTML = `
+        <div class="space-y-0.5">
+          <span>Caso: <strong>${c.expr}</strong> ➔ <span class="font-sans text-slate-300 text-xs">${c.expl}</span></span>
+        </div>
+        <span class="${badgeClass} font-bold text-sm px-3 py-1 rounded-lg border font-friendly">${c.badge}</span>
+      `;
+    }
+
+    // 3. Raíz Entera y Resto por Tanteo
+    function calcularTanteo(num) {
+      num = parseInt(num);
+      if (isNaN(num) || num < 1) return;
+      document.getElementById('inputTanteoCustom').value = num;
+
+      const r = Math.floor(Math.sqrt(num));
+      const rLower = r;
+      const rUpper = r + 1;
+      const rLowerSq = rLower * rLower;
+      const rUpperSq = rUpper * rUpper;
+      const resto = num - rLowerSq;
+      const restoMax = 2 * r;
+
+      if (rLowerSq === num) {
+        document.getElementById('boxIntervaloTanteo').innerHTML = `
+          ¡Cuadrado Perfecto Exacto! ${r}² = ${num}
+        `;
+      } else {
+        document.getElementById('boxIntervaloTanteo').innerHTML = `
+          ${rLower}² = ${rLowerSq} &lt; ${num} &lt; ${rUpperSq} = ${rUpper}²
+        `;
+      }
+
+      document.getElementById('resRaizEntera').innerText = r;
+      document.getElementById('resRestoEntero').innerText = resto;
+      document.getElementById('formulaComprobacion').innerText = `${num} = ${r}² + ${resto} = ${rLowerSq} + ${resto} = ${num}`;
+      
+      const maxOk = resto <= restoMax ? '¡Correcto!' : '¡Error!';
+      document.getElementById('formulaRestoMax').innerText = `2 · ${r} = ${restoMax} (${resto} ≤ ${restoMax} ${maxOk})`;
+    }
+
+    function setTanteoVal(val) {
+      calcularTanteo(val);
+    }
+
+    // 4. Simulador de la Caja Tradicional
+    const casosCaja = {
+      '592': {
+        summary: "Raíz entera = 24 | Resto = 16",
+        steps: [
+          {
+            ascii: "    √ 5 . 92   |  _\n               |---------------\n               |  ",
+            title: "Paso 1: Separar en parejas",
+            desc: "Separamos de derecha a izquierda en parejas de dos cifras: 5 . 92.",
+            detail: "Primer grupo a calcular: 5"
+          },
+          {
+            ascii: "    √ 5 . 92   |  2\n     -4        |---------------\n     ---       |  \n      1        |",
+            title: "Paso 2: Raíz del primer grupo",
+            desc: "Buscamos el cuadrado que cabe en 5: es 2 (porque 2² = 4). Ponemos 2 arriba y restamos 5 - 4 = 1.",
+            detail: "5 - 4 = 1 (Raíz acumulada: 2)"
+          },
+          {
+            ascii: "    √ 5 . 92   |  2\n     -4        |---------------\n     ---       |  4_ x _ =\n      1   92   |",
+            title: "Paso 3: Bajar la pareja y doblar",
+            desc: "Bajamos la siguiente pareja (92) al lado del 1 formando 192. En el piso auxiliar ponemos el doble de la raíz: 2 · 2 = 4.",
+            detail: "Número a alcanzar: 192 | Doble auxiliar: 4"
+          },
+          {
+            ascii: "    √ 5 . 92   |  2 4\n     -4        |---------------\n     ---       |  44 x 4 = 176\n      1   92   |\n     -1   76   |",
+            title: "Paso 4: Buscar la cifra en el hueco",
+            desc: "Probamos cifras: 43 · 3 = 129, 44 · 4 = 176, 45 · 5 = 225 (se pasa). La cifra ganadora es 4. La subimos a la raíz.",
+            detail: "44 · 4 = 176 ≤ 192 ➔ Cifra ganadora: 4"
+          },
+          {
+            ascii: "    √ 5 . 92   |  2 4\n     -4        |---------------\n     ---       |  44 x 4 = 176\n      1   92   |\n     -1   76   |\n     -------   |\n          16   |  <-- Resto",
+            title: "Paso 5: Resta final y resto",
+            desc: "Restamos 192 - 176 = 16. Como no quedan más parejas, ¡hemos terminado!",
+            detail: "Comprobación: 24² + 16 = 576 + 16 = 592"
+          }
+        ]
+      },
+      '234': {
+        summary: "Raíz entera = 15 | Resto = 9",
+        steps: [
+          {
+            ascii: "    √ 2 . 34   |  _\n               |---------------\n               |  ",
+            title: "Paso 1: Separar en parejas",
+            desc: "Separamos de derecha a izquierda: 2 . 34.",
+            detail: "Primer grupo a calcular: 2"
+          },
+          {
+            ascii: "    √ 2 . 34   |  1\n     -1        |---------------\n     ---       |  \n      1        |",
+            title: "Paso 2: Raíz del primer grupo",
+            desc: "Buscamos el cuadrado que cabe en 2: es 1 (1² = 1). Restamos 2 - 1 = 1.",
+            detail: "2 - 1 = 1 (Raíz acumulada: 1)"
+          },
+          {
+            ascii: "    √ 2 . 34   |  1\n     -1        |---------------\n     ---       |  2_ x _ =\n      1   34   |",
+            title: "Paso 3: Bajar la pareja y doblar",
+            desc: "Bajamos el 34 formando 134. Doblamos la raíz: 1 · 2 = 2.",
+            detail: "Número a alcanzar: 134 | Doble auxiliar: 2"
+          },
+          {
+            ascii: "    √ 2 . 34   |  1 5\n     -1        |---------------\n     ---       |  25 x 5 = 125\n      1   34   |\n     -1   25   |",
+            title: "Paso 4: Buscar la cifra en el hueco",
+            desc: "Probamos: 24 · 4 = 96, 25 · 5 = 125, 26 · 6 = 156 (se pasa). Subimos el 5 a la raíz.",
+            detail: "25 · 5 = 125 ≤ 134 ➔ Cifra: 5"
+          },
+          {
+            ascii: "    √ 2 . 34   |  1 5\n     -1        |---------------\n     ---       |  25 x 5 = 125\n      1   34   |\n     -1   25   |\n     -------   |\n           9   |  <-- Resto",
+            title: "Paso 5: Resta final",
+            desc: "Restamos 134 - 125 = 9. Raíz entera = 15 y Resto = 9.",
+            detail: "Comprobación: 15² + 9 = 225 + 9 = 234"
+          }
+        ]
+      },
+      '3502': {
+        summary: "Raíz entera = 59 | Resto = 21",
+        steps: [
+          {
+            ascii: "    √ 35 . 02  |  _\n               |---------------\n               |  ",
+            title: "Paso 1: Separar en parejas",
+            desc: "Separamos de derecha a izquierda: 35 . 02 (dos parejas completas).",
+            detail: "Primer grupo: 35"
+          },
+          {
+            ascii: "    √ 35 . 02  |  5\n     -25       |---------------\n     ----      |  \n      10       |",
+            title: "Paso 2: Raíz del primer grupo",
+            desc: "El cuadrado más cercano sin pasarse de 35 es 5 (5² = 25; 6²=36 se pasa). Restamos 35 - 25 = 10.",
+            detail: "35 - 25 = 10 (Raíz acumulada: 5)"
+          },
+          {
+            ascii: "    √ 35 . 02  |  5\n     -25       |---------------\n     ----      |  10_ x _ =\n      10   02  |",
+            title: "Paso 3: Bajar pareja y doblar",
+            desc: "Bajamos la pareja 02 ➔ 1002. En la línea de abajo ponemos el doble: 5 · 2 = 10.",
+            detail: "Número a alcanzar: 1002 | Doble: 10"
+          },
+          {
+            ascii: "    √ 35 . 02  |  5 9\n     -25       |---------------\n     ----      | 109 x 9 = 981\n      10   02  |\n      -9   81  |",
+            title: "Paso 4: Buscar la cifra en el hueco",
+            desc: "Probamos en 10_ · _: 109 · 9 = 981. Cabe perfectamente. Subimos el 9 a la raíz.",
+            detail: "109 · 9 = 981 ≤ 1002 ➔ Cifra: 9"
+          },
+          {
+            ascii: "    √ 35 . 02  |  5 9\n     -25       |---------------\n     ----      | 109 x 9 = 981\n      10   02  |\n      -9   81  |\n      -------  |\n           21  |  <-- Resto",
+            title: "Paso 5: Resta final",
+            desc: "Restamos 1002 - 981 = 21. Raíz entera = 59 y Resto = 21.",
+            detail: "Comprobación: 59² + 21 = 3481 + 21 = 3502"
+          }
+        ]
+      },
+      '4096': {
+        summary: "Raíz exacta = 64 | Resto = 0",
+        steps: [
+          {
+            ascii: "    √ 40 . 96  |  _\n               |---------------\n               |  ",
+            title: "Paso 1: Separar en parejas",
+            desc: "Separamos en parejas: 40 . 96.",
+            detail: "Primer grupo: 40"
+          },
+          {
+            ascii: "    √ 40 . 96  |  6\n     -36       |---------------\n     ----      |  \n       4       |",
+            title: "Paso 2: Raíz del primer grupo",
+            desc: "Cuadrado más cercano a 40: 6 (6² = 36). Restamos 40 - 36 = 4.",
+            detail: "40 - 36 = 4 (Raíz acumulada: 6)"
+          },
+          {
+            ascii: "    √ 40 . 96  |  6\n     -36       |---------------\n     ----      |  12_ x _ =\n       4   96  |",
+            title: "Paso 3: Bajar pareja y doblar",
+            desc: "Bajamos 96 ➔ 496. Ponemos el doble de la raíz: 6 · 2 = 12.",
+            detail: "Número a alcanzar: 496 | Doble: 12"
+          },
+          {
+            ascii: "    √ 40 . 96  |  6 4\n     -36       |---------------\n     ----      | 124 x 4 = 496\n       4   96  |\n      -4   96  |",
+            title: "Paso 4: Buscar la cifra en el hueco",
+            desc: "Probamos en 12_ · _: 124 · 4 = 496 exacto. Subimos el 4 a la raíz.",
+            detail: "124 · 4 = 496 exacto"
+          },
+          {
+            ascii: "    √ 40 . 96  |  6 4\n     -36       |---------------\n     ----      | 124 x 4 = 496\n       4   96  |\n      -4   96  |\n      -------  |\n            0  |  <-- Resto (Exacta)",
+            title: "Paso 5: Raíz Cuadrada Exacta",
+            desc: "Restamos 496 - 496 = 0. ¡El resto es cero! Es un cuadrado perfecto.",
+            detail: "Comprobación: 64² = 4096"
+          }
+        ]
+      },
+      '7923': {
+        summary: "Raíz entera = 89 | Resto = 2",
+        steps: [
+          {
+            ascii: "    √ 79 . 23  |  _\n               |---------------\n               |  ",
+            title: "Paso 1: Separar en parejas",
+            desc: "Separamos: 79 . 23.",
+            detail: "Primer grupo: 79"
+          },
+          {
+            ascii: "    √ 79 . 23  |  8\n     -64       |---------------\n     ----      |  \n      15       |",
+            title: "Paso 2: Raíz del primer grupo",
+            desc: "El cuadrado más cercano a 79 es 8 (8² = 64; 9² = 81 se pasa). Restamos 79 - 64 = 15.",
+            detail: "79 - 64 = 15 (Raíz acumulada: 8)"
+          },
+          {
+            ascii: "    √ 79 . 23  |  8\n     -64       |---------------\n     ----      |  16_ x _ =\n      15   23  |",
+            title: "Paso 3: Bajar pareja y doblar",
+            desc: "Bajamos 23 ➔ 1523. Doble de la raíz: 8 · 2 = 16.",
+            detail: "Número a alcanzar: 1523 | Doble: 16"
+          },
+          {
+            ascii: "    √ 79 . 23  |  8 9\n     -64       |---------------\n     ----      | 169 x 9 = 1521\n      15   23  |\n     -15   21  |",
+            title: "Paso 4: Buscar la cifra en el hueco",
+            desc: "Probamos en 16_ · _: 169 · 9 = 1521. Cabe justo. Subimos el 9 a la raíz.",
+            detail: "169 · 9 = 1521 ≤ 1523 ➔ Cifra: 9"
+          },
+          {
+            ascii: "    √ 79 . 23  |  8 9\n     -64       |---------------\n     ----      | 169 x 9 = 1521\n      15   23  |\n     -15   21  |\n     --------  |\n            2  |  <-- Resto",
+            title: "Paso 5: Resta final",
+            desc: "Restamos 1523 - 1521 = 2. Raíz entera = 89 y Resto = 2.",
+            detail: "Comprobación: 89² + 2 = 7921 + 2 = 7923"
+          }
+        ]
+      }
+    };
+
+    let cajaCurrentKey = '592';
+    let cajaCurrentStepIdx = 0;
+
+    function renderCajaStep() {
+      const data = casosCaja[cajaCurrentKey];
+      const st = data.steps[cajaCurrentStepIdx];
+
+      document.getElementById('boxAsciiArt').innerText = st.ascii;
+      document.getElementById('stepTitleBox').innerText = st.title;
+      document.getElementById('stepBadgeBox').innerText = `Paso ${cajaCurrentStepIdx + 1} de ${data.steps.length}`;
+      document.getElementById('stepDescBox').innerHTML = st.desc;
+      document.getElementById('stepFormulaDetail').innerText = st.detail;
+      document.getElementById('boxSummaryText').innerText = data.summary;
+
+      document.getElementById('btnPrevCaja').disabled = (cajaCurrentStepIdx === 0);
+      document.getElementById('btnNextCaja').disabled = (cajaCurrentStepIdx === data.steps.length - 1);
+    }
+
+    function seleccionarCasoCaja(key) {
+      cajaCurrentKey = key;
+      cajaCurrentStepIdx = 0;
+
+      ['btnCaja592', 'btnCaja234', 'btnCaja3502', 'btnCaja4096', 'btnCaja7923'].forEach(id => {
+        document.getElementById(id).className = "px-3 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition";
+      });
+
+      const btnMap = {
+        '592': 'btnCaja592', '234': 'btnCaja234', '3502': 'btnCaja3502',
+        '4096': 'btnCaja4096', '7923': 'btnCaja7923'
+      };
+      document.getElementById(btnMap[key]).className = "px-3 py-1 rounded-xl bg-indigo-600 text-white font-bold transition";
+
+      renderCajaStep();
+    }
+
+    function nextCajaStep() {
+      const data = casosCaja[cajaCurrentKey];
+      if (cajaCurrentStepIdx < data.steps.length - 1) {
+        cajaCurrentStepIdx++;
+        renderCajaStep();
+      }
+    }
+
+    function prevCajaStep() {
+      if (cajaCurrentStepIdx > 0) {
+        cajaCurrentStepIdx--;
+        renderCajaStep();
+      }
+    }
+
+    function resetCajaStep() {
+      cajaCurrentStepIdx = 0;
+      renderCajaStep();
+    }
+
+    // Inicialización al cargar la ventana
+    window.onload = function() {
+      actualizarHabitacion(5);
+      testSignCase('sqrt64');
+      calcularTanteo(46);
+      seleccionarCasoCaja('592');
+    };
+  </script>
+</body>
+</html>

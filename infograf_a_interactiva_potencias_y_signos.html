@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infografía: El Laboratorio de las Potencias</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #070913 0%, #150d2a 50%, #0a1128 100%);
+      color: #f8fafc;
+    }
+    .font-friendly {
+      font-family: 'Fredoka', cursive, sans-serif;
+    }
+    .glass-card {
+      background: rgba(22, 27, 46, 0.8);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 15px rgba(168, 85, 247, 0.3); }
+      50% { transform: scale(1.02); box-shadow: 0 0 25px rgba(168, 85, 247, 0.6); }
+    }
+    .glow-active {
+      animation: pulseGlow 2.5s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+  <header class="max-w-6xl mx-auto mb-8 text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-fuchsia-500/20 border border-fuchsia-400/30 text-fuchsia-300 text-sm font-semibold mb-3">
+      <span>⚡</span> MATES 2º ESO • BLOQUE 4
+    </div>
+    <h1 class="text-3xl md:text-5xl font-friendly font-bold tracking-tight text-white mb-3">
+      El Laboratorio Secreto de las <span class="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 via-amber-300 to-cyan-400">Potencias</span>
+    </h1>
+    <p class="max-w-2xl mx-auto text-slate-300 text-sm md:text-base leading-relaxed">
+      Descubre la máquina de clonación, el baile de parejas que decide el signo, la trampa del casco y los superpoderes de los exponentes.
+    </p>
+  </header>
+
+  <main class="max-w-6xl mx-auto space-y-8">
+
+    <section class="glass-card rounded-3xl p-6 md:p-8 border border-fuchsia-500/30 shadow-2xl">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="p-3 bg-fuchsia-500/20 text-fuchsia-400 rounded-2xl text-2xl">🧬</span>
+        <div>
+          <h2 class="text-2xl font-friendly font-bold text-white">1. La Máquina de Clonar: ¿Quién es quién?</h2>
+          <p class="text-slate-400 text-sm">La trampa del 99%: multiplicar la base por el exponente. ¡Aquí no se multiplica, se clona!</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Base -->
+        <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-bold font-friendly">Abajo • Grande</span>
+            <span class="text-2xl">🧍</span>
+          </div>
+          <h3 class="font-friendly font-bold text-amber-300 text-lg">La Base (El Personaje)</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Es el número que entra en la cabina. Él es quien va a ser copiado una y otra vez.
+          </p>
+          <div class="p-2.5 rounded-xl bg-black/40 font-mono text-center text-amber-300 font-bold text-lg">
+            En <span class="text-2xl text-amber-400">2</span><sup>4</sup> ➔ Personaje: 2
+          </div>
+        </div>
+
+        <!-- Exponente -->
+        <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-bold font-friendly">Arriba • Volador</span>
+            <span class="text-2xl">🎛️</span>
+          </div>
+          <h3 class="font-friendly font-bold text-cyan-300 text-lg">El Exponente (El Marcador)</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Te dice cuántas copias van a salir a la vez para multiplicarse entre ellas.
+          </p>
+          <div class="p-2.5 rounded-xl bg-black/40 font-mono text-center text-cyan-300 font-bold text-lg">
+            En 2<sup class="text-2xl text-cyan-400">4</sup> ➔ 4 copias
+          </div>
+        </div>
+
+        <!-- Error vs Realidad -->
+        <div class="p-5 rounded-2xl bg-rose-950/20 border border-rose-500/30 space-y-2 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs px-2.5 py-0.5 rounded-full bg-rose-500/20 text-rose-300 font-bold font-friendly">⚠️ ¡ALERTA TRAMPA!</span>
+              <span class="text-xl">💥</span>
+            </div>
+            <p class="text-xs text-rose-300/90 leading-relaxed">
+              <strong>Error fatal:</strong> 2<sup>4</sup> = 2 · 4 = 8 (¡PROHIBIDO!).
+            </p>
+          </div>
+          <div class="p-2.5 rounded-xl bg-black/60 font-mono text-xs text-emerald-300 font-bold border border-emerald-500/30 text-center">
+            2<sup>4</sup> = 2 · 2 · 2 · 2 = <span class="text-base text-emerald-400">16</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-6 p-4 rounded-2xl bg-slate-950/80 border border-slate-800">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 mb-3">
+          <span class="text-xs font-bold uppercase tracking-wider text-fuchsia-400 font-friendly">🔬 Laboratorio de Clonación en Vivo</span>
+          <span class="text-xs text-slate-400">Ajusta la base y el exponente</span>
+        </div>
+        <div class="flex flex-wrap items-center gap-3 font-mono text-sm">
+          <div class="flex items-center gap-2 bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-700">
+            <span class="text-slate-400 text-xs">Base:</span>
+            <input id="cloneBase" type="number" value="3" min="-9" max="9" oninput="simularClon()" class="w-14 bg-slate-950 border border-slate-700 rounded-lg p-1 text-center font-bold text-amber-300 outline-none">
+          </div>
+          <div class="flex items-center gap-2 bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-700">
+            <span class="text-slate-400 text-xs">Exp:</span>
+            <input id="cloneExp" type="number" value="3" min="0" max="6" oninput="simularClon()" class="w-14 bg-slate-950 border border-slate-700 rounded-lg p-1 text-center font-bold text-cyan-300 outline-none">
+          </div>
+          <span class="text-fuchsia-400 font-bold">➔</span>
+          <div id="cloneResult" class="flex-1 min-w-[200px] px-3 py-1.5 rounded-xl bg-black/60 border border-fuchsia-500/40 text-fuchsia-300 text-xs font-bold flex items-center justify-between">
+            3 · 3 · 3 = 27
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="glass-card rounded-3xl p-6 md:p-8 border border-cyan-500/30 shadow-2xl">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="p-3 bg-cyan-500/20 text-cyan-400 rounded-2xl text-2xl">💃</span>
+        <div>
+          <h2 class="text-2xl font-friendly font-bold text-white">2. El Baile de Parejas: ¿Positivo o Negativo?</h2>
+          <p class="text-slate-400 text-sm">Los signos menos van a una discoteca. Dos menos bailan juntos y son felices (+). ¿Quién se queda solo?</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Exponente Par -->
+        <div class="p-5 rounded-2xl bg-emerald-950/20 border border-emerald-500/30 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="font-friendly font-bold text-emerald-300 text-lg">🎉 Exponente PAR (2, 4, 6, 8, 100...)</span>
+            <span class="text-2xl">👫</span>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Todos los signos menos encuentran su pareja de baile. Nadie sobra, no hay tristeza.
+          </p>
+          <div class="bg-black/50 p-3 rounded-xl font-mono text-xs space-y-1.5 border border-emerald-500/20">
+            <div class="text-emerald-400">(-2)<sup>4</sup> = [(-2)·(-2)] · [(-2)·(-2)] = (+4) · (+4) = <strong class="text-base text-emerald-300">+16</strong></div>
+            <div class="text-slate-400 text-[11px]">(-1)<sup>104</sup> = <strong class="text-emerald-300">+1</strong> (¡104 es par, todos tienen pareja!)</div>
+          </div>
+          <div class="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-200">
+            ✨ <strong>Regla de oro:</strong> Base negativa con exponente par ➔ <strong class="text-emerald-300">POSITIVO (+)</strong>.
+          </div>
+        </div>
+
+        <!-- Exponente Impar -->
+        <div class="p-5 rounded-2xl bg-rose-950/20 border border-rose-500/30 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="font-friendly font-bold text-rose-300 text-lg">😢 Exponente IMPAR (1, 3, 5, 7, 213...)</span>
+            <span class="text-2xl">🧍‍♂️</span>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Se hacen parejas de dos en dos, pero <strong>siempre sobra un signo menos solitario</strong> en la esquina que amarga la fiesta.
+          </p>
+          <div class="bg-black/50 p-3 rounded-xl font-mono text-xs space-y-1.5 border border-rose-500/20">
+            <div class="text-rose-400">(-2)<sup>3</sup> = [(-2)·(-2)] · (-2) = (+4) · (-2) = <strong class="text-base text-rose-300">-8</strong></div>
+            <div class="text-slate-400 text-[11px]">(-1)<sup>213</sup> = <strong class="text-rose-300">-1</strong> (¡213 es impar, sobra un menos!)</div>
+          </div>
+          <div class="p-2 rounded-lg bg-rose-500/10 border border-rose-500/20 text-xs text-rose-200">
+            🌧️ <strong>Regla de oro:</strong> Base negativa con exponente impar ➔ <strong class="text-rose-300">NEGATIVO (-)</strong>.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="glass-card rounded-3xl p-6 md:p-8 border border-amber-500/30 shadow-2xl">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="p-3 bg-amber-500/20 text-amber-400 rounded-2xl text-2xl">🪖</span>
+        <div>
+          <h2 class="text-2xl font-friendly font-bold text-white">3. El Casco Protector y los Dos Hechizos Raros</h2>
+          <p class="text-slate-400 text-sm">¿Lleva casco el signo menos? ¿Qué pasa si el exponente es 0 o hace el pino?</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        
+        <!-- Con Casco vs Sin Casco -->
+        <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2 md:col-span-1">
+          <span class="text-xs px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-bold font-friendly">Duelo de Examen</span>
+          <h3 class="font-friendly font-bold text-white text-base">¿Lleva Casco (Paréntesis)?</h3>
+          <div class="space-y-2 text-xs font-mono">
+            <div class="p-2.5 rounded-xl bg-emerald-950/40 border border-emerald-500/30">
+              <span class="text-emerald-300 font-bold">(-3)<sup>2</sup></span> (con casco):<br>
+              (-3) · (-3) = <strong class="text-emerald-400">+9</strong>
+            </div>
+            <div class="p-2.5 rounded-xl bg-rose-950/40 border border-rose-500/30">
+              <span class="text-rose-300 font-bold">-3<sup>2</sup></span> (sin casco):<br>
+              -(3 · 3) = <strong class="text-rose-400">-9</strong>
+            </div>
+          </div>
+          <p class="text-[11px] text-slate-400">Sin paréntesis, el signo menos está desprotegido y no se clona.</p>
+        </div>
+
+        <!-- Hechizo del Agujero Negro (0) -->
+        <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
+          <span class="text-xs px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 font-bold font-friendly">Hechizo 1</span>
+          <h3 class="font-friendly font-bold text-indigo-300 text-base">Agujero Negro: a<sup>0</sup></h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Cualquier número elevado a 0 se transforma mágicamente en un <strong>1</strong>.
+          </p>
+          <div class="p-3 rounded-xl bg-black/50 font-mono text-center text-xs space-y-1 text-indigo-200">
+            <div>7<sup>0</sup> = <strong>1</strong></div>
+            <div>(-12)<sup>0</sup> = <strong>1</strong></div>
+            <div>1492<sup>0</sup> = <strong>1</strong></div>
+          </div>
+          <p class="text-[11px] text-slate-400">El cero es el botón de reinicio universal.</p>
+        </div>
+
+        <!-- Hechizo de Hacer el Pino (Negativo) -->
+        <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
+          <span class="text-xs px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-bold font-friendly">Hechizo 2</span>
+          <h3 class="font-friendly font-bold text-cyan-300 text-base">Hacer el Pino: a<sup>-n</sup></h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Si el exponente es negativo, cae al sótano de una fracción y se vuelve positivo.
+          </p>
+          <div class="p-3 rounded-xl bg-black/50 font-mono text-center text-xs space-y-1 text-cyan-200">
+            <div>2<sup>-3</sup> = <strong>1 / 2<sup>3</sup> = 1/8</strong></div>
+            <div>5<sup>-1</sup> = <strong>1 / 5</strong></div>
+            <div>1 / 3<sup>-2</sup> = <strong>3<sup>2</sup> = 9</strong></div>
+          </div>
+          <p class="text-[11px] text-slate-400">¡Al caer al denominador sonríe feliz!</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="glass-card rounded-3xl p-6 md:p-8 border border-indigo-500/30 shadow-2xl">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="p-3 bg-indigo-500/20 text-indigo-400 rounded-2xl text-2xl">🎒</span>
+        <div>
+          <h2 class="text-2xl font-friendly font-bold text-white">4. La Mochila Ninja: Los 3 Superpoderes</h2>
+          <p class="text-slate-400 text-sm">Cuando las bases son iguales, no calcules números gigantes: opera solo con los exponentes.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono">
+
+        <!-- Superpoder 1: Fusión -->
+        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-emerald-500 text-slate-950 font-bold flex items-center justify-center font-friendly">1</span>
+            <span class="text-emerald-400 font-bold font-friendly text-sm">La Fusión (·)</span>
+          </div>
+          <p class="font-sans text-slate-300 text-xs">Al multiplicar, los ejércitos se unen: <strong>se suman los exponentes</strong>.</p>
+          <div class="p-2.5 rounded-xl bg-black/60 border border-emerald-500/30 text-emerald-300 text-center font-bold">
+            2<sup>3</sup> · 2<sup>5</sup> = 2<sup>3+5</sup> = 2<sup>8</sup>
+          </div>
+        </div>
+
+        <!-- Superpoder 2: Duelo Láser -->
+        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-cyan-500 text-slate-950 font-bold flex items-center justify-center font-friendly">2</span>
+            <span class="text-cyan-400 font-bold font-friendly text-sm">El Duelo Láser (:)</span>
+          </div>
+          <p class="font-sans text-slate-300 text-xs">Al dividir, se anulan mutuamente: <strong>se restan los exponentes</strong>.</p>
+          <div class="p-2.5 rounded-xl bg-black/60 border border-cyan-500/30 text-cyan-300 text-center font-bold">
+            2<sup>7</sup> : 2<sup>3</sup> = 2<sup>7-3</sup> = 2<sup>4</sup>
+          </div>
+        </div>
+
+        <!-- Superpoder 3: Turbocompresor -->
+        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-amber-500 text-slate-950 font-bold flex items-center justify-center font-friendly">3</span>
+            <span class="text-amber-400 font-bold font-friendly text-sm">El Turbocompresor ( )<sup>n</sup></span>
+          </div>
+          <p class="font-sans text-slate-300 text-xs">Potencia dentro de potencia: <strong>se multiplican con furia</strong>.</p>
+          <div class="p-2.5 rounded-xl bg-black/60 border border-amber-500/30 text-amber-300 text-center font-bold">
+            (2<sup>3</sup>)<sup>4</sup> = 2<sup>3·4</sup> = 2<sup>12</sup>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-6 p-4 rounded-2xl bg-slate-950/80 border border-slate-800">
+        <h4 class="font-friendly font-bold text-sm text-indigo-300 mb-2">⚡ Entrenador Ninja de Potencias</h4>
+        <div class="flex flex-wrap items-center gap-3 text-xs font-mono">
+          <span class="text-slate-400 font-sans">Elige operación:</span>
+          <button onclick="setPowerOp('mult')" id="btnOpMult" class="px-3 py-1 rounded-lg bg-emerald-600 text-white font-bold transition">Fusión (Multiplicar)</button>
+          <button onclick="setPowerOp('div')" id="btnOpDiv" class="px-3 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition">Duelo (Dividir)</button>
+          <button onclick="setPowerOp('pow')" id="btnOpPow" class="px-3 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition">Turbocompresor</button>
+        </div>
+        <div id="powerTrainerDisplay" class="mt-3 p-3 rounded-xl bg-black/60 border border-indigo-500/30 font-mono text-xs md:text-sm text-center text-white">
+          5<sup>3</sup> · 5<sup>4</sup> = 5<sup>3 + 4</sup> = <strong class="text-emerald-400 text-base">5<sup>7</sup></strong>
+        </div>
+      </div>
+    </section>
+
+    <footer class="p-6 rounded-3xl bg-gradient-to-r from-fuchsia-950/40 via-slate-900 to-indigo-950/40 border border-fuchsia-500/30 text-center space-y-3">
+      <h4 class="font-friendly font-bold text-lg text-fuchsia-300">📋 Protocolo Anti-Errores para Potencias</h4>
+      <div class="flex flex-wrap items-center justify-center gap-3 text-xs md:text-sm text-slate-200">
+        <span class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700">👫 Exponente Par = Siempre Positivo (+)</span>
+        <span class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700">😢 Exponente Impar = Queda Negativo (-)</span>
+        <span class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700">🪖 Sin casco: -a<sup>n</sup> no clona el menos</span>
+        <span class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700">🌀 a<sup>0</sup> = 1 | 🤸 a<sup>-n</sup> = 1/a<sup>n</sup></span>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    // 1. Simulador de Clonación
+    function simularClon() {
+      const b = parseInt(document.getElementById('cloneBase').value) || 0;
+      const e = parseInt(document.getElementById('cloneExp').value) || 0;
+      const display = document.getElementById('cloneResult');
+
+      if (e === 0) {
+        display.innerHTML = `Cualquier número elevado a 0 da <strong class="text-emerald-400 ml-1">1</strong>`;
+        return;
+      }
+
+      if (e > 6) {
+        display.innerHTML = `¡Exponente muy grande para la pantalla!`;
+        return;
+      }
+
+      const factors = [];
+      for (let i = 0; i < e; i++) {
+        factors.push(b < 0 ? `(${b})` : `${b}`);
+      }
+
+      const total = Math.pow(b, e);
+      const isPositive = total >= 0;
+      const colorClass = isPositive ? 'text-emerald-300' : 'text-rose-300';
+
+      display.innerHTML = `
+        ${factors.join(' · ')} = <strong class="${colorClass} ml-1 text-sm">${total}</strong>
+      `;
+    }
+
+    // 2. Entrenador de Superpoderes
+    function setPowerOp(type) {
+      const display = document.getElementById('powerTrainerDisplay');
+      const bMult = document.getElementById('btnOpMult');
+      const bDiv = document.getElementById('btnOpDiv');
+      const bPow = document.getElementById('btnOpPow');
+
+      bMult.className = "px-3 py-1 rounded-lg bg-slate-800 text-slate-300 font-bold transition";
+      bDiv.className = "px-3 py-1 rounded-lg bg-slate-800 text-slate-300 font-bold transition";
+      bPow.className = "px-3 py-1 rounded-lg bg-slate-800 text-slate-300 font-bold transition";
+
+      if (type === 'mult') {
+        bMult.className = "px-3 py-1 rounded-lg bg-emerald-600 text-white font-bold transition";
+        display.innerHTML = `5<sup>3</sup> · 5<sup>4</sup> = 5<sup>3 + 4</sup> = <strong class="text-emerald-400 text-base">5<sup>7</sup></strong> (Se suman los exponentes)`;
+      } else if (type === 'div') {
+        bDiv.className = "px-3 py-1 rounded-lg bg-cyan-600 text-white font-bold transition";
+        display.innerHTML = `7<sup>8</sup> : 7<sup>3</sup> = 7<sup>8 - 3</sup> = <strong class="text-cyan-400 text-base">7<sup>5</sup></strong> (Se restan los exponentes)`;
+      } else if (type === 'pow') {
+        bPow.className = "px-3 py-1 rounded-lg bg-amber-600 text-white font-bold transition";
+        display.innerHTML = `(3<sup>2</sup>)<sup>4</sup> = 3<sup>2 · 4</sup> = <strong class="text-amber-400 text-base">3<sup>8</sup></strong> (Se multiplican los exponentes)`;
+      }
+    }
+
+    // Inicializar
+    simularClon();
+  </script>
+</body>
+</html>

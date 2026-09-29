@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infografía: El Código Secreto de la Jerarquía de Operaciones</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #090a16 0%, #17112d 50%, #0d1527 100%);
+      color: #f8fafc;
+    }
+    .font-friendly {
+      font-family: 'Fredoka', cursive, sans-serif;
+    }
+    .glass-card {
+      background: rgba(23, 31, 51, 0.75);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    @keyframes gluePulse {
+      0%, 100% { border-color: rgba(245, 158, 11, 0.4); box-shadow: 0 0 15px rgba(245, 158, 11, 0.2); }
+      50% { border-color: rgba(245, 158, 11, 0.9); box-shadow: 0 0 25px rgba(245, 158, 11, 0.5); }
+    }
+    .glue-active {
+      animation: gluePulse 2s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+  <!-- CABECERA -->
+  <header class="max-w-6xl mx-auto mb-8 text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-500/20 border border-violet-400/30 text-violet-300 text-sm font-semibold mb-3">
+      <span>🛡️</span> MATES 2º ESO • BLOQUE 3
+    </div>
+    <h1 class="text-3xl md:text-5xl font-friendly font-bold tracking-tight text-white mb-3">
+      El Código Secreto de la <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-violet-300 to-emerald-400">Jerarquía Militar</span>
+    </h1>
+    <p class="max-w-2xl mx-auto text-slate-300 text-sm md:text-base leading-relaxed">
+      Aprende la cadena de mando de las operaciones: el blindaje de los corchetes, el superglú de la multiplicación y la ley de los amigos y enemigos.
+    </p>
+  </header>
+
+  <main class="max-w-6xl mx-auto space-y-8">
+
+    <!-- SECCIÓN 1: LA PIRÁMIDE DEL PODER -->
+    <section class="glass-card rounded-3xl p-6 md:p-8 border border-violet-500/30 shadow-2xl">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="p-3 bg-violet-500/20 text-violet-400 rounded-2xl text-2xl">🏛️</span>
+        <div>
+          <h2 class="text-2xl font-friendly font-bold text-white">1. La Pirámide del Poder: ¿Quién da las órdenes?</h2>
+          <p class="text-slate-400 text-sm">En una operación combinada manda el rango militar. Nadie puede actuar antes de su turno.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
+        
+        <!-- Nivel 1 -->
+        <div class="p-5 rounded-2xl bg-gradient-to-b from-amber-500/20 to-amber-950/40 border border-amber-500/40 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-amber-500 text-slate-950 font-bold uppercase tracking-wider font-friendly">Rango 1 • VIP</span>
+            <span class="text-2xl">🛡️</span>
+          </div>
+          <h3 class="font-friendly font-bold text-amber-300 text-lg">Búnkeres Blindados</h3>
+          <p class="font-mono text-sm text-amber-200 font-bold">( ... ) y [ ... ]</p>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Se resuelve siempre lo que está <strong>más adentro</strong> (de la cajita interior hacia afuera).
+          </p>
+        </div>
+
+        <!-- Nivel 2 -->
+        <div class="p-5 rounded-2xl bg-gradient-to-b from-cyan-500/20 to-cyan-950/40 border border-cyan-500/40 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-cyan-500 text-slate-950 font-bold uppercase tracking-wider font-friendly">Rango 2</span>
+            <span class="text-2xl">📡</span>
+          </div>
+          <h3 class="font-friendly font-bold text-cyan-300 text-lg">Los Radares Espías</h3>
+          <p class="font-mono text-sm text-cyan-200 font-bold">| a | y op( a )</p>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Se desactivan de inmediato: <strong class="text-cyan-300">|x|</strong> lava el signo y <strong class="text-cyan-300">op(x)</strong> cambia de bando.
+          </p>
+        </div>
+
+        <!-- Nivel 3 -->
+        <div class="p-5 rounded-2xl bg-gradient-to-b from-emerald-500/20 to-emerald-950/40 border border-emerald-500/40 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500 text-slate-950 font-bold uppercase tracking-wider font-friendly">Rango 3</span>
+            <span class="text-2xl">🚀</span>
+          </div>
+          <h3 class="font-friendly font-bold text-emerald-300 text-lg">Artillería Pesada</h3>
+          <p class="font-mono text-sm text-emerald-200 font-bold">· (Por) y : (Entre)</p>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            ¡Tienen <strong>superglú</strong>! Se operan de izquierda a derecha antes de sumar o restar.
+          </p>
+        </div>
+
+        <!-- Nivel 4 -->
+        <div class="p-5 rounded-2xl bg-gradient-to-b from-rose-500/20 to-rose-950/40 border border-rose-500/40 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-rose-500 text-slate-950 font-bold uppercase tracking-wider font-friendly">Rango 4</span>
+            <span class="text-2xl">🚶</span>
+          </div>
+          <h3 class="font-friendly font-bold text-rose-300 text-lg">Soldados de a Pie</h3>
+          <p class="font-mono text-sm text-rose-200 font-bold">+ (Más) y - (Menos)</p>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Esperan pacientemente. Se resuelven <strong>al final del todo</strong> con la táctica ninja por equipos.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: EL SUPERGLÚ Y LA TRAMPA MORTAL -->
+    <section class="glass-card rounded-3xl p-6 md:p-8 border border-amber-500/30 shadow-2xl">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="p-3 bg-amber-500/20 text-amber-400 rounded-2xl text-2xl">🧪</span>
+        <div>
+          <h2 class="text-2xl font-friendly font-bold text-white">2. El Detector de Superglú: ¡No caigas en la trampa!</h2>
+          <p class="text-slate-400 text-sm">El error del 90% de los exámenes: restar antes de multiplicar. Mira cómo actúa el pegamento.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Camino Erróneo -->
+        <div class="p-5 rounded-2xl bg-rose-950/30 border border-rose-500/30 space-y-3">
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">❌</span>
+            <h3 class="font-friendly font-bold text-rose-400 text-base">La Trampa que te Caza</h3>
+          </div>
+          <div class="bg-black/60 p-3 rounded-xl font-mono text-sm space-y-1">
+            <span class="text-slate-400">Operación:</span> <span class="text-white font-bold">20 - 2 · 6</span><br>
+            <span class="text-rose-400">Pique falso:</span> Haces <span class="bg-rose-500/20 px-1.5 py-0.5 rounded text-rose-300">20 - 2 = 18</span><br>
+            <span class="text-rose-400">Desastre:</span> 18 · 6 = <strong class="text-rose-400 text-lg">108</strong> (¡ERROR TOTAL!)
+          </div>
+          <p class="text-xs text-rose-200/80 leading-relaxed">
+            Los ojos se van directamente a restar primero porque parece fácil. ¡Pero el 2 no es libre para restar!
+          </p>
+        </div>
+
+        <!-- Camino Correcto con Superglú -->
+        <div class="p-5 rounded-2xl bg-emerald-950/30 border border-emerald-500/30 space-y-3">
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">✅</span>
+            <h3 class="font-friendly font-bold text-emerald-400 text-base">La Ley del Superglú</h3>
+          </div>
+          <div class="bg-black/60 p-3 rounded-xl font-mono text-sm space-y-1">
+            <span class="text-slate-400">Operación:</span> 20 - <span class="glue-active px-2 py-0.5 rounded-lg bg-amber-500/20 border border-amber-500 font-bold text-amber-300">2 · 6</span><br>
+            <span class="text-amber-300">Superglú primero:</span> 2 · 6 = <strong>12</strong><br>
+            <span class="text-emerald-400">Resta final:</span> 20 - 12 = <strong class="text-emerald-300 text-lg">8</strong> (¡EXACTO!)
+          </div>
+          <p class="text-xs text-emerald-200/80 leading-relaxed">
+            El 2 y el 6 están unidos con pegamento instantáneo indestructible. El 20 se queda esperando.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Simulador de pegamento interactivo -->
+      <div class="mt-6 p-4 rounded-2xl bg-slate-900/90 border border-slate-800">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 mb-3">
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-400 font-friendly">🧲 Laboratorio de Pegamento en Vivo</span>
+          <div class="text-xs text-slate-400">Cambia los números y observa cómo actúa el pegamento</div>
+        </div>
+        <div class="flex flex-wrap items-center gap-3 font-mono text-sm">
+          <input id="numEspera" type="number" value="30" oninput="simularSuperglu()" class="w-16 bg-slate-950 border border-slate-700 rounded-xl px-2 py-1.5 text-center text-white outline-none focus:border-amber-400">
+          <span class="text-slate-400 font-bold">-</span>
+          <div class="flex items-center gap-1 bg-amber-500/20 border border-amber-400/60 p-1.5 rounded-xl">
+            <input id="numA" type="number" value="5" oninput="simularSuperglu()" class="w-14 bg-slate-950 border border-slate-700 rounded-lg px-2 py-1 text-center text-amber-300 font-bold outline-none">
+            <span class="text-amber-400 font-bold">·</span>
+            <input id="numB" type="number" value="4" oninput="simularSuperglu()" class="w-14 bg-slate-950 border border-slate-700 rounded-lg px-2 py-1 text-center text-amber-300 font-bold outline-none">
+            <span class="text-xs text-amber-300 font-friendly px-1">🧪 Glú</span>
+          </div>
+          <span class="text-indigo-400 font-bold">➔</span>
+          <div id="resultadoSuperglu" class="px-3 py-1.5 rounded-xl bg-black/60 border border-emerald-500/40 text-emerald-300 font-bold">
+            30 - 20 = 10
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: LA LEY DE LAS AMISTADES (SIGNOS AL MULTIPLICAR Y DIVIDIR) -->
+    <section class="glass-card rounded-3xl p-6 md:p-8 border border-cyan-500/30 shadow-2xl">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="p-3 bg-cyan-500/20 text-cyan-400 rounded-2xl text-2xl">🤝</span>
+        <div>
+          <h2 class="text-2xl font-friendly font-bold text-white">3. La Ley del Barrio: Signos al Multiplicar y Dividir</h2>
+          <p class="text-slate-400 text-sm">Olvida memorizar de carrerilla: piensa en quién es tu amigo y quién es tu enemigo.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+        
+        <div class="p-4 rounded-2xl bg-emerald-950/30 border border-emerald-500/30 space-y-1.5">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-emerald-300 text-sm">(+) · (+) = +</span>
+            <span class="text-lg">😊</span>
+          </div>
+          <p class="text-slate-300">«El amigo de mi amigo...»</p>
+          <p class="font-bold text-emerald-400">...es mi amigo (+)</p>
+          <div class="bg-black/50 p-2 rounded-lg font-mono text-emerald-300">(+4) · (+3) = <strong>+12</strong></div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-rose-950/30 border border-rose-500/30 space-y-1.5">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-rose-300 text-sm">(-) · (+) = -</span>
+            <span class="text-lg">😠</span>
+          </div>
+          <p class="text-slate-300">«El enemigo de mi amigo...»</p>
+          <p class="font-bold text-rose-400">...es mi enemigo (-)</p>
+          <div class="bg-black/50 p-2 rounded-lg font-mono text-rose-300">(-5) · (+2) = <strong>-10</strong></div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-rose-950/30 border border-rose-500/30 space-y-1.5">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-rose-300 text-sm">(+) · (-) = -</span>
+            <span class="text-lg">🤨</span>
+          </div>
+          <p class="text-slate-300">«El amigo de mi enemigo...»</p>
+          <p class="font-bold text-rose-400">...es mi enemigo (-)</p>
+          <div class="bg-black/50 p-2 rounded-lg font-mono text-rose-300">(+6) · (-3) = <strong>-18</strong></div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-emerald-950/30 border border-emerald-500/30 space-y-1.5">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-emerald-300 text-sm">(-) · (-) = +</span>
+            <span class="text-lg">😎</span>
+          </div>
+          <p class="text-slate-300">«El enemigo de mi enemigo...»</p>
+          <p class="font-bold text-emerald-400">...¡es mi amigo! (+)</p>
+          <div class="bg-black/50 p-2 rounded-lg font-mono text-emerald-300">(-4) · (-3) = <strong>+12</strong></div>
+        </div>
+
+      </div>
+
+      <!-- Resumen en cápsula -->
+      <div class="mt-4 p-3 rounded-xl bg-cyan-950/40 border border-cyan-500/30 text-xs text-cyan-200 flex flex-wrap items-center justify-between gap-2">
+        <span>💡 <strong>La Regla Exprés:</strong> ¿Signos <strong>IGUALES</strong>? Resultado <strong class="text-emerald-400 font-bold">POSITIVO (+)</strong>.</span>
+        <span>¿Signos <strong>DISTINTOS</strong>? Resultado <strong class="text-rose-400 font-bold">NEGATIVO (-)</strong>. ¡Sirve igual para dividir!</span>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: LA MUÑECA RUSA INTERACTIVA (PASO A PASO) -->
+    <section class="glass-card rounded-3xl p-6 md:p-8 border border-indigo-500/30 shadow-2xl">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="p-3 bg-indigo-500/20 text-indigo-400 rounded-2xl text-2xl">🪆</span>
+        <div>
+          <h2 class="text-2xl font-friendly font-bold text-white">4. Desarmador de Muñecas Rusas (Corchetes Paso a Paso)</h2>
+          <p class="text-slate-400 text-sm">Pulsa en "Avanzar Paso" para ver cómo se desarma la operación más difícil del examen.</p>
+        </div>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-4">
+        
+        <div class="flex items-center justify-between flex-wrap gap-2">
+          <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Operación Misión Ninja:</span>
+          <span class="font-mono text-xs text-amber-300 bg-amber-950/50 px-3 py-1 rounded-lg border border-amber-500/30">
+            20 - 2 · [ 7 - ( -4 + 9 ) · 2 ]
+          </span>
+        </div>
+
+        <!-- Contenedor del paso visual -->
+        <div id="stepBox" class="p-4 rounded-xl bg-slate-900 border border-indigo-500/40 min-h-[90px] flex flex-col justify-center space-y-1 font-mono text-sm">
+          <div class="text-indigo-300 font-bold" id="stepTitle">Paso 0: Analizar la estructura</div>
+          <div class="text-white text-base" id="stepExpr">20 - 2 · [ 7 - <span class="bg-amber-500/20 text-amber-300 px-1 rounded">( -4 + 9 )</span> · 2 ]</div>
+          <div class="text-xs text-slate-400 font-sans" id="stepExpl">Buscamos el búnker más escondido: el paréntesis redondo del centro.</div>
+        </div>
+
+        <!-- Controles del Paso a Paso -->
+        <div class="flex items-center justify-between pt-2">
+          <button onclick="prevStep()" id="btnPrev" class="px-4 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs transition disabled:opacity-30 disabled:cursor-not-allowed">
+            ◀ Paso Anterior
+          </button>
+          <span id="stepCounter" class="text-xs font-bold text-indigo-300 font-friendly">Paso 1 de 5</span>
+          <button onclick="nextStep()" id="btnNext" class="px-4 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs transition">
+            Avanzar Paso ▶
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CHULETA NINJA FINAL -->
+    <footer class="p-6 rounded-3xl bg-gradient-to-r from-violet-950/40 via-slate-900 to-amber-950/30 border border-violet-500/30 text-center space-y-3">
+      <h4 class="font-friendly font-bold text-lg text-violet-300">📋 Protocolo Anti-Errores para el Examen</h4>
+      <div class="flex flex-wrap items-center justify-center gap-3 text-xs md:text-sm text-slate-200">
+        <span class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700">🪆 1º Paréntesis más hondos</span>
+        <span class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700">📡 2º Limpia |x| y op(x)</span>
+        <span class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700">🧪 3º Superglú a multiplicaciones</span>
+        <span class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700">🚶 4º Sumas y restas al final</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // 1. Simulador de Superglú
+    function simularSuperglu() {
+      const e = parseInt(document.getElementById('numEspera').value) || 0;
+      const a = parseInt(document.getElementById('numA').value) || 0;
+      const b = parseInt(document.getElementById('numB').value) || 0;
+      
+      const prod = a * b;
+      const res = e - prod;
+      
+      document.getElementById('resultadoSuperglu').innerHTML = `
+        ${e} - <span class="text-amber-300 font-bold">${prod}</span> = <span class="text-emerald-300 text-base font-bold">${res}</span>
+      `;
+    }
+
+    // 2. Desarmador de Muñecas Rusas (Paso a paso)
+    const pasos = [
+      {
+        titulo: "Paso 1: La cajita de dentro (El búnker interior)",
+        expr: '20 - 2 · [ 7 - <span class="bg-amber-500/30 border border-amber-400 text-amber-200 px-1.5 py-0.5 rounded font-bold">(-4 + 9)</span> · 2 ]',
+        expl: "Primero operamos el paréntesis redondo interior: debes 4€ y tienes 9€ ➔ te sobran +5€.",
+        counter: "Paso 1 de 5"
+      },
+      {
+        titulo: "Paso 2: Superglú dentro del corchete",
+        expr: '20 - 2 · [ 7 - <span class="bg-amber-500/30 border border-amber-400 text-amber-200 px-1.5 py-0.5 rounded font-bold">5 · 2</span> ]',
+        expl: "¡Alerta en el corchete! No hagas 7 - 5. El 5 y el 2 están unidos por superglú: 5 · 2 = 10.",
+        counter: "Paso 2 de 5"
+      },
+      {
+        titulo: "Paso 3: Cerrar el corchete completo",
+        expr: '20 - 2 · <span class="bg-indigo-500/30 border border-indigo-400 text-indigo-200 px-1.5 py-0.5 rounded font-bold">[ 7 - 10 ]</span>',
+        expl: "Calculamos el corchete: tienes 7€ y debes 10€ ➔ quedas debiendo -3.",
+        counter: "Paso 3 de 5"
+      },
+      {
+        titulo: "Paso 4: Multiplicación exterior con ley de signos",
+        expr: '20 <span class="bg-emerald-500/30 border border-emerald-400 text-emerald-200 px-1.5 py-0.5 rounded font-bold">- 2 · (-3)</span>',
+        expl: "Multiplicamos antes de tocar el 20: (-2) · (-3) = +6 (enemigo de enemigo es amigo).",
+        counter: "Paso 4 de 5"
+      },
+      {
+        titulo: "Paso 5: La suma final",
+        expr: '20 + 6 = <span class="bg-emerald-500 text-slate-950 px-2 py-0.5 rounded font-bold text-lg">26</span>',
+        expl: "¡Misión completada con éxito! El resultado final limpio es 26.",
+        counter: "Paso 5 de 5"
+      }
+    ];
+
+    let currentStep = 0;
+
+    function updateStepView() {
+      const p = pasos[currentStep];
+      document.getElementById('stepTitle').innerText = p.titulo;
+      document.getElementById('stepExpr').innerHTML = p.expr;
+      document.getElementById('stepExpl').innerText = p.expl;
+      document.getElementById('stepCounter').innerText = p.counter;
+
+      document.getElementById('btnPrev').disabled = (currentStep === 0);
+      document.getElementById('btnNext').disabled = (currentStep === pasos.length - 1);
+    }
+
+    function nextStep() {
+      if (currentStep < pasos.length - 1) {
+        currentStep++;
+        updateStepView();
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 0) {
+        currentStep--;
+        updateStepView();
+      }
+    }
+
+    // Inicializar al cargar
+    updateStepView();
+  </script>
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infografía: Los Números Enteros y el Rascacielos Mágico</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+      color: #f8fafc;
+    }
+    .font-friendly {
+      font-family: 'Fredoka', cursive, sans-serif;
+    }
+    .glass-card {
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .glow-cyan {
+      box-shadow: 0 0 25px rgba(6, 182, 212, 0.25);
+    }
+    .glow-amber {
+      box-shadow: 0 0 25px rgba(245, 158, 11, 0.25);
+    }
+    .glow-emerald {
+      box-shadow: 0 0 25px rgba(16, 185, 129, 0.25);
+    }
+    @keyframes floatAnim {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    .floating {
+      animation: floatAnim 3s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+  <header class="max-w-6xl mx-auto mb-8 text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-sm font-semibold mb-3">
+      <span>🚀</span> MATES 2º ESO • BLOQUE 1
+    </div>
+    <h1 class="text-3xl md:text-5xl font-friendly font-bold tracking-tight text-white mb-3">
+      El Rascacielos Infinito de los <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-emerald-300 to-cyan-400">Números Enteros (ℤ)</span>
+    </h1>
+    <p class="max-w-2xl mx-auto text-slate-300 text-sm md:text-base leading-relaxed">
+      Aprende a dominar las alturas luminosas, los sótanos profundos, el espejo del opuesto y la lavadora del valor absoluto.
+    </p>
+  </header>
+
+  <main class="max-w-6xl mx-auto space-y-8">
+    
+    <!-- TARJETA 1: MAPA DEL RASCACIELOS -->
+    <section class="glass-card rounded-3xl p-6 md:p-8 border border-slate-700/60 shadow-2xl">
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+        
+        <!-- Explicación gráfica -->
+        <div class="flex-1 space-y-4">
+          <div class="flex items-center gap-3">
+            <span class="p-3 bg-amber-500/20 text-amber-400 rounded-2xl text-2xl">🏢</span>
+            <div>
+              <h2 class="text-2xl font-friendly font-bold text-white">¿Cómo funciona el Rascacielos?</h2>
+              <p class="text-slate-400 text-sm">La regla universal: ¡Cuanto más arriba estás, más alto y mayor es el número!</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+            <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30">
+              <div class="flex items-center justify-between mb-2">
+                <span class="font-friendly font-bold text-emerald-400 text-lg">+1, +2, +3...</span>
+                <span class="text-xl">☀️</span>
+              </div>
+              <p class="text-xs font-semibold text-emerald-300 uppercase tracking-wider mb-1">Pisos Luminosos</p>
+              <p class="text-xs text-slate-300 leading-snug">Cuanto más alto subes, más grande es. El ascensor va hacia el cielo.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30">
+              <div class="flex items-center justify-between mb-2">
+                <span class="font-friendly font-bold text-amber-400 text-lg">Piso 0</span>
+                <span class="text-xl">🚪</span>
+              </div>
+              <p class="text-xs font-semibold text-amber-300 uppercase tracking-wider mb-1">La Entrada (Calle)</p>
+              <p class="text-xs text-slate-300 leading-snug">Es la frontera neutral. No es positivo ni negativo. Es el punto de partida.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-cyan-500/10 border border-cyan-500/30">
+              <div class="flex items-center justify-between mb-2">
+                <span class="font-friendly font-bold text-cyan-400 text-lg">-1, -2, -3...</span>
+                <span class="text-xl">🔦</span>
+              </div>
+              <p class="text-xs font-semibold text-cyan-300 uppercase tracking-wider mb-1">Los Sótanos</p>
+              <p class="text-xs text-slate-300 leading-snug"><strong class="text-cyan-200">¡Ojo trampa!</strong> Estar en -2 es estar más arriba que estar en -8.</p>
+            </div>
+          </div>
+
+          <!-- Regla del cocodrilo -->
+          <div class="p-4 rounded-2xl bg-indigo-950/60 border border-indigo-500/30 flex items-center gap-4">
+            <div class="text-4xl floating">🐊</div>
+            <div>
+              <h4 class="font-friendly font-bold text-indigo-300 text-base">La Regla del Cocodrilo Comilón (&gt; y &lt;)</h4>
+              <p class="text-slate-300 text-xs md:text-sm mt-0.5">
+                El cocodrilo tiene mucha hambre y <strong>siempre abre su gran boca hacia el piso que está más alto</strong>:
+                <span class="inline-block mx-1 font-mono font-bold text-amber-300 bg-amber-950/50 px-2 py-0.5 rounded border border-amber-500/30">-2 &gt; -8</span> 
+                (porque el sótano -2 está más cerca del sol que el sótano -8).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full sm:w-80 p-5 rounded-2xl bg-slate-900/90 border border-slate-700 relative shadow-inner">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Ascensor en Directo</span>
+            <span id="elevatorDisplay" class="font-mono text-xl font-bold text-amber-400 bg-black/60 px-3 py-1 rounded-lg border border-amber-500/40">Piso +3</span>
+          </div>
+
+          <!-- Torre del ascensor con pisos -->
+          <div class="relative h-64 w-full bg-slate-950 rounded-xl overflow-hidden border border-slate-800 flex items-center justify-center">
+            
+            <!-- Marcas de pisos de fondo -->
+            <div class="absolute inset-0 flex flex-col justify-between py-2 px-3 opacity-40 font-mono text-xs select-none">
+              <span class="text-emerald-400 text-right">+5 (Piso alto)</span>
+              <span class="text-emerald-400 text-right">+2</span>
+              <span class="text-amber-400 text-right border-y border-amber-500/40 py-0.5 font-bold">0 (Entrada)</span>
+              <span class="text-cyan-400 text-right">-2</span>
+              <span class="text-cyan-400 text-right">-5 (Sótano)</span>
+            </div>
+
+            <!-- Cabina del ascensor móvil -->
+            <div id="elevatorCar" class="absolute w-20 h-10 bg-gradient-to-r from-amber-500 to-yellow-400 rounded-lg shadow-lg flex items-center justify-center font-bold text-slate-950 font-friendly text-sm transition-all duration-500" style="bottom: 70%;">
+              🛗 <span id="elevatorBadge" class="ml-1">+3</span>
+            </div>
+          </div>
+
+          <!-- Botonera interactiva -->
+          <div class="mt-4 grid grid-cols-5 gap-1.5 text-center">
+            <button onclick="setFloor(5)" class="py-1.5 rounded-lg bg-emerald-600/30 hover:bg-emerald-600/50 text-emerald-300 font-bold text-xs border border-emerald-500/30 transition">+5</button>
+            <button onclick="setFloor(2)" class="py-1.5 rounded-lg bg-emerald-600/30 hover:bg-emerald-600/50 text-emerald-300 font-bold text-xs border border-emerald-500/30 transition">+2</button>
+            <button onclick="setFloor(0)" class="py-1.5 rounded-lg bg-amber-600/30 hover:bg-amber-600/50 text-amber-300 font-bold text-xs border border-amber-500/30 transition">0</button>
+            <button onclick="setFloor(-2)" class="py-1.5 rounded-lg bg-cyan-600/30 hover:bg-cyan-600/50 text-cyan-300 font-bold text-xs border border-cyan-500/30 transition">-2</button>
+            <button onclick="setFloor(-5)" class="py-1.5 rounded-lg bg-cyan-600/30 hover:bg-cyan-600/50 text-cyan-300 font-bold text-xs border border-cyan-500/30 transition">-5</button>
+          </div>
+          <p class="text-[11px] text-center text-slate-400 mt-2">Haz clic en un piso para mover la cabina</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: LOS DOS SUPERPODERES (VALOR ABSOLUTO Y OPUESTO) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- TARJETA VALOR ABSOLUTO (LA MÁQUINA DE LAVAR / CUENTAPASOS) -->
+      <div class="glass-card rounded-3xl p-6 border border-emerald-500/30 shadow-xl relative overflow-hidden flex flex-col justify-between">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="p-3 bg-emerald-500/20 text-emerald-400 rounded-2xl text-2xl">🧼</span>
+              <div>
+                <h3 class="text-xl font-friendly font-bold text-white">El Valor Absoluto: | a |</h3>
+                <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">El Cuentapasos / La Lavadora</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Los dos barrotes <span class="font-mono text-emerald-400 font-bold">| |</span> son una máquina de lavar: 
+            <strong>¡todo lo que entra sale limpio de signo negativo!</strong> Mide la distancia de pisos hasta la calle (0). Al cuentapasos le da igual si subes o si bajas.
+          </p>
+
+          <!-- Diagrama didáctico -->
+          <div class="bg-slate-950/70 rounded-2xl p-4 border border-emerald-500/20 space-y-3 font-mono text-sm">
+            <div class="flex items-center justify-between bg-emerald-950/30 p-2.5 rounded-xl border border-emerald-500/30">
+              <span class="text-slate-300">Si metes <strong class="text-emerald-400">|-7|</strong></span>
+              <span class="text-slate-400">➔ recorre 7 pisos ➔</span>
+              <span class="text-xl font-bold text-emerald-300">7</span>
+            </div>
+            <div class="flex items-center justify-between bg-emerald-950/30 p-2.5 rounded-xl border border-emerald-500/30">
+              <span class="text-slate-300">Si metes <strong class="text-emerald-400">|+7|</strong></span>
+              <span class="text-slate-400">➔ recorre 7 pisos ➔</span>
+              <span class="text-xl font-bold text-emerald-300">7</span>
+            </div>
+          </div>
+
+          <div class="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-200">
+            💡 <strong>Regla de oro:</strong> El valor absoluto <strong>NUNCA</strong> puede dar un número negativo. Siempre da positivo o cero.
+          </div>
+        </div>
+
+        <!-- Mini test interactivo -->
+        <div class="mt-6 pt-4 border-t border-slate-800 flex items-center gap-3">
+          <input id="inputAbs" type="number" value="-12" class="w-24 bg-slate-950 border border-slate-700 rounded-xl px-3 py-1.5 text-center font-mono text-white text-sm focus:border-emerald-400 outline-none">
+          <button onclick="calcAbs()" class="px-4 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition">Lavar signo |x|</button>
+          <span id="outputAbs" class="font-mono text-lg font-bold text-emerald-400">= 12</span>
+        </div>
+      </div>
+
+      <!-- TARJETA EL OPUESTO (EL ESPEJO MÁGICO) -->
+      <div class="glass-card rounded-3xl p-6 border border-cyan-500/30 shadow-xl relative overflow-hidden flex flex-col justify-between">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="p-3 bg-cyan-500/20 text-cyan-400 rounded-2xl text-2xl">🪞</span>
+              <div>
+                <h3 class="text-xl font-friendly font-bold text-white">El Opuesto: op( a )</h3>
+                <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">El Espejo Mágico</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-slate-300 text-sm leading-relaxed">
+            El piso 0 tiene un espejo en el suelo. El opuesto es mirar tu reflejo idéntico al otro lado.
+            Significa <strong>cambiarle la camiseta al número</strong>: si es positiva la vuelve negativa, y si es negativa la vuelve positiva.
+          </p>
+
+          <!-- Diagrama didáctico -->
+          <div class="bg-slate-950/70 rounded-2xl p-4 border border-cyan-500/20 space-y-3 font-mono text-sm">
+            <div class="flex items-center justify-between bg-cyan-950/30 p-2.5 rounded-xl border border-cyan-500/30">
+              <span class="text-slate-300">Espejo de <strong class="text-cyan-400">op(+9)</strong></span>
+              <span class="text-slate-400">➔ cambia de lado ➔</span>
+              <span class="text-xl font-bold text-cyan-300">-9</span>
+            </div>
+            <div class="flex items-center justify-between bg-cyan-950/30 p-2.5 rounded-xl border border-cyan-500/30">
+              <span class="text-slate-300">Espejo de <strong class="text-cyan-400">op(-6)</strong></span>
+              <span class="text-slate-400">➔ cambia de lado ➔</span>
+              <span class="text-xl font-bold text-cyan-300">+6</span>
+            </div>
+          </div>
+
+          <div class="p-3 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-xs text-cyan-200">
+            💡 <strong>Regla de oro:</strong> En el examen, cuando veas <code class="bg-cyan-900/60 px-1 py-0.5 rounded">op(...)</code>, tápalo con el dedo y escribe inmediatamente el signo contrario.
+          </div>
+        </div>
+
+        <!-- Mini test interactivo -->
+        <div class="mt-6 pt-4 border-t border-slate-800 flex items-center gap-3">
+          <input id="inputOp" type="number" value="15" class="w-24 bg-slate-950 border border-slate-700 rounded-xl px-3 py-1.5 text-center font-mono text-white text-sm focus:border-cyan-400 outline-none">
+          <button onclick="calcOp()" class="px-4 py-1.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs transition">Ver Reflejo op()</button>
+          <span id="outputOp" class="font-mono text-lg font-bold text-cyan-400">= -15</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SECCIÓN 3: CÓMO DESARMAR LAS TRAMPAS NINJA EN EL EXAMEN -->
+    <section class="glass-card rounded-3xl p-6 md:p-8 border border-amber-500/30 shadow-2xl">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="p-3 bg-amber-500/20 text-amber-400 rounded-2xl text-2xl">🥷</span>
+        <div>
+          <h3 class="text-2xl font-friendly font-bold text-white">El Protocolo Ninja: ¡No caigas en la trampa!</h3>
+          <p class="text-slate-400 text-sm">Cuando te piden ordenar letras (A, B, C, D) con operaciones dentro, sigue siempre estos 3 pasos:</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        
+        <!-- Paso 1 -->
+        <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
+          <div class="w-8 h-8 rounded-full bg-amber-500 text-slate-950 font-bold flex items-center justify-center text-sm font-friendly">1</div>
+          <h4 class="font-friendly font-bold text-white text-base">Calcula cada piso primero</h4>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Nunca intentes adivinar sin calcular. Resuelve cada operación por separado en sucio:
+          </p>
+          <div class="p-2 rounded bg-black/40 font-mono text-xs text-amber-300">
+            A = -11 - 6 = <strong>-17</strong><br>
+            B = op(+13) = <strong>-13</strong>
+          </div>
+        </div>
+
+        <!-- Paso 2 -->
+        <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
+          <div class="w-8 h-8 rounded-full bg-amber-500 text-slate-950 font-bold flex items-center justify-center text-sm font-friendly">2</div>
+          <h4 class="font-friendly font-bold text-white text-base">Visualiza la altura en el ascensor</h4>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Pregúntate: <em>«¿Quién está más profundo en el sótano?»</em>
+          </p>
+          <div class="p-2 rounded bg-black/40 font-mono text-xs text-cyan-300">
+            El sótano <strong>-17</strong> está mucho más hondo que el <strong>-13</strong>. Por eso: -17 &lt; -13.
+          </div>
+        </div>
+
+        <!-- Paso 3 -->
+        <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
+          <div class="w-8 h-8 rounded-full bg-amber-500 text-slate-950 font-bold flex items-center justify-center text-sm font-friendly">3</div>
+          <h4 class="font-friendly font-bold text-white text-base">Escribe la cadena con el cocodrilo</h4>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            De menor a mayor siempre con <strong>&lt;</strong> (la boca comiéndose al de la derecha):
+          </p>
+          <div class="p-2 rounded bg-black/40 font-mono text-xs text-emerald-300 font-bold">
+            -17 &lt; -13 &lt; +7 &lt; +12
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CHULETA NINJA FINAL -->
+    <footer class="p-6 rounded-3xl bg-gradient-to-r from-indigo-900/40 via-purple-900/30 to-slate-900/60 border border-indigo-500/30 text-center space-y-3">
+      <h4 class="font-friendly font-bold text-lg text-indigo-300">📋 Resumen para guardar en la cabeza antes del examen</h4>
+      <div class="flex flex-wrap items-center justify-center gap-4 text-xs md:text-sm text-slate-200 font-medium">
+        <span class="px-3 py-1.5 rounded-xl bg-slate-900/80 border border-slate-700">🏢 Más arriba = Mayor valor</span>
+        <span class="px-3 py-1.5 rounded-xl bg-slate-900/80 border border-slate-700">🧼 |x| siempre sale positivo</span>
+        <span class="px-3 py-1.5 rounded-xl bg-slate-900/80 border border-slate-700">🪞 op(x) le da la vuelta al signo</span>
+        <span class="px-3 py-1.5 rounded-xl bg-slate-900/80 border border-slate-700">🐊 Boca abierta hacia el más grande</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    // Lógica del ascensor interactivo
+    function setFloor(floor) {
+      const display = document.getElementById('elevatorDisplay');
+      const badge = document.getElementById('elevatorBadge');
+      const car = document.getElementById('elevatorCar');
+      
+      const sign = floor > 0 ? `+${floor}` : `${floor}`;
+      display.innerText = `Piso ${sign}`;
+      badge.innerText = sign;
+
+      // Calcular porcentaje de elevación (rango de -5 a +5 = 10 pisos)
+      // -5 = 5%, 0 = 50%, +5 = 85%
+      const percentage = ((floor + 5) / 10) * 80 + 5;
+      car.style.bottom = `${percentage}%`;
+
+      // Cambiar colores dinámicamente según la zona
+      if (floor > 0) {
+        car.className = "absolute w-20 h-10 bg-gradient-to-r from-emerald-400 to-green-500 rounded-lg shadow-lg flex items-center justify-center font-bold text-slate-950 font-friendly text-sm transition-all duration-500";
+      } else if (floor === 0) {
+        car.className = "absolute w-20 h-10 bg-gradient-to-r from-amber-400 to-yellow-500 rounded-lg shadow-lg flex items-center justify-center font-bold text-slate-950 font-friendly text-sm transition-all duration-500";
+      } else {
+        car.className = "absolute w-20 h-10 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg shadow-lg flex items-center justify-center font-bold text-slate-950 font-friendly text-sm transition-all duration-500";
+      }
+    }
+
+    // Lógica del valor absoluto
+    function calcAbs() {
+      const input = document.getElementById('inputAbs');
+      const output = document.getElementById('outputAbs');
+      const val = parseInt(input.value) || 0;
+      output.innerText = `= ${Math.abs(val)}`;
+    }
+
+    // Lógica del opuesto
+    function calcOp() {
+      const input = document.getElementById('inputOp');
+      const output = document.getElementById('outputOp');
+      const val = parseInt(input.value) || 0;
+      const res = -val;
+      output.innerText = `= ${res > 0 ? '+' + res : res}`;
+    }
+  </script>
+</body>
+</html>

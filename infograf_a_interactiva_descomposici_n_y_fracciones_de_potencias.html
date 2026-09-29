@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infografía: La Fábrica de LEGO y Fracciones de Potencias</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #070a14 0%, #150e28 50%, #0a1324 100%);
+      color: #f8fafc;
+    }
+    .font-friendly {
+      font-family: 'Fredoka', cursive, sans-serif;
+    }
+    .font-code {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .glass-card {
+      background: rgba(22, 28, 48, 0.8);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .lego-brick {
+      box-shadow: 0 4px 0 rgba(0, 0, 0, 0.35);
+      position: relative;
+    }
+    .lego-brick::before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40%;
+      height: 3px;
+      background: inherit;
+      border-radius: 2px 2px 0 0;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+  <header class="max-w-6xl mx-auto mb-8 text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/20 border border-amber-400/30 text-amber-300 text-sm font-semibold mb-3">
+      <span>🏭</span> MATES 2º ESO • BLOQUE 5
+    </div>
+    <h1 class="text-3xl md:text-5xl font-friendly font-bold tracking-tight text-white mb-3">
+      La Fábrica de LEGO y el <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-rose-400 to-cyan-400">Gran Despiece de Potencias</span>
+    </h1>
+    <p class="max-w-2xl mx-auto text-slate-300 text-sm md:text-base leading-relaxed">
+      Los números grandes son solo figuras montadas. Descubre la máquina de la raya vertical, el reparto de mochilas y la batalla de los soldados supervivientes.
+    </p>
+  </header>
+
+  <main class="max-w-6xl mx-auto space-y-8">
+
+    <!-- SECCIÓN 1: LA MÁQUINA DE LA RAYA VERTICAL (INTERACTIVA) -->
+    <section class="glass-card rounded-3xl p-6 md:p-8 border border-amber-500/30 shadow-2xl">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="p-3 bg-amber-500/20 text-amber-400 rounded-2xl text-2xl">🧱</span>
+        <div>
+          <h2 class="text-2xl font-friendly font-bold text-white">1. La Máquina de la Raya Vertical (La Aduana de LEGO)</h2>
+          <p class="text-slate-400 text-sm">Prohibido pasar montado: cada número compuesto debe desarmarse en sus piezas elementales ($2, 3, 5, 7\dots$).</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        
+        <!-- Panel de Reglas y Explicación -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-3 text-xs leading-relaxed">
+            <span class="font-friendly font-bold text-amber-300 text-sm block">📋 Las 3 Reglas de Oro de la Aduana</span>
+            <div class="space-y-2">
+              <div class="flex items-start gap-2">
+                <span class="w-5 h-5 rounded-full bg-amber-500 text-slate-950 font-bold flex items-center justify-center shrink-0 text-[11px] font-friendly">1</span>
+                <p><strong class="text-white">Columna derecha VIP:</strong> ¡Únicamente números primos ($2, 3, 5, 7\dots$)! Jamás pongas $4, 6, 8, 9$ ni $10$.</p>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="w-5 h-5 rounded-full bg-amber-500 text-slate-950 font-bold flex items-center justify-center shrink-0 text-[11px] font-friendly">2</span>
+                <p><strong class="text-white">Orden estricto en fila:</strong> Exprime el <strong class="text-cyan-400">2</strong> mientras sea par. Luego prueba el <strong class="text-emerald-400">3</strong>, luego el <strong class="text-rose-400">5</strong>...</p>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="w-5 h-5 rounded-full bg-amber-500 text-slate-950 font-bold flex items-center justify-center shrink-0 text-[11px] font-friendly">3</span>
+                <p><strong class="text-white">Fórmula mágica de potencias:</strong> Cuenta cuántas piezas repetidas hay en la derecha y agrúpalas como $2^a \cdot 3^b \cdot 5^c$.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Selector rápido de números del examen -->
+          <div class="p-4 rounded-2xl bg-slate-950/70 border border-slate-800 space-y-2">
+            <span class="text-xs text-slate-400 block font-friendly font-bold">🎯 Elige o escribe un número para desmontar:</span>
+            <div class="flex flex-wrap gap-2">
+              <button onclick="desmontar(12)" class="px-3 py-1 bg-slate-800 hover:bg-amber-500/20 hover:border-amber-400/50 border border-slate-700 rounded-xl text-xs font-mono font-bold text-amber-300 transition">12</button>
+              <button onclick="desmontar(18)" class="px-3 py-1 bg-slate-800 hover:bg-amber-500/20 hover:border-amber-400/50 border border-slate-700 rounded-xl text-xs font-mono font-bold text-amber-300 transition">18</button>
+              <button onclick="desmontar(20)" class="px-3 py-1 bg-slate-800 hover:bg-amber-500/20 hover:border-amber-400/50 border border-slate-700 rounded-xl text-xs font-mono font-bold text-amber-300 transition">20</button>
+              <button onclick="desmontar(36)" class="px-3 py-1 bg-slate-800 hover:bg-amber-500/20 hover:border-amber-400/50 border border-slate-700 rounded-xl text-xs font-mono font-bold text-amber-300 transition">36</button>
+              <button onclick="desmontar(60)" class="px-3 py-1 bg-slate-800 hover:bg-amber-500/20 hover:border-amber-400/50 border border-slate-700 rounded-xl text-xs font-mono font-bold text-amber-300 transition">60</button>
+              <button onclick="desmontar(72)" class="px-3 py-1 bg-slate-800 hover:bg-amber-500/20 hover:border-amber-400/50 border border-slate-700 rounded-xl text-xs font-mono font-bold text-amber-300 transition">72</button>
+            </div>
+            <div class="flex items-center gap-2 pt-1">
+              <input id="inputCustomNum" type="number" min="2" max="999" value="12" class="w-24 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1 text-center font-code text-white text-sm focus:border-amber-400 outline-none">
+              <button onclick="desmontarPersonalizado()" class="px-3.5 py-1 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs font-friendly transition">
+                ¡Desmontar en LEGO!
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visualizador interactivo de la raya vertical -->
+        <div class="lg:col-span-7 bg-slate-950/90 rounded-2xl p-5 border border-slate-800 flex flex-col md:flex-row gap-6 items-center justify-around shadow-inner">
+          
+          <!-- La Raya Vertical Clásica -->
+          <div class="w-full md:w-1/2 flex flex-col items-center">
+            <span class="text-xs uppercase font-semibold text-slate-400 tracking-wider mb-2 font-friendly">Máquina de la Raya Vertical</span>
+            <div class="relative bg-slate-900/90 p-4 rounded-xl border border-slate-700 w-48 shadow-lg">
+              <div class="grid grid-cols-2 text-center font-code text-base font-bold">
+                <div class="text-slate-400 text-xs pb-2 border-b border-slate-700">Izquierda<br><span class="text-[10px] text-slate-500">(Cocientes)</span></div>
+                <div class="text-amber-400 text-xs pb-2 border-b border-slate-700">Derecha VIP<br><span class="text-[10px] text-amber-500/80">(Solo Primos)</span></div>
+              </div>
+              
+              <div id="verticalStepsContainer" class="relative mt-2 font-code font-bold text-base space-y-1">
+                <!-- Se inyecta dinámicamente con JS -->
+              </div>
+
+              <!-- Línea vertical divisoria centrada -->
+              <div class="absolute top-[46px] bottom-3 left-1/2 w-0.5 bg-amber-500/60 -translate-x-1/2 rounded-full"></div>
+            </div>
+          </div>
+
+          <!-- Piezas LEGO resultantes y Fórmula -->
+          <div class="w-full md:w-1/2 flex flex-col items-center text-center space-y-4">
+            <span class="text-xs uppercase font-semibold text-slate-400 tracking-wider font-friendly">Piezas de LEGO Extraídas</span>
+            <div id="legoBricksContainer" class="flex flex-wrap gap-2 justify-center min-h-[50px] items-center p-3 rounded-xl bg-slate-900/60 border border-slate-800 w-full">
+              <!-- Bricks dinámicos -->
+            </div>
+
+            <div class="w-full p-3.5 rounded-xl bg-amber-950/30 border border-amber-500/30 space-y-1">
+              <span class="text-[11px] text-amber-300/80 font-friendly font-bold block uppercase tracking-wider">Fórmula Mágica Empaquetada:</span>
+              <div id="legoFormulaOutput" class="text-xl font-code font-bold text-amber-300">
+                12 = 2² · 3
+              </div>
+            </div>
+            <p class="text-[11px] text-slate-400 italic">¡La figura ha quedado completamente lista para sustituir en la fracción!</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: EL REPARTO DE MOCHILAS (POTENCIA DE UN PRODUCTO) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- Tarjeta Reparto de Mochilas -->
+      <section class="glass-card rounded-3xl p-6 border border-cyan-500/30 shadow-xl space-y-4">
+        <div class="flex items-center gap-3">
+          <span class="p-3 bg-cyan-500/20 text-cyan-400 rounded-2xl text-2xl">🎒</span>
+          <div>
+            <h3 class="text-xl font-friendly font-bold text-white">2. El Reparto de Mochilas: (a · b)ⁿ</h3>
+            <span class="text-xs text-cyan-300 font-semibold">El multiplicador de energía exterior</span>
+          </div>
+        </div>
+
+        <p class="text-xs text-slate-300 leading-relaxed">
+          Al meter las piezas de LEGO dentro de la mochila, el exponente de fuera <strong>multiplica a los exponentes de cada pieza interior</strong> (recuerda que quien no lleva exponente tiene un $1$ invisible):
+        </p>
+
+        <div class="space-y-2.5 font-code text-xs">
+          <div class="p-3 rounded-xl bg-slate-950/80 border border-cyan-500/30 space-y-1">
+            <span class="text-slate-400 text-[11px]">Ejemplo 1 (el 18 al cubo):</span>
+            <div class="text-white text-sm">( 18 )³ ➔ ( 2¹ · 3² )³</div>
+            <div class="text-cyan-300 text-xs pt-1">
+              • Al 2¹: 1 · 3 = 3 ➔ <strong class="text-cyan-200">2³</strong><br>
+              • Al 3²: 2 · 3 = 6 ➔ <strong class="text-cyan-200">3⁶</strong>
+            </div>
+            <div class="text-emerald-400 font-bold border-t border-slate-800 pt-1 text-sm">= 2³ · 3⁶</div>
+          </div>
+
+          <div class="p-3 rounded-xl bg-slate-950/80 border border-cyan-500/30 space-y-1">
+            <span class="text-slate-400 text-[11px]">Ejemplo 2 (el 12 a la cuarta):</span>
+            <div class="text-white text-sm">( 12 )⁴ ➔ ( 2² · 3¹ )⁴ = 2²ˣ⁴ · 3¹ˣ⁴ = <strong class="text-emerald-400">2⁸ · 3⁴</strong></div>
+          </div>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-xs text-cyan-200">
+          💡 <strong>Regla ninja:</strong> Las mochilas se abren multiplicando. ¡Ningún exponente interior se salva!
+        </div>
+      </section>
+
+      <!-- Tarjeta La Trampilla del Ascensor -->
+      <section class="glass-card rounded-3xl p-6 border border-rose-500/30 shadow-xl space-y-4">
+        <div class="flex items-center gap-3">
+          <span class="p-3 bg-rose-500/20 text-rose-400 rounded-2xl text-2xl">🛗</span>
+          <div>
+            <h3 class="text-xl font-friendly font-bold text-white">3. La Trampilla del Ascensor: a⁻ⁿ</h3>
+            <span class="text-xs text-rose-300 font-semibold">Limpiador automático de exponentes negativos</span>
+          </div>
+        </div>
+
+        <p class="text-xs text-slate-300 leading-relaxed">
+          Si en una fracción hay un soldado enfadado con exponente negativo, no hagas cuentas raras: <strong>activa la trampilla del ascensor</strong>:
+        </p>
+
+        <div class="p-4 rounded-xl bg-slate-950/80 border border-rose-500/30 font-code text-xs space-y-2">
+          <div class="text-slate-400">Fracción inicial con soldados negativos:</div>
+          <div class="text-rose-300 text-sm text-center py-1 bg-black/40 rounded-lg">
+            3⁻² · 5⁴ / 2⁻³
+          </div>
+          <div class="flex items-center justify-between text-[11px] text-slate-300 pt-1">
+            <span>• El <strong class="text-rose-400">3⁻²</strong> de arriba ➔ cae al sótano como <strong class="text-emerald-400">3²</strong></span>
+          </div>
+          <div class="flex items-center justify-between text-[11px] text-slate-300">
+            <span>• El <strong class="text-rose-400">2⁻³</strong> de abajo ➔ sube al ático como <strong class="text-emerald-400">2³</strong></span>
+          </div>
+          <div class="text-emerald-400 text-sm font-bold text-center border-t border-slate-800 pt-2">
+            Resultado limpio: 2³ · 5⁴ / 3²
+          </div>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-rose-500/10 border border-rose-500/20 text-xs text-rose-200">
+          ✨ <strong>Regla ninja:</strong> Cambiar de piso (de arriba abajo o viceversa) le da la vuelta al signo del exponente.
+        </div>
+      </section>
+
+    </div>
+
+    <!-- SECCIÓN 3: LA BATALLA DEL RECREO (COMBATE INTERACTIVO EN FRACCIONES) -->
+    <section class="glass-card rounded-3xl p-6 md:p-8 border border-emerald-500/30 shadow-2xl">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="p-3 bg-emerald-500/20 text-emerald-400 rounded-2xl text-2xl">⚔️</span>
+        <div>
+          <h2 class="text-2xl font-friendly font-bold text-white">4. La Batalla del Recreo: ¿Quién sobrevive y dónde?</h2>
+          <p class="text-slate-400 text-sm">En una fracción, las potencias de la misma base se enfrentan en duelo directo: arriba vs. abajo.</p>
+        </div>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-5">
+        
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 border-b border-slate-800 pb-3">
+          <span class="text-xs text-emerald-300 font-friendly font-bold uppercase tracking-wider">Simulador de Combate en Vivo</span>
+          <span class="text-xs text-slate-400">Ajusta los soldados de arriba y abajo para cada familia</span>
+        </div>
+
+        <!-- Controles de Batalla de Soldados -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 font-code text-xs">
+          
+          <!-- Familia del 2 -->
+          <div class="p-3.5 rounded-xl bg-slate-900 border border-cyan-500/30 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-cyan-400 font-bold font-friendly text-sm">Familia del [2]</span>
+              <span class="text-lg">🟦</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-slate-400">Arriba:</span>
+              <input id="soldier2Up" type="number" min="0" max="15" value="6" oninput="simularBatalla()" class="w-14 bg-slate-950 border border-slate-700 rounded-lg p-1 text-center font-bold text-cyan-300 outline-none">
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-slate-400">Abajo:</span>
+              <input id="soldier2Down" type="number" min="0" max="15" value="5" oninput="simularBatalla()" class="w-14 bg-slate-950 border border-slate-700 rounded-lg p-1 text-center font-bold text-cyan-300 outline-none">
+            </div>
+            <div id="duelRes2" class="p-1.5 rounded-lg bg-black/40 text-center font-bold text-cyan-300 text-[11px]">
+              Gana arriba por 1 ➔ 2¹ (arriba)
+            </div>
+          </div>
+
+          <!-- Familia del 3 -->
+          <div class="p-3.5 rounded-xl bg-slate-900 border border-amber-500/30 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-amber-400 font-bold font-friendly text-sm">Familia del [3]</span>
+              <span class="text-lg">🟨</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-slate-400">Arriba:</span>
+              <input id="soldier3Up" type="number" min="0" max="15" value="5" oninput="simularBatalla()" class="w-14 bg-slate-950 border border-slate-700 rounded-lg p-1 text-center font-bold text-amber-300 outline-none">
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-slate-400">Abajo:</span>
+              <input id="soldier3Down" type="number" min="0" max="15" value="4" oninput="simularBatalla()" class="w-14 bg-slate-950 border border-slate-700 rounded-lg p-1 text-center font-bold text-amber-300 outline-none">
+            </div>
+            <div id="duelRes3" class="p-1.5 rounded-lg bg-black/40 text-center font-bold text-amber-300 text-[11px]">
+              Gana arriba por 1 ➔ 3¹ (arriba)
+            </div>
+          </div>
+
+          <!-- Familia del 5 -->
+          <div class="p-3.5 rounded-xl bg-slate-900 border border-rose-500/30 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-rose-400 font-bold font-friendly text-sm">Familia del [5]</span>
+              <span class="text-lg">🟥</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-slate-400">Arriba:</span>
+              <input id="soldier5Up" type="number" min="0" max="15" value="2" oninput="simularBatalla()" class="w-14 bg-slate-950 border border-slate-700 rounded-lg p-1 text-center font-bold text-rose-300 outline-none">
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-slate-400">Abajo:</span>
+              <input id="soldier5Down" type="number" min="0" max="15" value="3" oninput="simularBatalla()" class="w-14 bg-slate-950 border border-slate-700 rounded-lg p-1 text-center font-bold text-rose-300 outline-none">
+            </div>
+            <div id="duelRes5" class="p-1.5 rounded-lg bg-black/40 text-center font-bold text-rose-300 text-[11px]">
+              Gana abajo por 1 ➔ 5¹ (abajo)
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Visualizador de la fracción simplificada final -->
+        <div class="p-4 rounded-xl bg-black/60 border border-emerald-500/40 flex flex-col md:flex-row items-center justify-around gap-4 text-center">
+          <div class="space-y-1">
+            <span class="text-xs text-slate-400 uppercase tracking-wider font-friendly">Fracción antes del combate:</span>
+            <div id="fraccionAntes" class="text-sm font-code text-slate-200">
+              2⁶ · 3⁵ · 5² / 2⁵ · 3⁴ · 5³
+            </div>
+          </div>
+          
+          <span class="text-emerald-400 font-bold text-xl">➔</span>
+
+          <div class="space-y-1">
+            <span class="text-xs text-emerald-400 uppercase tracking-wider font-friendly font-bold">¡Supervivientes en el Recreo!</span>
+            <div id="fraccionDespues" class="text-base font-code font-bold text-emerald-300 bg-emerald-950/40 px-4 py-1.5 rounded-xl border border-emerald-500/30">
+              ( 2 · 3 ) / 5 = 6 / 5
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: EL CASO DEL DETECTIVE (ECUACIONES CON POTENCIAS) -->
+    <section class="glass-card rounded-3xl p-6 md:p-8 border border-indigo-500/30 shadow-2xl">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="p-3 bg-indigo-500/20 text-indigo-400 rounded-2xl text-2xl">🕵️‍♂️</span>
+        <div>
+          <h2 class="text-2xl font-friendly font-bold text-white">5. El Caso del Detective: El Exponente Desconocido «a»</h2>
+          <p class="text-slate-400 text-sm">En la página 10 de las fotocopias cae una ecuación donde se esconde la letra $a$ en el exponente.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-code">
+        
+        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-indigo-500 text-slate-950 font-bold flex items-center justify-center font-friendly">1</span>
+            <span class="text-indigo-300 font-bold font-friendly text-sm">Opera con superpoderes</span>
+          </div>
+          <p class="font-sans text-slate-300 text-xs">Junta todo en una sola potencia a la izquierda:</p>
+          <div class="p-2.5 rounded-xl bg-black/60 border border-indigo-500/30 text-indigo-200 space-y-1">
+            <div>( 2⁵ · 2ᵃ )²</div>
+            <div class="text-slate-400">➔ ( 2⁵⁺ᵃ )²</div>
+            <div class="text-amber-300 font-bold">➔ 2¹⁰⁺²ᵃ</div>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-indigo-500 text-slate-950 font-bold flex items-center justify-center font-friendly">2</span>
+            <span class="text-indigo-300 font-bold font-friendly text-sm">Regla de los gemelos</span>
+          </div>
+          <p class="font-sans text-slate-300 text-xs">Si las bases de abajo son iguales, ¡sus cabezas piensan igual!</p>
+          <div class="p-2.5 rounded-xl bg-black/60 border border-indigo-500/30 text-indigo-200 space-y-1">
+            <div>2¹⁰⁺²ᵃ = 2¹⁶</div>
+            <div class="text-slate-400">Igualamos exponentes:</div>
+            <div class="text-emerald-300 font-bold">10 + 2a = 16</div>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-indigo-500 text-slate-950 font-bold flex items-center justify-center font-friendly">3</span>
+            <span class="text-indigo-300 font-bold font-friendly text-sm">Descubre el secreto</span>
+          </div>
+          <p class="font-sans text-slate-300 text-xs">Averigua cuánto vale la $a$ sin agobios:</p>
+          <div class="p-2.5 rounded-xl bg-black/60 border border-indigo-500/30 text-indigo-200 space-y-1">
+            <div>¿Cuánto falta de 10 a 16? ➔ 6</div>
+            <div>2a = 6</div>
+            <div class="text-emerald-400 font-bold text-sm bg-emerald-950/60 p-1 rounded text-center">¡a = 3!</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Resolvedor interactivo del caso del detective -->
+      <div class="mt-6 p-4 rounded-2xl bg-slate-950/80 border border-slate-800">
+        <h4 class="font-friendly font-bold text-sm text-indigo-300 mb-2">🔍 Generador de Misterios del Detective</h4>
+        <div class="flex flex-wrap items-center gap-3 text-xs font-code">
+          <span class="text-slate-400 font-sans">Elige misterio:</span>
+          <button onclick="setMystery(1)" id="btnMys1" class="px-3 py-1 rounded-lg bg-indigo-600 text-white font-bold transition font-friendly">Caso A: (2⁵·2ᵃ)² = 2¹⁶</button>
+          <button onclick="setMystery(2)" id="btnMys2" class="px-3 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition font-friendly">Caso B: (3ᵃ·3²)³ = 3¹⁵</button>
+          <button onclick="setMystery(3)" id="btnMys3" class="px-3 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition font-friendly">Caso C: 5ᵃ·(5³)² / 5⁴ = 5⁶</button>
+        </div>
+        <div id="mysteryDisplay" class="mt-3 p-3.5 rounded-xl bg-black/60 border border-indigo-500/30 font-code text-xs md:text-sm text-center text-slate-200">
+          ( 2⁵ · 2ᵃ )² = 2¹⁰⁺²ᵃ = 2¹⁶ ➔ 10 + 2a = 16 ➔ 2a = 6 ➔ <strong class="text-emerald-400 text-base font-friendly ml-1">a = 3</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROTOCOLO ANTI-ERRORES -->
+    <footer class="p-6 rounded-3xl bg-gradient-to-r from-amber-950/40 via-slate-900 to-cyan-950/40 border border-amber-500/30 text-center space-y-3">
+      <h4 class="font-friendly font-bold text-lg text-amber-300">📋 Protocolo Anti-Errores para el Gran Despiece (Bloque 5)</h4>
+      <div class="flex flex-wrap items-center justify-center gap-3 text-xs md:text-sm text-slate-200">
+        <span class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700">🧱 1º Raya vertical a toda base compuesta</span>
+        <span class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700">🎒 2º Reparte mochilas multiplicando</span>
+        <span class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700">🛗 3º Activa el ascensor para exponentes negativos</span>
+        <span class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700">⚔️ 4º Batalla de supervivientes: gana el mayor ejército</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // 1. Descomposición Factorial con Raya Vertical
+    const primeColors = {
+      2: { bg: 'bg-cyan-500', text: 'text-cyan-950', border: 'border-cyan-400' },
+      3: { bg: 'bg-amber-500', text: 'text-amber-950', border: 'border-amber-400' },
+      5: { bg: 'bg-rose-500', text: 'text-rose-950', border: 'border-rose-400' },
+      7: { bg: 'bg-emerald-500', text: 'text-emerald-950', border: 'border-emerald-400' },
+      default: { bg: 'bg-indigo-500', text: 'text-indigo-950', border: 'border-indigo-400' }
+    };
+
+    function desmontar(num) {
+      if (num < 2) return;
+      document.getElementById('inputCustomNum').value = num;
+      
+      let temp = num;
+      let d = 2;
+      const steps = [];
+      const factorsCount = {};
+
+      while (temp > 1) {
+        if (temp % d === 0) {
+          steps.push({ current: temp, divisor: d });
+          factorsCount[d] = (factorsCount[d] || 0) + 1;
+          temp = temp / d;
+        } else {
+          d = (d === 2) ? 3 : d + 2;
+        }
+      }
+      steps.push({ current: 1, divisor: '' });
+
+      // Renderizar pasos verticales
+      const stepsContainer = document.getElementById('verticalStepsContainer');
+      stepsContainer.innerHTML = '';
+      
+      steps.forEach((st, idx) => {
+        const row = document.createElement('div');
+        row.className = "grid grid-cols-2 text-center items-center py-0.5";
+        
+        const colLeft = document.createElement('div');
+        colLeft.className = "text-slate-100 pr-2";
+        colLeft.innerText = st.current;
+
+        const colRight = document.createElement('div');
+        colRight.className = "text-amber-300 font-bold pl-2";
+        colRight.innerText = st.divisor !== '' ? st.divisor : '—';
+
+        row.appendChild(colLeft);
+        row.appendChild(colRight);
+        stepsContainer.appendChild(row);
+      });
+
+      // Renderizar piezas LEGO
+      const legoContainer = document.getElementById('legoBricksContainer');
+      legoContainer.innerHTML = '';
+      
+      const factorTerms = [];
+      Object.keys(factorsCount).forEach(prime => {
+        const count = factorsCount[prime];
+        const pNum = parseInt(prime);
+        const style = primeColors[pNum] || primeColors.default;
+
+        for (let i = 0; i < count; i++) {
+          const brick = document.createElement('div');
+          brick.className = `lego-brick ${style.bg} ${style.text} px-2.5 py-1 rounded-md font-bold font-friendly text-xs shadow-md transition-all hover:scale-110`;
+          brick.innerText = `[${pNum}]`;
+          legoContainer.appendChild(brick);
+        }
+
+        factorTerms.push(count > 1 ? `${pNum}<sup>${count}</sup>` : `${pNum}`);
+      });
+
+      // Renderizar fórmula final
+      document.getElementById('legoFormulaOutput').innerHTML = `${num} = ${factorTerms.join(' · ')}`;
+    }
+
+    function desmontarPersonalizado() {
+      const val = parseInt(document.getElementById('inputCustomNum').value) || 12;
+      desmontar(Math.max(2, Math.min(val, 999)));
+    }
+
+    // 2. Simulador de la Batalla del Recreo
+    function simularBatalla() {
+      const u2 = Math.max(0, parseInt(document.getElementById('soldier2Up').value) || 0);
+      const d2 = Math.max(0, parseInt(document.getElementById('soldier2Down').value) || 0);
+
+      const u3 = Math.max(0, parseInt(document.getElementById('soldier3Up').value) || 0);
+      const d3 = Math.max(0, parseInt(document.getElementById('soldier3Down').value) || 0);
+
+      const u5 = Math.max(0, parseInt(document.getElementById('soldier5Up').value) || 0);
+      const d5 = Math.max(0, parseInt(document.getElementById('soldier5Down').value) || 0);
+
+      // Evaluar cada familia
+      const evalFamily = (up, down, base, elId) => {
+        const diff = up - down;
+        const el = document.getElementById(elId);
+        if (diff > 0) {
+          el.innerText = `Gana arriba por ${diff} ➔ ${base}${diff > 1 ? '<sup>' + diff + '</sup>' : ''} (arriba)`;
+          el.className = "p-1.5 rounded-lg bg-emerald-950/60 text-center font-bold text-emerald-300 text-[11px] border border-emerald-500/30";
+          return { base, pos: 'up', exp: diff };
+        } else if (diff < 0) {
+          const absD = Math.abs(diff);
+          el.innerText = `Gana abajo por ${absD} ➔ ${base}${absD > 1 ? '<sup>' + absD + '</sup>' : ''} (abajo)`;
+          el.className = "p-1.5 rounded-lg bg-rose-950/60 text-center font-bold text-rose-300 text-[11px] border border-rose-500/30";
+          return { base, pos: 'down', exp: absD };
+        } else {
+          el.innerText = `Se anulan totalmente (empate a 0)`;
+          el.className = "p-1.5 rounded-lg bg-slate-800 text-center font-bold text-slate-400 text-[11px]";
+          return { base, pos: 'none', exp: 0 };
+        }
+      };
+
+      const res2 = evalFamily(u2, d2, 2, 'duelRes2');
+      const res3 = evalFamily(u3, d3, 3, 'duelRes3');
+      const res5 = evalFamily(u5, d5, 5, 'duelRes5');
+
+      // Fracción antes
+      const formatProduct = (e2, e3, e5) => {
+        const parts = [];
+        if (e2 > 0) parts.push(`2${e2 > 1 ? '<sup>' + e2 + '</sup>' : ''}`);
+        if (e3 > 0) parts.push(`3${e3 > 1 ? '<sup>' + e3 + '</sup>' : ''}`);
+        if (e5 > 0) parts.push(`5${e5 > 1 ? '<sup>' + e5 + '</sup>' : ''}`);
+        return parts.length > 0 ? parts.join(' · ') : '1';
+      };
+
+      document.getElementById('fraccionAntes').innerHTML = `
+        (${formatProduct(u2, u3, u5)}) / (${formatProduct(d2, d3, d5)})
+      `;
+
+      // Fracción después
+      const topParts = [];
+      const bottomParts = [];
+      [res2, res3, res5].forEach(r => {
+        if (r.pos === 'up') topParts.push(`${r.base}${r.exp > 1 ? '<sup>' + r.exp + '</sup>' : ''}`);
+        if (r.pos === 'down') bottomParts.push(`${r.base}${r.exp > 1 ? '<sup>' + r.exp + '</sup>' : ''}`);
+      });
+
+      const topStr = topParts.length > 0 ? topParts.join(' · ') : '1';
+      const botStr = bottomParts.length > 0 ? bottomParts.join(' · ') : '1';
+
+      if (botStr === '1') {
+        document.getElementById('fraccionDespues').innerHTML = `${topStr}`;
+      } else {
+        document.getElementById('fraccionDespues').innerHTML = `(${topStr}) / (${botStr})`;
+      }
+    }
+
+    // 3. Generador de Misterios del Detective
+    function setMystery(type) {
+      const b1 = document.getElementById('btnMys1');
+      const b2 = document.getElementById('btnMys2');
+      const b3 = document.getElementById('btnMys3');
+      const disp = document.getElementById('mysteryDisplay');
+
+      b1.className = "px-3 py-1 rounded-lg bg-slate-800 text-slate-300 font-bold transition font-friendly";
+      b2.className = "px-3 py-1 rounded-lg bg-slate-800 text-slate-300 font-bold transition font-friendly";
+      b3.className = "px-3 py-1 rounded-lg bg-slate-800 text-slate-300 font-bold transition font-friendly";
+
+      if (type === 1) {
+        b1.className = "px-3 py-1 rounded-lg bg-indigo-600 text-white font-bold transition font-friendly";
+        disp.innerHTML = `( 2⁵ · 2ᵃ )² = 2¹⁰⁺²ᵃ = 2¹⁶ ➔ 10 + 2a = 16 ➔ 2a = 6 ➔ <strong class="text-emerald-400 text-base font-friendly ml-1">a = 3</strong>`;
+      } else if (type === 2) {
+        b2.className = "px-3 py-1 rounded-lg bg-indigo-600 text-white font-bold transition font-friendly";
+        disp.innerHTML = `( 3ᵃ · 3² )³ = ( 3ᵃ⁺² )³ = 3³ᵃ⁺⁶ = 3¹⁵ ➔ 3a + 6 = 15 ➔ 3a = 9 ➔ <strong class="text-emerald-400 text-base font-friendly ml-1">a = 3</strong>`;
+      } else if (type === 3) {
+        b3.className = "px-3 py-1 rounded-lg bg-indigo-600 text-white font-bold transition font-friendly";
+        disp.innerHTML = `5ᵃ · (5³)² / 5⁴ = 5ᵃ · 5⁶ / 5⁴ = 5ᵃ⁺² = 5⁶ ➔ a + 2 = 6 ➔ <strong class="text-emerald-400 text-base font-friendly ml-1">a = 4</strong>`;
+      }
+    }
+
+    // Inicializar valores al cargar
+    desmontar(12);
+    simularBatalla();
+  </script>
+</body>
+</html>
