@@ -57,7 +57,6 @@ En los exámenes de 2º de ESO es clásico el ejercicio con letras trampa:
 
 ## 5. Esquema de Pizarra: La Recta Vertical
 
-```text
     ▲
 +4  │   Piso 4 (Muy alto)
 +3  │   Piso 3
@@ -69,6 +68,9 @@ En los exámenes de 2º de ESO es clásico el ejercicio con letras trampa:
 -3  │   Sótano 3
 -4  │   Sótano 4  (Más profundo)
     ▼
+
+---
+
 ## 6. Misiones de Entrenamiento (Ejercicios Prácticos)
 
 ### Misión 1: Los Superpoderes en Acción
