@@ -1,4 +1,4 @@
-# BLOQUE 1: El Rascacielos Infinito de los Números Enteros (ℤ)
+# BLOQUE 1: El Rascacielos Infinito de los Enteros (ℤ)
 
 Los números naturales (1, 2, 3, 4...) servían para contar ovejas, cromos o lápices, pero el mundo real necesita expresar cosas que están por debajo de cero: plantas de sótano, deudas en la panadería o temperaturas bajo cero en invierno.
 
@@ -37,7 +37,7 @@ El cocodrilo tiene un apetito insaciable y **siempre abre su boca hacia el núme
 
 | Superpoder | Notación | Metáfora Visual | Acción Concreta | Regla de Oro |
 | :--- | :--- | :--- | :--- | :--- |
-| **Valor Absoluto** | &#124;a&#124; | **La Lavadora / Cuentapasos** | Mide cuántos pisos de distancia hay hasta la calle (0). Lava el signo menos. | **NUNCA** puede dar negativo. Siempre da positivo o cero (&#124;-7&#124; = 7). |
+| **Valor Absoluto** | \|a\| | **La Lavadora / Cuentapasos** | Mide cuántos pisos de distancia hay hasta la calle (0). Lava el signo menos. | **NUNCA** puede dar negativo. Siempre da positivo o cero (\|-7\| = 7). |
 | **Opuesto** | op(a) | **El Espejo Mágico** | Refleja el número exactamente a la misma distancia al otro lado del cero. | Cambia la camiseta: si es positiva la hace negativa, y viceversa (op(-6) = +6). |
 
 ---
@@ -45,7 +45,7 @@ El cocodrilo tiene un apetito insaciable y **siempre abre su boca hacia el núme
 ## 4. Alerta Trampa de Examen: Ordenar Letras con Operaciones
 
 En los exámenes de 2º de ESO es clásico el ejercicio con letras trampa:
-> *Ordena de menor a mayor: A = -15 + 8, B = op(+13), C = &#124;-9&#124;, D = -4 - 7*
+> *Ordena de menor a mayor: A = -15 + 8, B = op(+13), C = \|-9\|, D = -4 - 7*
 
 ### El Camino Erróneo vs. El Camino Ninja
 
@@ -57,6 +57,7 @@ En los exámenes de 2º de ESO es clásico el ejercicio con letras trampa:
 
 ## 5. Esquema de Pizarra: La Recta Vertical
 
+```
     ▲
 +4  │   Piso 4 (Muy alto)
 +3  │   Piso 3
@@ -68,6 +69,7 @@ En los exámenes de 2º de ESO es clásico el ejercicio con letras trampa:
 -3  │   Sótano 3
 -4  │   Sótano 4  (Más profundo)
     ▼
+```
 
 ---
 
@@ -75,11 +77,11 @@ En los exámenes de 2º de ESO es clásico el ejercicio con letras trampa:
 
 ### Misión 1: Los Superpoderes en Acción
 Calcula el valor numérico de cada expresión:
-* Caso a: &#124;-14&#124; = ___
-* Caso b: &#124;+23&#124; = ___
+* Caso a: \|-14\| = ___
+* Caso b: \|+23\| = ___
 * Caso c: op(-18) = ___
 * Caso d: op(+31) = ___
-* Caso e: op(&#124;-8&#124;) = ___
+* Caso e: op(\|-8\|) = ___
 
 ### Misión 2: El Duelo del Cocodrilo (Completa con > o <)
 * Caso a: -6 ___ -15
@@ -91,7 +93,7 @@ Calcula el valor numérico de cada expresión:
 Resuelve las operaciones de cada letra y ordénalas de menor a mayor (<) utilizando sus letras originales:
 * A = -15 + 8
 * B = op(-10)
-* C = &#124;-12&#124;
+* C = \|-12\|
 * D = -3 - 9
 
 ---
@@ -102,11 +104,11 @@ Resuelve las operaciones de cada letra y ordénalas de menor a mayor (<) utiliza
 
 | Caso | Expresión | Solución | Justificación Didáctica |
 | :--- | :--- | :--- | :--- |
-| **Caso a** | &#124;-14&#124; | **14** | La distancia física desde el sótano -14 hasta la calle son 14 pisos. |
-| **Caso b** | &#124;+23&#124; | **23** | Desde el piso 23 hasta la calle hay 23 pisos de distancia. |
+| **Caso a** | \|-14\| | **14** | La distancia física desde el sótano -14 hasta la calle son 14 pisos. |
+| **Caso b** | \|+23\| | **23** | Desde el piso 23 hasta la calle hay 23 pisos de distancia. |
 | **Caso c** | op(-18) | **+18** | El espejo invierte la camiseta de negativo a positivo. |
 | **Caso d** | op(+31) | **-31** | El espejo invierte la camiseta de positivo a negativo. |
-| **Caso e** | op(&#124;-8&#124;) | **-8** | Primero la lavadora: &#124;-8&#124; = 8. Luego el espejo: op(8) = -8. |
+| **Caso e** | op(\|-8\|) | **-8** | Primero la lavadora: \|-8\| = 8. Luego el espejo: op(8) = -8. |
 
 ### Soluciones Misión 2:
 
@@ -122,7 +124,7 @@ Resuelve las operaciones de cada letra y ordénalas de menor a mayor (<) utiliza
 * **Paso 1: Resolver cada letra**
   * A = -15 + 8 = **-7**
   * B = op(-10) = **+10**
-  * C = &#124;-12&#124; = **+12**
+  * C = \|-12\| = **+12**
   * D = -3 - 9 = **-12**
 
 * **Paso 2: Ordenar los valores en el ascensor (de menor a mayor)**
