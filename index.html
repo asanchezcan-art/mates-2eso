@@ -79,7 +79,7 @@
     .btn-print-modal { background: #334155; color: #f8fafc; border: 1px solid #475569; padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 0.85rem; font-weight: 700; cursor: pointer; }
     .btn-print-modal:hover { background: #475569; }
 
-    /* SECCIONES SEPARADAS: ENUNCIADOS Y SOLUCIONARIO */
+    /* SECCIONES: ENUNCIADOS Y SOLUCIONARIO SEPARADO */
     .section-title { font-size: 1.1rem; font-weight: 800; color: #38bdf8; border-bottom: 2px solid #334155; padding-bottom: 0.4rem; margin-bottom: 0.75rem; display: flex; justify-content: space-between; align-items: center; }
     .item-reto { background: #0b1120; border: 1px solid #334155; border-radius: 0.75rem; padding: 0.9rem 1.2rem; display: flex; flex-direction: column; gap: 0.35rem; }
     .item-reto-header { display: flex; justify-content: space-between; font-size: 0.75rem; color: #94a3b8; font-weight: bold; }
@@ -181,7 +181,7 @@
       .solucionario-box {
         background: #ffffff !important;
         border: 2px solid #000000 !important;
-        page-break-before: always !important; /* Fuerza salto de página para el solucionario */
+        page-break-before: always !important;
         margin-top: 2rem !important;
       }
 
@@ -314,7 +314,7 @@
       </div>
 
       <div class="modal-body">
-        <!-- 1. BLOQUE DE PREGUNTAS (CONSECUTIVAS SIN SOLUCIÓN) -->
+        <!-- 1. BLOQUE DE PREGUNTAS (UNA DETRÁS DE LA OTRA) -->
         <div class="section-title">
           <span>📝 Enunciados de los Retos</span>
           <span style="font-size: 0.85rem; color: #94a3b8;">Resuelve en tu cuaderno</span>
@@ -385,7 +385,7 @@
         <body>
           <div class="toolbar">
             <h2 style="margin:0; border:none; padding:0;">${titulo}</h2>
-            <button class="btn-print" onclick="window.print()">🖨️ Imprimir / Guardar en PDF</button>
+            <button class="btn-print" onclick="window.print()">🖨️️ Imprimir / Guardar en PDF</button>
           </div>
           <div id="content"><p style="text-align:center; padding: 3rem; color: #64748b;">Cargando documento...</p></div>
         </body>
@@ -422,7 +422,7 @@
   <script>
     let solucionarioVisible = false;
 
-    // Sobrescritura de renderizarBateria para separar enunciados y respuestas
+    // Sobrescritura de renderizarBateria: limpia Mates 2º ESO y separa enunciados de soluciones
     function renderizarBateria(ejercicios) {
       solucionarioVisible = false;
 
@@ -437,13 +437,12 @@
       btnToggle.innerText = '👁️ Mostrar Solucionario a Parte';
 
       ejercicios.forEach((ej, idx) => {
-        // 1. Inyectar únicamente la pregunta
+        // 1. Inyectar únicamente la pregunta (sin etiqueta a la derecha)
         const cardQ = document.createElement('div');
         cardQ.className = 'item-reto';
         cardQ.innerHTML = `
           <div class="item-reto-header">
             <span style="color: #38bdf8;">Reto ${idx + 1} • Bloque ${ej.numBloque}</span>
-            <span>Mates 2º ESO</span>
           </div>
           <div class="item-reto-texto">${ej.enunciado}</div>
         `;
@@ -454,7 +453,7 @@
         cardA.className = 'item-solucion';
         cardA.innerHTML = `
           <div style="font-weight: 800; color: #34d399; margin-bottom: 0.2rem;">
-            Reto ${idx + 1}: ${ej.solucion}
+            Reto ${idx + 1} (Bloque ${ej.numBloque}): ${ej.solucion}
           </div>
           <div style="color: #94a3b8; font-size: 0.8rem; font-family: sans-serif; line-height: 1.4;">
             ${ej.explicacion}
