@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Matemáticas 2º ESO - Centro de Mando Interactivo</title>
+  <title>Matemáticas 2º ESO - Ecosistema Interactivo</title>
   
-  <!-- Parser Markdown y motor KaTeX -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
@@ -31,7 +30,7 @@
     body { background-color: var(--bg); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
     header { background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%); border-bottom: 1px solid var(--card-border); padding: 2.5rem 1.5rem; text-align: center; }
     .badge { display: inline-block; background: rgba(37, 99, 235, 0.2); border: 1px solid rgba(37, 99, 235, 0.4); color: #60a5fa; font-size: 0.85rem; font-weight: 700; padding: 0.35rem 0.85rem; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
-    h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+    h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem; }
     p.subtitle { color: var(--text-muted); font-size: 1.05rem; max-width: 650px; margin: 0 auto; line-height: 1.5; }
     main { flex: 1; max-width: 1200px; width: 100%; margin: 0 auto; padding: 2.5rem 1.5rem; }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
@@ -54,54 +53,13 @@
     .btn-secondary { background-color: #334155; color: #f8fafc; border: 1px solid #475569; }
     .btn-secondary:hover { background-color: #475569; }
     footer { border-top: 1px solid var(--card-border); padding: 1.5rem; text-align: center; color: var(--text-muted); font-size: 0.85rem; background-color: #0b1120; }
-
-    /* Modal en pantalla */
-    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); z-index: 1000; align-items: center; justify-content: center; padding: 1rem; }
-    .modal-overlay.active { display: flex; }
-    .modal-container { background: #ffffff; color: #1e293b; width: 100%; max-width: 880px; height: 90vh; border-radius: 1rem; display: flex; flex-direction: column; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); overflow: hidden; }
-    .modal-header { background: #f8fafc; border-bottom: 1px solid #e2e8f0; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
-    .modal-header h3 { font-size: 1.15rem; color: #0f172a; font-weight: 700; }
-    .modal-actions { display: flex; gap: 0.5rem; }
-    .modal-btn { background: #e2e8f0; border: none; padding: 0.45rem 0.85rem; border-radius: 0.375rem; font-weight: 600; font-size: 0.85rem; cursor: pointer; color: #334155; }
-    .modal-btn:hover { background: #cbd5e1; }
-    .modal-close { background: #fee2e2; color: #ef4444; }
-    .modal-close:hover { background: #fecaca; }
-    .modal-body { flex: 1; overflow-y: auto; padding: 2.2rem; line-height: 1.7; font-size: 1.05rem; }
-    
-    /* Tipografía y maquetación de la guía */
-    .modal-body h1 { color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; margin-bottom: 1.5rem; font-size: 1.75rem; }
-    .modal-body h2 { color: #1e40af; margin-top: 1.75rem; margin-bottom: 0.75rem; font-size: 1.35rem; }
-    .modal-body h3 { color: #334155; margin-top: 1.25rem; margin-bottom: 0.5rem; font-size: 1.1rem; }
-    .modal-body p { margin-bottom: 1rem; }
-    .modal-body ul, .modal-body ol { margin-left: 1.5rem; margin-bottom: 1rem; }
-    .modal-body table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.95rem; }
-    .modal-body th, .modal-body td { border: 1px solid #cbd5e1; padding: 0.65rem 0.85rem; text-align: left; }
-    .modal-body th { background-color: #f1f5f9; font-weight: 700; color: #0f172a; }
-    .modal-body pre { background: #0f172a; color: #f8fafc; padding: 1.2rem; border-radius: 0.5rem; overflow-x: auto; font-family: monospace; font-size: 0.92rem; margin: 1.2rem 0; line-height: 1.45; }
-    .modal-body blockquote { border-left: 4px solid var(--primary); padding: 0.75rem 1rem; color: #334155; margin: 1rem 0; background: #f8fafc; border-radius: 0 0.5rem 0.5rem 0; font-style: italic; }
-
-    /* ESTILOS DE IMPRESIÓN Y PDF PERFECTOS */
-    @media print {
-      body * { visibility: hidden !important; }
-      header, footer, .card, .grid, .modal-header, .modal-overlay { background: transparent !important; }
-      .modal-overlay.active { display: block !important; position: static !important; inset: auto !important; padding: 0 !important; background: none !important; }
-      .modal-container { position: static !important; width: 100% !important; max-width: 100% !important; height: auto !important; overflow: visible !important; box-shadow: none !important; border: none !important; border-radius: 0 !important; }
-      .modal-body, .modal-body * { visibility: visible !important; color: #000 !important; }
-      .modal-body { position: absolute !important; left: 0 !important; top: 0 !important; width: 100% !important; padding: 0 !important; overflow: visible !important; }
-      .modal-header { display: none !important; }
-      .modal-body pre { background: #f8fafc !important; color: #000 !important; border: 1px solid #cbd5e1 !important; page-break-inside: avoid; }
-      .modal-body table { page-break-inside: avoid; border: 1px solid #000 !important; }
-      .modal-body th, .modal-body td { border: 1px solid #000 !important; color: #000 !important; }
-      .modal-body th { background: #eee !important; }
-      .modal-body h1, .modal-body h2, .modal-body h3 { page-break-after: avoid; color: #000 !important; }
-    }
   </style>
 </head>
 <body>
   <header>
     <div class="badge">Ecosistema Didáctico Digital</div>
     <h1>Matemáticas 2º ESO: Números Enteros y Potencias</h1>
-    <p class="subtitle">Guías didácticas visuales y laboratorios interactivos táctiles para dominar cada concepto paso a paso desde el móvil, tablet u ordenador.</p>
+    <p class="subtitle">Guías didácticas visuales y laboratorios interactivos táctiles para dominar cada concepto paso a paso desde cualquier dispositivo.</p>
   </header>
 
   <main>
@@ -115,7 +73,7 @@
         </div>
         <div class="card-actions">
           <a class="btn btn-primary" href="infograf_a_interactiva_n_meros_enteros.html">🎮 Abrir Laboratorio Táctil</a>
-          <button class="btn btn-secondary" onclick="abrirGuia('gu_a_did_ctica_bloque_1_los_n_meros_enteros_y_el_rascacielos.md', 'Bloque 1: Rascacielos y Enteros')">📖 Ver Guía Didáctica</button>
+          <button class="btn btn-secondary" onclick="verGuia('gu_a_did_ctica_bloque_1_los_n_meros_enteros_y_el_rascacielos.md', 'Bloque 1: Rascacielos y Enteros')">📖 Ver Guía Didáctica</button>
         </div>
       </article>
 
@@ -128,7 +86,7 @@
         </div>
         <div class="card-actions">
           <a class="btn btn-primary" href="infograf_a_interactiva_operaciones_y_signos.html">🎮 Abrir Laboratorio Táctil</a>
-          <button class="btn btn-secondary" onclick="abrirGuia('gu_a_did_ctica_bloque_2_operaciones_y_signos.md', 'Bloque 2: Operaciones y Signos')">📖 Ver Guía Didáctica</button>
+          <button class="btn btn-secondary" onclick="verGuia('gu_a_did_ctica_bloque_2_operaciones_y_signos.md', 'Bloque 2: Operaciones y Signos')">📖 Ver Guía Didáctica</button>
         </div>
       </article>
 
@@ -141,7 +99,7 @@
         </div>
         <div class="card-actions">
           <a class="btn btn-primary" href="infograf_a_interactiva_jerarqu_a_de_operaciones.html">🎮 Abrir Laboratorio Táctil</a>
-          <button class="btn btn-secondary" onclick="abrirGuia('gu_a_did_ctica_bloque_3_jerarqu_a_militar_y_supergl.md', 'Bloque 3: Jerarquía de Operaciones')">📖 Ver Guía Didáctica</button>
+          <button class="btn btn-secondary" onclick="verGuia('gu_a_did_ctica_bloque_3_jerarqu_a_militar_y_supergl.md', 'Bloque 3: Jerarquía de Operaciones')">📖 Ver Guía Didáctica</button>
         </div>
       </article>
 
@@ -154,7 +112,7 @@
         </div>
         <div class="card-actions">
           <a class="btn btn-primary" href="infograf_a_interactiva_potencias_y_signos.html">🎮 Abrir Laboratorio Táctil</a>
-          <button class="btn btn-secondary" onclick="abrirGuia('gu_a_did_ctica_bloque_4_laboratorio_de_potencias_y_parejas.md', 'Bloque 4: Potencias y Cascos')">📖 Ver Guía Didáctica</button>
+          <button class="btn btn-secondary" onclick="verGuia('gu_a_did_ctica_bloque_4_laboratorio_de_potencias_y_parejas.md', 'Bloque 4: Potencias y Cascos')">📖 Ver Guía Didáctica</button>
         </div>
       </article>
 
@@ -167,7 +125,7 @@
         </div>
         <div class="card-actions">
           <a class="btn btn-primary" href="infograf_a_interactiva_descomposici_n_y_fracciones_de_potencias.html">🎮 Abrir Laboratorio Táctil</a>
-          <button class="btn btn-secondary" onclick="abrirGuia('gu_a_did_ctica_bloque_5_descomposici_n_y_fracciones_de_potencias.md', 'Bloque 5: Descomposición LEGO')">📖 Ver Guía Didáctica</button>
+          <button class="btn btn-secondary" onclick="verGuia('gu_a_did_ctica_bloque_5_descomposici_n_y_fracciones_de_potencias.md', 'Bloque 5: Descomposición LEGO')">📖 Ver Guía Didáctica</button>
         </div>
       </article>
 
@@ -180,76 +138,86 @@
         </div>
         <div class="card-actions">
           <a class="btn btn-primary" href="infograf_a_interactiva_ra_ces_cuadradas_y_c_bicas.html">🎮 Abrir Laboratorio Táctil</a>
-          <button class="btn btn-secondary" onclick="abrirGuia('gu_a_did_ctica_bloque_6_ra_ces_cuadradas_y_c_bicas.md', 'Bloque 6: Raíces Cuadradas y Cúbicas')">📖 Ver Guía Didáctica</button>
+          <button class="btn btn-secondary" onclick="verGuia('gu_a_did_ctica_bloque_6_ra_ces_cuadradas_y_c_bicas.md', 'Bloque 6: Raíces Cuadradas y Cúbicas')">📖 Ver Guía Didáctica</button>
         </div>
       </article>
     </div>
   </main>
-
-  <!-- Modal Lector de Guías -->
-  <div class="modal-overlay" id="guiaModal" onclick="cerrarGuia(event)">
-    <div class="modal-container" onclick="event.stopPropagation()">
-      <div class="modal-header">
-        <h3 id="modalTitulo">Guía Didáctica</h3>
-        <div class="modal-actions">
-          <button class="modal-btn" onclick="imprimirGuia()">🖨️ Imprimir / Guardar PDF</button>
-          <button class="modal-btn modal-close" onclick="cerrarModal()">✕ Cerrar</button>
-        </div>
-      </div>
-      <div class="modal-body" id="modalContenido">
-        <p style="text-align:center; color:#64748b; margin-top:2rem;">Cargando guía didáctica...</p>
-      </div>
-    </div>
-  </div>
 
   <footer>
     <p>Material pedagógico de refuerzo para 2º de ESO. Diseñado para acompañamiento familiar y trabajo autónomo.</p>
   </footer>
 
   <script>
-    async function abrirGuia(archivo, titulo) {
-      document.getElementById('modalTitulo').textContent = titulo;
-      const modal = document.getElementById('guiaModal');
-      const contenedor = document.getElementById('modalContenido');
-      contenedor.innerHTML = '<p style="text-align:center; color:#64748b; margin-top:2rem;">Cargando guía didáctica...</p>';
-      modal.classList.add('active');
+    async function verGuia(archivo, titulo) {
+      const ventana = window.open('', '_blank');
+      ventana.document.write(`
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+          <meta charset="UTF-8">
+          <title>${titulo}</title>
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+          <style>
+            body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.65; color: #1e293b; max-width: 860px; margin: 0 auto; padding: 2.5rem 1.5rem; background: #ffffff; }
+            .toolbar { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem; margin-bottom: 2rem; }
+            .btn-print { background: #2563eb; color: #fff; border: none; padding: 0.6rem 1.2rem; font-weight: 700; border-radius: 0.5rem; cursor: pointer; font-size: 0.95rem; }
+            .btn-print:hover { background: #1d4ed8; }
+            h1 { font-size: 2rem; color: #0f172a; margin-bottom: 1.5rem; }
+            h2 { font-size: 1.4rem; color: #1e40af; margin-top: 2rem; margin-bottom: 0.75rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.3rem; }
+            h3 { font-size: 1.15rem; color: #334155; margin-top: 1.25rem; margin-bottom: 0.5rem; }
+            p { margin-bottom: 1rem; }
+            ul, ol { margin-left: 1.5rem; margin-bottom: 1.25rem; }
+            li { margin-bottom: 0.4rem; }
+            table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem; page-break-inside: avoid; }
+            th, td { border: 1px solid #cbd5e1; padding: 0.75rem 1rem; text-align: left; }
+            th { background-color: #f1f5f9; font-weight: 700; color: #0f172a; }
+            pre { background: #0f172a; color: #f8fafc; padding: 1.2rem; border-radius: 0.5rem; overflow-x: auto; font-family: monospace; font-size: 0.9rem; margin: 1.5rem 0; line-height: 1.45; page-break-inside: avoid; }
+            blockquote { border-left: 4px solid #2563eb; padding: 0.75rem 1rem; background: #f8fafc; margin: 1.2rem 0; border-radius: 0 0.5rem 0.5rem 0; font-style: italic; }
+            @media print {
+              .toolbar { display: none !important; }
+              body { max-width: 100% !important; padding: 0 !important; }
+              pre { background: #f8fafc !important; color: #000 !important; border: 1px solid #cbd5e1 !important; }
+              th { background: #f1f5f9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+              table, pre, blockquote { page-break-inside: avoid; }
+            }
+          </style>
+        </head>
+        <body>
+          <div class="toolbar">
+            <h2 style="margin:0; border:none; padding:0;">${titulo}</h2>
+            <button class="btn-print" onclick="window.print()">🖨️ Imprimir / Guardar en PDF</button>
+          </div>
+          <div id="content"><p style="text-align:center; padding: 3rem; color: #64748b;">Cargando documento...</p></div>
+        </body>
+        </html>
+      `);
+      ventana.document.close();
 
       try {
         const respuesta = await fetch(archivo);
-        if (!respuesta.ok) throw new Error('No se pudo cargar el archivo');
         let texto = await respuesta.text();
 
-        // Limpieza previa de escapes de barras dentro de tablas Markdown
-        texto = texto.replace(/\\\|/g, '&#124;');
+        // 1. Proteger las barras de valor absoluto dentro de tablas antes del parser Markdown
+        texto = texto.replace(/\|-([^|]+)\|/g, '&#124;-$1&#124;');
+        texto = texto.replace(/\|([0-9]+)\|/g, '&#124;$1&#124;');
+        texto = texto.replace(/\|\s*([a-zA-Z])\s*\|/g, '&#124;$1&#124;');
 
-        // Parser Markdown
-        contenedor.innerHTML = marked.parse(texto);
+        // 2. Parser Markdown
+        const htmlParseado = marked.parse(texto);
+        ventana.document.getElementById('content').innerHTML = htmlParseado;
 
-        // Procesar matemáticas KaTeX garantizando elementos en bloque y en línea
-        if (window.renderMathInElement) {
-          renderMathInElement(contenedor, {
-            delimiters: [
-              {left: '$$', right: '$$', display: true},
-              {left: '$', right: '$', display: false}
-            ],
-            throwOnError: false
-          });
-        }
-      } catch (e) {
-        contenedor.innerHTML = '<p style="color:#ef4444; text-align:center; font-weight:600;">Error al cargar el documento. Verifica tu conexión a internet.</p>';
+        // 3. Renderizar fórmulas matemáticas KaTeX
+        renderMathInElement(ventana.document.getElementById('content'), {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false}
+          ],
+          throwOnError: false
+        });
+      } catch (err) {
+        ventana.document.getElementById('content').innerHTML = '<p style="color:red; text-align:center;">Error al cargar la guía didáctica.</p>';
       }
-    }
-
-    function cerrarModal() {
-      document.getElementById('guiaModal').classList.remove('active');
-    }
-
-    function cerrarGuia(e) {
-      if (e.target.id === 'guiaModal') cerrarModal();
-    }
-
-    function imprimirGuia() {
-      window.print();
     }
   </script>
 </body>
