@@ -78,6 +78,75 @@
     .btn-regenerar:hover { background: #f59e0b; }
     .btn-print-modal { background: #334155; color: #f8fafc; border: 1px solid #475569; padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 0.85rem; font-weight: 700; cursor: pointer; }
     .btn-print-modal:hover { background: #475569; }
+
+    .btn-print-modal { background: #334155; color: #f8fafc; border: 1px solid #475569; padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 0.85rem; font-weight: 700; cursor: pointer; }
+    .btn-print-modal:hover { background: #475569; }
+
+    /* ======================================================= */
+    /* REGLAS DE IMPRESIÓN LIMPIA PARA PDF (AÑADIR AQUÍ)        */
+    /* ======================================================= */
+    @media print {
+      /* 1. Ocultar fondo, cabecera principal y botones de la ventana */
+      body > header, body > main, body > footer, .modal-header button, .modal-footer {
+        display: none !important;
+      }
+      
+      /* 2. Convertir el modal en folio blanco A4 */
+      .modal-overlay {
+        position: static !important;
+        background: #ffffff !important;
+        padding: 0 !important;
+      }
+      
+      .modal-card {
+        background: #ffffff !important;
+        color: #000000 !important;
+        border: none !important;
+        box-shadow: none !important;
+        max-width: 100% !important;
+        max-height: none !important;
+      }
+      
+      .modal-header {
+        background: #ffffff !important;
+        border-bottom: 2px solid #000000 !important;
+        color: #000000 !important;
+        padding: 0 0 1rem 0 !important;
+        margin-bottom: 1.5rem !important;
+      }
+      
+      .modal-header h3 {
+        color: #000000 !important;
+        font-size: 1.5rem !important;
+      }
+
+      .modal-header p {
+        color: #475569 !important;
+      }
+
+      /* 3. Tarjetas de preguntas nítidas y sin cortes raros de página */
+      #bateriaContenedor > div {
+        background: #ffffff !important;
+        border: 1px solid #cbd5e1 !important;
+        color: #000000 !important;
+        page-break-inside: avoid !important;
+        margin-bottom: 1rem !important;
+        padding: 1rem !important;
+      }
+
+      #bateriaContenedor span, #bateriaContenedor div {
+        color: #000000 !important;
+      }
+
+      .solucion-item {
+        border-top: 1px dashed #94a3b8 !important;
+        background: #f8fafc !important;
+        padding: 0.5rem !important;
+        margin-top: 0.5rem !important;
+      }
+    }
+  </style>
+</head>
   </style>
 </head>
 <body>
