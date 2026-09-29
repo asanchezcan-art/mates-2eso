@@ -3,449 +3,252 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Infografía: La Batalla de los Signos y los Guardianes VIP</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Bloque 2: Suma y Resta de Enteros (ℤ) - El Campo de Batalla</title>
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #090d16 0%, #15102a 100%);
-      color: #f8fafc;
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --card-border: #334155;
+      --primary: #06b6d4;
+      --primary-dark: #0891b2;
+      --pos: #10b981;
+      --neg: #ef4444;
+      --zero: #f59e0b;
+      --text: #f8fafc;
+      --muted: #94a3b8;
     }
-    .font-friendly {
-      font-family: 'Fredoka', cursive, sans-serif;
-    }
-    .glass-card {
-      background: rgba(26, 34, 53, 0.75);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    @keyframes pulseGlow {
-      0%, 100% { transform: scale(1); opacity: 0.9; }
-      50% { transform: scale(1.04); opacity: 1; }
-    }
-    .pulse-btn {
-      animation: pulseGlow 2.5s infinite;
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: var(--bg); color: var(--text); line-height: 1.6; padding: 1.5rem; max-width: 950px; margin: 0 auto; }
+    
+    header { text-align: center; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--card-border); }
+    .badge { display: inline-block; background: rgba(6, 182, 212, 0.15); border: 1px solid rgba(6, 182, 212, 0.4); color: var(--primary); font-size: 0.85rem; font-weight: 700; padding: 0.35rem 0.85rem; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
+    h1 { font-size: 2.1rem; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+    p.sub { color: var(--muted); font-size: 1.05rem; }
+
+    .section-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.75rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3); }
+    h2 { font-size: 1.35rem; margin-bottom: 1rem; color: var(--primary); display: flex; align-items: center; gap: 0.5rem; }
+
+    /* MÓDULO 1: CAMPO DE BATALLA */
+    .battle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+    .battle-box { background: #0b1120; border: 1px solid var(--card-border); border-radius: 0.75rem; padding: 1.25rem; }
+    .battle-box h3 { font-size: 1.1rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .tag-rule { font-size: 0.8rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase; display: inline-block; margin-bottom: 0.5rem; }
+
+    /* MÓDULO 2: DOBLE SIGNO */
+    .sign-table { width: 100%; border-collapse: collapse; margin-top: 1rem; background: #0b1120; border-radius: 0.5rem; overflow: hidden; }
+    .sign-table th, .sign-table td { padding: 0.75rem 1rem; text-align: center; border: 1px solid var(--card-border); }
+    .sign-table th { background: rgba(255, 255, 255, 0.04); font-weight: 700; color: var(--primary); }
+    .res-pos { color: #34d399; font-weight: 800; font-size: 1.1rem; }
+    .res-neg { color: #f87171; font-weight: 800; font-size: 1.1rem; }
+
+    /* MÓDULO 3: SIMULADOR DE OPERACIONES */
+    .calc-row { display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap; margin: 1.5rem 0; }
+    .calc-input { background: #0b1120; border: 1px solid var(--card-border); color: #fff; padding: 0.6rem 0.8rem; border-radius: 0.5rem; font-size: 1.2rem; font-weight: 700; text-align: center; width: 85px; outline: none; }
+    .calc-op { background: #0b1120; border: 1px solid var(--card-border); color: var(--primary); padding: 0.6rem 0.8rem; border-radius: 0.5rem; font-size: 1.2rem; font-weight: 800; outline: none; }
+    .calc-res-badge { font-size: 1.6rem; font-weight: 900; padding: 0.4rem 1.2rem; border-radius: 0.5rem; min-width: 80px; text-align: center; background: #0b1120; border: 2px solid var(--primary); }
+    .step-box { background: rgba(6, 182, 212, 0.1); border-left: 4px solid var(--primary); padding: 0.85rem 1rem; border-radius: 0 0.5rem 0.5rem 0; font-size: 0.95rem; }
+
+    /* MÓDULO 4: MINI-DESAFÍO */
+    .quiz-box { background: #0b1120; border-radius: 0.75rem; padding: 1.25rem; border: 1px solid var(--card-border); }
+    .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1rem; }
+    .quiz-btn { background: #1e293b; border: 1px solid var(--card-border); color: #f8fafc; padding: 0.75rem; border-radius: 0.5rem; font-weight: 700; cursor: pointer; transition: all 0.2s; font-size: 1rem; }
+    .quiz-btn:hover { background: #334155; }
+    .quiz-feedback { margin-top: 0.75rem; font-weight: 700; font-size: 0.95rem; min-height: 1.4rem; }
+
+    /* NAVEGACIÓN INFERIOR */
+    .nav-footer { text-align: center; margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--card-border); }
+    .back-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; background: #334155; color: #fff; text-decoration: none; padding: 0.75rem 1.6rem; border-radius: 0.5rem; font-weight: 600; transition: background 0.2s; }
+    .back-btn:hover { background: #475569; }
+
+    @media (max-width: 650px) {
+      .battle-grid, .quiz-options { grid-template-columns: 1fr; }
     }
   </style>
 </head>
-<body class="min-h-screen p-4 md:p-8">
+<body>
 
-  <!-- CABECERA -->
-  <header class="max-w-6xl mx-auto mb-8 text-center">
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-500/20 border border-rose-400/30 text-rose-300 text-sm font-semibold mb-3">
-      <span>⚔️</span> MATES 2º ESO • BLOQUE 2
-    </div>
-    <h1 class="text-3xl md:text-5xl font-friendly font-bold tracking-tight text-white mb-3">
-      La Batalla de los Signos y los <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-amber-300 to-rose-400">Porteros VIP</span>
-    </h1>
-    <p class="max-w-2xl mx-auto text-slate-300 text-sm md:text-base leading-relaxed">
-      Aprende a dominar el dinero en el bolsillo, abrir paréntesis con los guardianes mágicos y vencer las cadenas largas con la táctica ninja por equipos.
-    </p>
+  <header>
+    <div class="badge">Laboratorio Táctil • Bloque 2</div>
+    <h1>Suma y Resta de Números Enteros (ℤ)</h1>
+    <p class="sub">El campo de batalla de signos, eliminación de paréntesis y cálculo intuitivo.</p>
   </header>
 
-  <main class="max-w-6xl mx-auto space-y-8">
+  <!-- SECCIÓN 1: EL CAMPO DE BATALLA -->
+  <section class="section-card">
+    <h2>⚔️ 1. Las Dos Leyes de Combate</h2>
+    <p style="color:var(--muted); margin-bottom: 1rem;">Para sumar o restar números sin paréntesis, identifica si sus signos son iguales o contrarios:</p>
 
-    <!-- SECCIÓN 1: EL MONEDERO MÁGICO -->
-    <section class="glass-card rounded-3xl p-6 md:p-8 border border-slate-700/60 shadow-2xl">
-      <div class="flex items-center gap-3 mb-6">
-        <span class="p-3 bg-amber-500/20 text-amber-400 rounded-2xl text-2xl">👛</span>
-        <div>
-          <h2 class="text-2xl font-friendly font-bold text-white">1. El Monedero Mágico: ¿Ahorras o Debes?</h2>
-          <p class="text-slate-400 text-sm">Olvida las fórmulas confusas: todo número entero es dinero en tu bolsillo o deudas en la tienda.</p>
+    <div class="battle-grid">
+      <div class="battle-box">
+        <span class="tag-rule" style="background: rgba(16, 185, 129, 0.2); color: #34d399;">Ley 1: Mismo Signo</span>
+        <h3>🤝 Se Alían y se Suman</h3>
+        <p style="color:var(--muted); font-size:0.95rem; margin-bottom:0.75rem;">
+          Pertenecen al mismo ejército. Juntan sus fuerzas y se <strong>mantiene el signo común</strong>.
+        </p>
+        <div style="background:rgba(255,255,255,0.03); padding:0.6rem; border-radius:0.4rem; font-family:monospace; font-size:1.05rem;">
+          +4 + 3 = <strong>+7</strong><br>
+          -5 - 3 = <strong>-8</strong> (Deudas que se acumulan)
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
-        <!-- Tarjeta: Mismo Bando -->
-        <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="font-friendly font-bold text-base text-emerald-400">🤝 Caso 1: Son del mismo bando</span>
-            <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Mismo signo</span>
-          </div>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Si son del mismo bando, <strong>se juntan y se suman</strong> manteniendo su misma naturaleza:
-          </p>
-          <div class="space-y-2 font-mono text-xs">
-            <div class="p-2.5 rounded-xl bg-emerald-950/40 border border-emerald-500/30 text-emerald-300 flex justify-between items-center">
-              <span>Tienes 7€ y encuentras 5€:</span>
-              <strong class="text-sm">+7 + 5 = +12€</strong>
-            </div>
-            <div class="p-2.5 rounded-xl bg-rose-950/40 border border-rose-500/30 text-rose-300 flex justify-between items-center">
-              <span>Debes 6€ y gastas otros 4€:</span>
-              <strong class="text-sm">-6 - 4 = -10€</strong>
-            </div>
-          </div>
-          <div class="p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-200">
-            ⚠️ <strong>¡Cuidado trampa!</strong> En sumas y restas, dos negativos <strong>NO</strong> dan positivo. Si sumas dos deudas, ¡debes todavía más dinero!
-          </div>
-        </div>
-
-        <!-- Tarjeta: El Combate -->
-        <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="font-friendly font-bold text-base text-rose-400">⚔️ Caso 2: El combate directo</span>
-            <span class="text-xs px-2.5 py-0.5 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30">Distinto signo</span>
-          </div>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Se enfrentan ahorros contra deudas: <strong>se restan</strong> las cantidades y <strong>gana el signo del más fuerte</strong>:
-          </p>
-          <div class="space-y-2 font-mono text-xs">
-            <div class="p-2.5 rounded-xl bg-emerald-950/40 border border-emerald-500/30 text-emerald-300 flex justify-between items-center">
-              <span>Tienes 10€ y debes 4€:</span>
-              <strong class="text-sm">+10 - 4 = +6€</strong>
-            </div>
-            <div class="p-2.5 rounded-xl bg-rose-950/40 border border-rose-500/30 text-rose-300 flex justify-between items-center">
-              <span>Tienes 3€ y debes 8€:</span>
-              <strong class="text-sm">+3 - 8 = -5€</strong>
-            </div>
-          </div>
-          <div class="p-2.5 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-xs text-indigo-200">
-            💡 <strong>Regla del más fuerte:</strong> Quien tenga mayor valor absoluto le impone su signo al resultado final.
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Mini Simulador Interactivo de Monedero -->
-      <div class="mt-6 pt-5 border-t border-slate-800 bg-slate-950/60 p-4 rounded-2xl">
-        <h4 class="font-friendly font-bold text-sm text-slate-200 mb-3 flex items-center gap-2">
-          <span>🧪</span> Laboratorio del Monedero: Comprueba qué pasa en tu bolsillo
-        </h4>
-        <div class="flex flex-wrap items-center gap-3 text-xs md:text-sm">
-          <span class="text-slate-400">En mi bolsillo hay:</span>
-          <input id="valA" type="number" value="8" class="w-20 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 text-center font-mono text-white focus:border-amber-400 outline-none">
-          <span class="text-slate-400">y después aplico:</span>
-          <input id="valB" type="number" value="-13" class="w-20 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 text-center font-mono text-white focus:border-amber-400 outline-none">
-          <button onclick="simularMonedero()" class="px-4 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold font-friendly transition">
-            Calcular Saldo
-          </button>
-          <div id="resMonedero" class="font-mono text-base font-bold text-rose-400 px-3 py-1 rounded-lg bg-rose-950/40 border border-rose-500/30">
-            8 + (-13) = -5 (Sigues debiendo 5€)
-          </div>
+      <div class="battle-box">
+        <span class="tag-rule" style="background: rgba(239, 68, 68, 0.2); color: #f87171;">Ley 2: Signos Distintos</span>
+        <h3>⚔️ Combaten y se Restan</h3>
+        <p style="color:var(--muted); font-size:0.95rem; margin-bottom:0.75rem;">
+          Luchan uno a uno. Se <strong>restan sus valores</strong> y gana el <strong>signo del batallón más grande</strong>.
+        </p>
+        <div style="background:rgba(255,255,255,0.03); padding:0.6rem; border-radius:0.4rem; font-family:monospace; font-size:1.05rem;">
+          -9 + 4 = <strong>-5</strong> (Ganan negativos por 5)<br>
+          +8 - 3 = <strong>+5</strong> (Ganan positivos por 5)
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- SECCIÓN 2: LOS PORTEROS DE LA SALA VIP -->
-    <section class="glass-card rounded-3xl p-6 md:p-8 border border-indigo-500/30 shadow-2xl">
-      <div class="flex items-center gap-3 mb-6">
-        <span class="p-3 bg-indigo-500/20 text-indigo-400 rounded-2xl text-2xl">🚪</span>
-        <div>
-          <h2 class="text-2xl font-friendly font-bold text-white">2. Los Porteros de la Sala VIP (Quitar Paréntesis)</h2>
-          <p class="text-slate-400 text-sm">El paréntesis es una fiesta privada. Todo depende de quién esté vigilando la puerta exterior.</p>
-        </div>
+  <!-- SECCIÓN 2: CHOQUE DE SIGNOS (PARÉNTESIS) -->
+  <section class="section-card">
+    <h2>🛡️ 2. El Escudo de Paréntesis: Choque de Signos</h2>
+    <p style="color:var(--muted);">Cuando hay dos signos consecutivos separados por un paréntesis, se simplifican en un único signo:</p>
+
+    <table class="sign-table">
+      <thead>
+        <tr>
+          <th>Choque de Signos</th>
+          <th>Regla Mnemotécnica</th>
+          <th>Signo Resultante</th>
+          <th>Ejemplo Limpio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>+ (+a)</strong></td>
+          <td>Amigo de mi amigo = Mi amigo</td>
+          <td class="res-pos">+</td>
+          <td>4 + (+5) = 4 + 5 = <strong>9</strong></td>
+        </tr>
+        <tr>
+          <td><strong>+ (-a)</strong></td>
+          <td>Amigo de mi enemigo = Mi enemigo</td>
+          <td class="res-neg">-</td>
+          <td>7 + (-3) = 7 - 3 = <strong>4</strong></td>
+        </tr>
+        <tr>
+          <td><strong>- (+a)</strong></td>
+          <td>Enemigo de mi amigo = Mi enemigo</td>
+          <td class="res-neg">-</td>
+          <td>6 - (+2) = 6 - 2 = <strong>4</strong></td>
+        </tr>
+        <tr>
+          <td><strong>- (-a)</strong></td>
+          <td>Enemigo de mi enemigo = Mi amigo</td>
+          <td class="res-pos">+</td>
+          <td>5 - (-4) = 5 + 4 = <strong>9</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- SECCIÓN 3: SIMULADOR DINÁMICO -->
+  <section class="section-card">
+    <h2>🧮 3. Simulador de Combate en Vivo</h2>
+    <p style="color:var(--muted);">Elige dos enteros y la operación entre paréntesis para observar la simplificación paso a paso:</p>
+
+    <div class="calc-row">
+      <input type="number" id="num1" class="calc-input" value="-6" oninput="calcularPasoAPaso()">
+      <select id="op" class="calc-op" onchange="calcularPasoAPaso()">
+        <option value="+">+</option>
+        <option value="-" selected>-</option>
+      </select>
+      <span style="font-size:1.4rem; font-weight:700;">(</span>
+      <input type="number" id="num2" class="calc-input" value="-8" oninput="calcularPasoAPaso()">
+      <span style="font-size:1.4rem; font-weight:700;">)</span>
+      <span style="font-size:1.4rem; font-weight:700;">=</span>
+      <div id="resultadoCalc" class="calc-res-badge">+2</div>
+    </div>
+
+    <div id="explicacionPaso" class="step-box">
+      <strong>Paso 1:</strong> Choque de signos: - (-8) se convierte en +8.<br>
+      <strong>Paso 2:</strong> Queda -6 + 8. Tienen signos contrarios: se restan (8 - 6 = 2) y vence el positivo. Resultado: <strong>+2</strong>.
+    </div>
+  </section>
+
+  <!-- SECCIÓN 4: MINI-DESAFÍO NINJA -->
+  <section class="section-card">
+    <h2>🎯 4. Mini-Desafío Ninja</h2>
+    <div class="quiz-box">
+      <p id="preguntaQuiz" style="font-size:1.05rem; font-weight:700;">¿Cuál es el resultado exacto de: -7 - (-12)?</p>
+      <div class="quiz-options">
+        <button class="quiz-btn" onclick="evaluarQuiz(0)">-19</button>
+        <button class="quiz-btn" onclick="evaluarQuiz(1)">+5</button>
+        <button class="quiz-btn" onclick="evaluarQuiz(2)">-5</button>
+        <button class="quiz-btn" onclick="evaluarQuiz(3)">+19</button>
       </div>
+      <div id="feedbackQuiz" class="quiz-feedback"></div>
+    </div>
+  </section>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-        <!-- Portero Simpático (+) -->
-        <div class="p-5 rounded-2xl bg-emerald-950/20 border border-emerald-500/30 space-y-3">
-          <div class="flex items-center gap-2">
-            <span class="text-3xl">🟢</span>
-            <div>
-              <h3 class="font-friendly font-bold text-emerald-400 text-lg">El Portero Simpático: Signo « + »</h3>
-              <p class="text-xs text-slate-300">«¡Pasad todos tal como vais, nadie se cambia de ropa!»</p>
-            </div>
-          </div>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Cuando hay un signo <strong class="text-emerald-400">+</strong> pegado al paréntesis, se eliminan los paréntesis y <strong>todos los números interiores conservan su signo original</strong>:
-          </p>
-          <div class="bg-black/40 p-3 rounded-xl font-mono text-xs space-y-1.5 border border-emerald-500/20">
-            <div class="text-slate-300">+ ( - 8 ) ➔ <strong class="text-emerald-400">- 8</strong></div>
-            <div class="text-slate-300">+ ( + 5 ) ➔ <strong class="text-emerald-400">+ 5</strong></div>
-            <div class="text-slate-300">+ ( - 4 + 9 - 2 ) ➔ <strong class="text-emerald-400">- 4 + 9 - 2</strong></div>
-          </div>
-        </div>
-
-        <!-- El Mago Travieso (-) -->
-        <div class="p-5 rounded-2xl bg-rose-950/20 border border-rose-500/30 space-y-3">
-          <div class="flex items-center gap-2">
-            <span class="text-3xl">🔴</span>
-            <div>
-              <h3 class="font-friendly font-bold text-rose-400 text-lg">El Mago Travieso: Signo « - »</h3>
-              <p class="text-xs text-slate-300">«¡Varita mágica! Todos se ponen la camiseta al revés.»</p>
-            </div>
-          </div>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Cuando hay un signo <strong class="text-rose-400">-</strong> delante del paréntesis, al abrir la puerta <strong>cambia el signo de TODOS los de dentro</strong>:
-          </p>
-          <div class="bg-black/40 p-3 rounded-xl font-mono text-xs space-y-1.5 border border-rose-500/20">
-            <div class="text-slate-300">- ( - 9 ) ➔ <strong class="text-rose-400">+ 9</strong></div>
-            <div class="text-slate-300">- ( + 6 ) ➔ <strong class="text-rose-400">- 6</strong></div>
-            <div class="text-slate-300">- ( + 7 - 11 + 3 ) ➔ <strong class="text-rose-400">- 7 + 11 - 3</strong></div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Interactivo de los Porteros VIP -->
-      <div class="mt-6 p-4 rounded-2xl bg-slate-900/80 border border-slate-800">
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div>
-            <span class="text-xs font-semibold uppercase text-indigo-300 tracking-wider">Demostración en Vivo</span>
-            <h4 class="font-friendly font-bold text-white text-base">¿Qué portero pones en la puerta de la sala?</h4>
-          </div>
-          <div class="flex items-center gap-2">
-            <button onclick="setBouncer('+')" id="btnBouncerPlus" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 text-white font-bold text-xs shadow transition">Portero Simpático (+)</button>
-            <button onclick="setBouncer('-')" id="btnBouncerMinus" class="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-rose-600 text-slate-300 hover:text-white font-bold text-xs shadow transition">Mago Travieso (-)</button>
-          </div>
-        </div>
-
-        <div class="mt-4 p-4 rounded-xl bg-black/60 border border-slate-800 flex flex-col sm:flex-row items-center justify-center gap-4 text-center font-mono">
-          <div class="text-slate-300 text-sm">
-            Expresión inicial: <span id="vipOrigin" class="text-amber-300 font-bold">+ ( - 5 + 12 - 8 )</span>
-          </div>
-          <span class="text-indigo-400 font-bold">➔ Abre la puerta ➔</span>
-          <div id="vipResult" class="text-emerald-400 font-bold text-base px-3 py-1 bg-slate-900 rounded-lg border border-emerald-500/30">
-            - 5 + 12 - 8 = -1
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECCIÓN 3: LA TÁCTICA NINJA POR EQUIPOS -->
-    <section class="glass-card rounded-3xl p-6 md:p-8 border border-emerald-500/30 shadow-2xl">
-      <div class="flex items-center gap-3 mb-6">
-        <span class="p-3 bg-emerald-500/20 text-emerald-400 rounded-2xl text-2xl">🥷</span>
-        <div>
-          <h2 class="text-2xl font-friendly font-bold text-white">3. La Táctica Ninja: Cadenas Largas sin Agobios</h2>
-          <p class="text-slate-400 text-sm">Nunca operes paso a paso de izquierda a derecha. Divide la lista en dos bandos en tu hoja en sucio.</p>
-        </div>
-      </div>
-
-      <!-- Ejemplo paso a paso -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        
-        <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
-          <div class="flex items-center gap-2">
-            <span class="w-7 h-7 rounded-full bg-emerald-500 text-slate-950 font-bold flex items-center justify-center text-xs font-friendly">1</span>
-            <span class="font-friendly font-bold text-emerald-400 text-sm">Reunir el Equipo Azul</span>
-          </div>
-          <p class="text-xs text-slate-300">Junta todos los positivos (tus monedas de oro):</p>
-          <div class="p-2 rounded bg-black/50 font-mono text-xs text-emerald-300">
-            + 12 + 7 + 2 = <strong>+ 21</strong>
-          </div>
-        </div>
-
-        <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
-          <div class="flex items-center gap-2">
-            <span class="w-7 h-7 rounded-full bg-rose-500 text-slate-950 font-bold flex items-center justify-center text-xs font-friendly">2</span>
-            <span class="font-friendly font-bold text-rose-400 text-sm">Reunir el Equipo Rojo</span>
-          </div>
-          <p class="text-xs text-slate-300">Junta todas las deudas (los que restan):</p>
-          <div class="p-2 rounded bg-black/50 font-mono text-xs text-rose-300">
-            - 8 - 5 - 4 = <strong>- 17</strong>
-          </div>
-        </div>
-
-        <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
-          <div class="flex items-center gap-2">
-            <span class="w-7 h-7 rounded-full bg-amber-500 text-slate-950 font-bold flex items-center justify-center text-xs font-friendly">3</span>
-            <span class="font-friendly font-bold text-amber-300 text-sm">El Duelo Final</span>
-          </div>
-          <p class="text-xs text-slate-300">Resta directa entre ambos bandos:</p>
-          <div class="p-2 rounded bg-black/50 font-mono text-xs text-amber-300 font-bold">
-            + 21 - 17 = <strong>+ 4</strong>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Taller de separación por equipos en vivo -->
-      <div class="mt-6 pt-5 border-t border-slate-800 bg-slate-950/70 p-4 rounded-2xl space-y-3">
-        <h4 class="font-friendly font-bold text-sm text-slate-200">🥋 Entrenador Ninja Automático</h4>
-        <div class="flex flex-wrap items-center gap-2">
-          <input id="teamInput" type="text" value="-8 + 12 - 5 - 4 + 7 - 2 + 15" class="flex-1 min-w-[260px] bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 font-mono text-sm text-white focus:border-emerald-400 outline-none">
-          <button onclick="organizarEquipos()" class="px-4 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs font-friendly transition">
-            Separar por Bandos
-          </button>
-        </div>
-
-        <div id="teamOutput" class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-2 text-xs font-mono">
-          <div class="p-2.5 rounded-xl bg-emerald-950/40 border border-emerald-500/30 text-emerald-300">
-            🟦 Positivos: +12 +7 +15 = <strong>+34</strong>
-          </div>
-          <div class="p-2.5 rounded-xl bg-rose-950/40 border border-rose-500/30 text-rose-300">
-            🟥 Negativos: -8 -5 -4 -2 = <strong>-19</strong>
-          </div>
-          <div class="p-2.5 rounded-xl bg-amber-950/40 border border-amber-500/30 text-amber-300 font-bold flex items-center justify-center">
-            🏆 Resultado: +34 - 19 = <strong>+15</strong>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECCIÓN 4: EL TERMÓMETRO Y LA AMPLITUD TÉRMICA -->
-    <section class="glass-card rounded-3xl p-6 md:p-8 border border-cyan-500/30 shadow-2xl">
-      <div class="flex items-center gap-3 mb-6">
-        <span class="p-3 bg-cyan-500/20 text-cyan-400 rounded-2xl text-2xl">🌡️</span>
-        <div>
-          <h2 class="text-2xl font-friendly font-bold text-white">4. El Termómetro y la Amplitud Térmica</h2>
-          <p class="text-slate-400 text-sm">La amplitud es el salto completo de grados entre el frío más hondo y el calor más alto.</p>
-        </div>
-      </div>
-
-      <div class="flex flex-col lg:flex-row items-center gap-8">
-        
-        <div class="flex-1 space-y-4">
-          <div class="p-4 rounded-2xl bg-cyan-950/30 border border-cyan-500/20 space-y-2">
-            <h4 class="font-friendly font-bold text-cyan-300 text-sm">¿Cómo calcular el salto térmico?</h4>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              La fórmula del examen es: <strong class="text-white font-mono">Amplitud = T<sub>máx</sub> - T<sub>mín</sub></strong>.  
-              Visualízalo como dos tramos:
-            </p>
-            <ul class="text-xs text-slate-300 space-y-1 list-disc list-inside">
-              <li>Desde la mínima bajo cero hasta la cota neutral de <strong class="text-amber-300">0ºC</strong>.</li>
-              <li>Desde <strong class="text-amber-300">0ºC</strong> hasta la máxima de arriba.</li>
-            </ul>
-          </div>
-
-          <div class="grid grid-cols-2 gap-3 text-xs">
-            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
-              <span class="text-slate-400 block mb-1">Temperatura Máx:</span>
-              <input id="tMax" type="number" value="14" oninput="calcThermal()" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-1.5 text-center font-mono text-emerald-400 font-bold outline-none">
-            </div>
-            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
-              <span class="text-slate-400 block mb-1">Temperatura Mín:</span>
-              <input id="tMin" type="number" value="-5" oninput="calcThermal()" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-1.5 text-center font-mono text-cyan-400 font-bold outline-none">
-            </div>
-          </div>
-        </div>
-
-        <!-- Visualizador gráfico del salto -->
-        <div class="w-full lg:w-96 p-5 rounded-2xl bg-slate-950/80 border border-slate-800 flex flex-col items-center">
-          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Salto de Mercurio</span>
-          <div class="w-full flex items-center justify-between border-b border-slate-800 pb-2 mb-3 font-mono text-xs">
-            <span class="text-emerald-400 font-bold" id="lblMax">+14ºC (Máx)</span>
-            <span class="text-amber-300 font-bold">0ºC</span>
-            <span class="text-cyan-400 font-bold" id="lblMin">-5ºC (Mín)</span>
-          </div>
-
-          <div id="thermalFormula" class="font-mono text-sm text-center text-white bg-slate-900 px-4 py-2 rounded-xl border border-cyan-500/30 mb-2">
-            14 - (-5) = 14 + 5 = <strong class="text-cyan-300 text-lg">19 ºC</strong>
-          </div>
-          <p class="text-[11px] text-slate-400 text-center">¡El signo menos del mínimo se convierte en suma por el mago!</p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- RESUMEN FINAL -->
-    <footer class="p-6 rounded-3xl bg-gradient-to-r from-rose-950/30 via-slate-900 to-indigo-950/30 border border-rose-500/30 text-center space-y-3">
-      <h4 class="font-friendly font-bold text-lg text-rose-300">📋 Chuleta Ninja para el Bloque 2</h4>
-      <div class="flex flex-wrap items-center justify-center gap-3 text-xs md:text-sm text-slate-200">
-        <span class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700">👛 Mismo signo = Se suman</span>
-        <span class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700">⚔️ Distinto signo = Se restan (gana el fuerte)</span>
-        <span class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700">🟢 +( ... ) = No cambia nada</span>
-        <span class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700">🔴 -( ... ) = Invierte todas las camisetas</span>
-      </div>
-    </footer>
-
-  </main>
+  <!-- RETORNO AL CENTRO DE MANDO -->
+  <div class="nav-footer">
+    <a href="index.html" class="back-btn">← Volver al Centro de Mando</a>
+  </div>
 
   <script>
-    // 1. Simulación del Monedero
-    function simularMonedero() {
-      const a = parseInt(document.getElementById('valA').value) || 0;
-      const b = parseInt(document.getElementById('valB').value) || 0;
-      const res = a + b;
-      const display = document.getElementById('resMonedero');
-      
-      const signo = b >= 0 ? `+ ${b}` : `- ${Math.abs(b)}`;
-      let explicacion = "";
-      if (res > 0) {
-        explicacion = `Tienes ${res}€ de ahorros`;
-        display.className = "font-mono text-base font-bold text-emerald-400 px-3 py-1 rounded-lg bg-emerald-950/40 border border-emerald-500/30";
-      } else if (res < 0) {
-        explicacion = `Sigues debiendo ${Math.abs(res)}€`;
-        display.className = "font-mono text-base font-bold text-rose-400 px-3 py-1 rounded-lg bg-rose-950/40 border border-rose-500/30";
-      } else {
-        explicacion = `Bolsillo a cero (saldo limpio)`;
-        display.className = "font-mono text-base font-bold text-amber-300 px-3 py-1 rounded-lg bg-amber-950/40 border border-amber-500/30";
+    function calcularPasoAPaso() {
+      const n1 = parseInt(document.getElementById('num1').value, 10);
+      const op = document.getElementById('op').value;
+      const n2 = parseInt(document.getElementById('num2').value, 10);
+      const visor = document.getElementById('resultadoCalc');
+      const info = document.getElementById('explicacionPaso');
+
+      if (isNaN(n1) || isNaN(n2)) {
+        visor.textContent = "?";
+        info.innerHTML = "Por favor, introduce dos números enteros válidos.";
+        return;
       }
-      display.innerText = `${a} ${signo} = ${res} (${explicacion})`;
+
+      // Simplificación de signos
+      let signoFinal = "+";
+      let n2Limpio = Math.abs(n2);
+      let n2Signo = n2 >= 0 ? "+" : "-";
+
+      if (op === "+") {
+        signoFinal = n2Signo === "+" ? "+" : "-";
+      } else {
+        signoFinal = n2Signo === "+" ? "-" : "+";
+      }
+
+      const res = op === "+" ? (n1 + n2) : (n1 - n2);
+      const resCad = res > 0 ? "+" + res : "" + res;
+
+      visor.textContent = resCad;
+      visor.style.borderColor = res >= 0 ? "#10b981" : "#ef4444";
+      visor.style.color = res >= 0 ? "#34d399" : "#f87171";
+
+      const cadN2Original = n2 >= 0 ? `(+${n2})` : `(${n2})`;
+      const exprLimpia = `${n1} ${signoFinal} ${n2Limpio}`;
+
+      info.innerHTML = `<strong>Paso 1 (Destruir paréntesis):</strong> La expresión ${n1} ${op} ${cadN2Original} se transforma en <strong>${exprLimpia}</strong>.<br>` +
+        `<strong>Paso 2 (Campo de batalla):</strong> ${Math.sign(n1) === (signoFinal === '+' ? 1 : -1) ? 'Tienen el mismo signo: se suman fuerzas conservando el signo.' : 'Tienen signos contrarios: se restan sus valores y vence el signo con mayor valor absoluto.'} Resultado final: <strong>${resCad}</strong>.`;
     }
 
-    // 2. Porteros VIP
-    function setBouncer(type) {
-      const origin = document.getElementById('vipOrigin');
-      const result = document.getElementById('vipResult');
-      const btnPlus = document.getElementById('btnBouncerPlus');
-      const btnMinus = document.getElementById('btnBouncerMinus');
-
-      if (type === '+') {
-        origin.innerText = "+ ( - 5 + 12 - 8 )";
-        result.innerText = "- 5 + 12 - 8 = -1";
-        result.className = "text-emerald-400 font-bold text-base px-3 py-1 bg-slate-900 rounded-lg border border-emerald-500/30";
-        btnPlus.className = "px-3.5 py-1.5 rounded-xl bg-emerald-600 text-white font-bold text-xs shadow transition";
-        btnMinus.className = "px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-rose-600 text-slate-300 hover:text-white font-bold text-xs shadow transition";
+    function evaluarQuiz(opcion) {
+      const feed = document.getElementById('feedbackQuiz');
+      if (opcion === 1) {
+        feed.style.color = "#34d399";
+        feed.textContent = "¡Correcto! - (-12) se convierte en +12. La batalla queda en -7 + 12 = +5.";
+      } else if (opcion === 0) {
+        feed.style.color = "#f87171";
+        feed.textContent = "Incorrecto: ¡Cuidado con el doble menos! - (-12) no resta 12, se transforma en +12.";
+      } else if (opcion === 2) {
+        feed.style.color = "#f87171";
+        feed.textContent = "Incorrecto: Gana el bando con mayor valor absoluto (+12), luego el resultado debe ser positivo (+5).";
       } else {
-        origin.innerText = "- ( - 5 + 12 - 8 )";
-        result.innerText = "+ 5 - 12 + 8 = +1";
-        result.className = "text-rose-400 font-bold text-base px-3 py-1 bg-slate-900 rounded-lg border border-rose-500/30";
-        btnMinus.className = "px-3.5 py-1.5 rounded-xl bg-rose-600 text-white font-bold text-xs shadow transition";
-        btnPlus.className = "px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-emerald-600 text-slate-300 hover:text-white font-bold text-xs shadow transition";
+        feed.style.color = "#f87171";
+        feed.textContent = "Incorrecto: Recuerda que el -7 sigue siendo negativo en la batalla contra +12.";
       }
     }
 
-    // 3. Táctica Ninja por Equipos
-    function organizarEquipos() {
-      const raw = document.getElementById('teamInput').value;
-      const tokens = raw.replace(/\s+/g, '').match(/[+-]?\d+/g) || [];
-      
-      let pos = [];
-      let neg = [];
-      let sumPos = 0;
-      let sumNeg = 0;
-
-      tokens.forEach(t => {
-        const val = parseInt(t);
-        if (val >= 0) {
-          pos.push(`+${val}`);
-          sumPos += val;
-        } else {
-          neg.push(`${val}`);
-          sumNeg += Math.abs(val);
-        }
-      });
-
-      const total = sumPos - sumNeg;
-      const totalSign = total >= 0 ? `+${total}` : `${total}`;
-
-      const out = document.getElementById('teamOutput');
-      out.innerHTML = `
-        <div class="p-2.5 rounded-xl bg-emerald-950/40 border border-emerald-500/30 text-emerald-300">
-          🟦 Positivos: ${pos.join(' ') || '0'} = <strong>+${sumPos}</strong>
-        </div>
-        <div class="p-2.5 rounded-xl bg-rose-950/40 border border-rose-500/30 text-rose-300">
-          🟥 Negativos: ${neg.join(' ') || '0'} = <strong>-${sumNeg}</strong>
-        </div>
-        <div class="p-2.5 rounded-xl bg-amber-950/40 border border-amber-500/30 text-amber-300 font-bold flex items-center justify-center">
-          🏆 Resultado: +${sumPos} - ${sumNeg} = <strong>${totalSign}</strong>
-        </div>
-      `;
-    }
-
-    // 4. Amplitud Térmica
-    function calcThermal() {
-      const max = parseInt(document.getElementById('tMax').value) || 0;
-      const min = parseInt(document.getElementById('tMin').value) || 0;
-      
-      document.getElementById('lblMax').innerText = `${max >= 0 ? '+' + max : max}ºC (Máx)`;
-      document.getElementById('lblMin').innerText = `${min >= 0 ? '+' + min : min}ºC (Mín)`;
-      
-      const amp = max - min;
-      const minFormat = min < 0 ? `(${min})` : `${min}`;
-      const changeSign = min < 0 ? `+ ${Math.abs(min)}` : `- ${min}`;
-
-      document.getElementById('thermalFormula').innerHTML = `
-        ${max} - ${minFormat} = ${max} ${changeSign} = <strong class="text-cyan-300 text-lg">${amp} ºC</strong>
-      `;
-    }
+    calcularPasoAPaso();
   </script>
 </body>
 </html>
