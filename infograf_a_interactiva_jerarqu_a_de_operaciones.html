@@ -266,9 +266,9 @@
 
         <!-- Contenedor del paso visual -->
         <div id="stepBox" class="p-4 rounded-xl bg-slate-900 border border-indigo-500/40 min-h-[90px] flex flex-col justify-center space-y-1 font-mono text-sm">
-          <div class="text-indigo-300 font-bold" id="stepTitle">Paso 0: Analizar la estructura</div>
-          <div class="text-white text-base" id="stepExpr">20 - 2 · [ 7 - <span class="bg-amber-500/20 text-amber-300 px-1 rounded">( -4 + 9 )</span> · 2 ]</div>
-          <div class="text-xs text-slate-400 font-sans" id="stepExpl">Buscamos el búnker más escondido: el paréntesis redondo del centro.</div>
+          <div class="text-indigo-300 font-bold" id="stepTitle">Paso 1: La cajita de dentro (El búnker interior)</div>
+          <div class="text-white text-base" id="stepExpr">20 - 2 · [ 7 - <span class="bg-amber-500/30 border border-amber-400 text-amber-200 px-1.5 py-0.5 rounded font-bold">(-4 + 9)</span> · 2 ]</div>
+          <div class="text-xs text-slate-400 font-sans" id="stepExpl">Primero operamos el paréntesis redondo interior: debes 4€ y tienes 9€ ➔ te sobran +5€.</div>
         </div>
 
         <!-- Controles del Paso a Paso -->
@@ -295,6 +295,13 @@
         <span class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700">🚶 4º Sumas y restas al final</span>
       </div>
     </footer>
+
+    <!-- BOTÓN DE VOLVER AL CENTRO DE MANDO -->
+    <div class="text-center pt-4 pb-8">
+      <a href="index.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-slate-800/90 hover:bg-slate-700 border border-slate-700 text-white text-sm font-semibold transition shadow-lg hover:shadow-cyan-500/10">
+        <span>←</span> Volver al Centro de Mando
+      </a>
+    </div>
 
   </main>
 
@@ -375,8 +382,11 @@
       }
     }
 
-    // Inicializar al cargar
-    updateStepView();
+    // Inicializar vistas al cargar la página
+    window.addEventListener("DOMContentLoaded", () => {
+      updateStepView();
+      simularSuperglu();
+    });
   </script>
 </body>
 </html>
