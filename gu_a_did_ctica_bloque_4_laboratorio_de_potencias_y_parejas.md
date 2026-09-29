@@ -110,9 +110,9 @@ Reduce a una **única potencia**:
 
 ### Misión 3: El Hechizo de los Exponentes Negativos
 Reescribe con exponente positivo y calcula el valor numérico exacto:
-* **Caso a:** $4^{-2} = \_\_\_$
-* **Caso b:** $\frac{1}{3^{-3}} = \_\_\_$
-* **Caso c:** $\frac{2^{-4} \cdot 2^7}{2^2} = \_\_\_$
+* **Caso a:** $4^{-2} =$ _____
+* **Caso b:** $\frac{1}{3^{-3}} =$ _____
+* **Caso c:** $\frac{2^{-4} \cdot 2^7}{2^2} =$ _____
 
 ---
 
