@@ -69,3 +69,62 @@ En los exámenes de 2º de ESO es clásico el ejercicio con letras trampa:
 -3  │   Sótano 3
 -4  │   Sótano 4  (Más profundo)
     ▼
+## 6. Misiones de Entrenamiento (Ejercicios Prácticos)
+
+### Misión 1: Los Superpoderes en Acción
+Calcula el valor numérico de cada expresión:
+* Caso a: &#124;-14&#124; = ___
+* Caso b: &#124;+23&#124; = ___
+* Caso c: op(-18) = ___
+* Caso d: op(+31) = ___
+* Caso e: op(&#124;-8&#124;) = ___
+
+### Misión 2: El Duelo del Cocodrilo (Completa con > o <)
+* Caso a: -6 ___ -15
+* Caso b: -9 ___ 0
+* Caso c: +4 ___ -20
+* Caso d: op(+5) ___ -3
+
+### Misión 3: El Caso de las Letras Misteriosas
+Resuelve las operaciones de cada letra y ordénalas de menor a mayor (<) utilizando sus letras originales:
+* A = -15 + 8
+* B = op(-10)
+* C = &#124;-12&#124;
+* D = -3 - 9
+
+---
+
+## 7. Solucionario Guiado con Comprobación (Autocorrección)
+
+### Soluciones Misión 1:
+
+| Caso | Expresión | Solución | Justificación Didáctica |
+| :--- | :--- | :--- | :--- |
+| **Caso a** | &#124;-14&#124; | **14** | La distancia física desde el sótano -14 hasta la calle son 14 pisos. |
+| **Caso b** | &#124;+23&#124; | **23** | Desde el piso 23 hasta la calle hay 23 pisos de distancia. |
+| **Caso c** | op(-18) | **+18** | El espejo invierte la camiseta de negativo a positivo. |
+| **Caso d** | op(+31) | **-31** | El espejo invierte la camiseta de positivo a negativo. |
+| **Caso e** | op(&#124;-8&#124;) | **-8** | Primero la lavadora: &#124;-8&#124; = 8. Luego el espejo: op(8) = -8. |
+
+### Soluciones Misión 2:
+
+| Caso | Pareja | Solución | Justificación Didáctica |
+| :--- | :--- | :--- | :--- |
+| **Caso a** | -6 vs -15 | **-6 > -15** | El sótano -6 está más cerca de la calle que el sótano -15. |
+| **Caso b** | -9 vs 0 | **-9 < 0** | El nivel cero (calle) siempre está por encima de cualquier sótano. |
+| **Caso c** | +4 vs -20 | **+4 > -20** | Cualquier piso luminoso está más alto que cualquier sótano subterráneo. |
+| **Caso d** | op(+5) vs -3 | **-5 < -3** | op(+5) = -5. El sótano -5 está más abajo que el sótano -3. |
+
+### Soluciones Misión 3:
+
+* **Paso 1: Resolver cada letra**
+  * A = -15 + 8 = **-7**
+  * B = op(-10) = **+10**
+  * C = &#124;-12&#124; = **+12**
+  * D = -3 - 9 = **-12**
+
+* **Paso 2: Ordenar los valores en el ascensor (de menor a mayor)**
+  * -12 < -7 < +10 < +12
+
+* **Paso 3: Escribir la respuesta final con las letras del examen**
+  * **D < A < B < C**
