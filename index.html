@@ -32,6 +32,11 @@
     .badge { display: inline-block; background: rgba(37, 99, 235, 0.2); border: 1px solid rgba(37, 99, 235, 0.4); color: #60a5fa; font-size: 0.85rem; font-weight: 700; padding: 0.35rem 0.85rem; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
     h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem; }
     p.subtitle { color: var(--text-muted); font-size: 1.05rem; max-width: 650px; margin: 0 auto; line-height: 1.5; }
+    
+    .simulacro-container { margin: 1.75rem auto 0.5rem auto; text-align: center; }
+    .btn-simulacro { background: linear-gradient(135deg, #f59e0b 0%, #ec4899 50%, #6366f1 100%); color: #fff; font-weight: 800; padding: 0.85rem 1.8rem; border-radius: 1rem; border: none; cursor: pointer; font-size: 1.05rem; box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.5); transition: transform 0.2s ease, box-shadow 0.2s ease; display: inline-flex; align-items: center; gap: 0.6rem; }
+    .btn-simulacro:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 15px 30px -5px rgba(99, 102, 241, 0.7); }
+
     main { flex: 1; max-width: 1200px; width: 100%; margin: 0 auto; padding: 2.5rem 1.5rem; }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
     .card { background-color: var(--card-bg); border: 1px solid var(--card-border); border-radius: 1rem; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s ease, border-color 0.2s ease; }
@@ -52,7 +57,27 @@
     .btn-primary:hover { background-color: var(--primary-dark); }
     .btn-secondary { background-color: #334155; color: #f8fafc; border: 1px solid #475569; }
     .btn-secondary:hover { background-color: #475569; }
+    .btn-retos { background-color: rgba(15, 23, 42, 0.8); color: #38bdf8; border: 1px solid #0284c7; }
+    .btn-retos:hover { background-color: #0284c7; color: #fff; }
     footer { border-top: 1px solid var(--card-border); padding: 1.5rem; text-align: center; color: var(--text-muted); font-size: 0.85rem; background-color: #0b1120; }
+
+    /* ESTILOS DEL MODAL DE BATERÍAS */
+    .modal-overlay { position: fixed; inset: 0; z-index: 50; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; padding: 1rem; }
+    .modal-overlay.hidden { display: none; }
+    .modal-card { background: #1e293b; border: 1px solid #334155; width: 100%; max-width: 900px; max-height: 90vh; border-radius: 1.25rem; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7); }
+    .modal-header { padding: 1.25rem 1.5rem; border-bottom: 1px solid #334155; display: flex; align-items: center; justify-content: space-between; background: #0f172a; }
+    .modal-header h3 { font-size: 1.35rem; font-weight: 800; color: #f8fafc; }
+    .modal-header p { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem; }
+    .modal-body { padding: 1.5rem; overflow-y: auto; flex: 1; display: flex; flex-direction: column; gap: 1rem; }
+    .modal-footer { padding: 1rem 1.5rem; border-top: 1px solid #334155; background: #0f172a; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.75rem; align-items: center; }
+    .btn-close { width: 2.2rem; height: 2.2rem; border-radius: 9999px; background: #334155; color: #94a3b8; border: none; font-size: 1.1rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+    .btn-close:hover { background: #ef4444; color: #fff; }
+    .btn-toggle-sol { background: #0891b2; color: #fff; padding: 0.65rem 1.2rem; border-radius: 0.5rem; border: none; font-weight: 700; cursor: pointer; transition: background 0.2s; }
+    .btn-toggle-sol:hover { background: #06b6d4; }
+    .btn-regenerar { background: #d97706; color: #fff; padding: 0.65rem 1.2rem; border-radius: 0.5rem; border: none; font-weight: 700; cursor: pointer; transition: background 0.2s; }
+    .btn-regenerar:hover { background: #f59e0b; }
+    .btn-print-modal { background: #334155; color: #f8fafc; border: 1px solid #475569; padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 0.85rem; font-weight: 700; cursor: pointer; }
+    .btn-print-modal:hover { background: #475569; }
   </style>
 </head>
 <body>
@@ -60,6 +85,13 @@
     <div class="badge">Ecosistema Didáctico Digital</div>
     <h1>Matemáticas 2º ESO: Números Enteros y Potencias</h1>
     <p class="subtitle">Guías didácticas visuales y laboratorios interactivos táctiles para dominar cada concepto paso a paso desde cualquier dispositivo.</p>
+    
+    <!-- BOTÓN GRAN SIMULACRO GLOBAL -->
+    <div class="simulacro-container">
+      <button onclick="abrirModalBateria('global')" class="btn-simulacro">
+        <span>🏆</span> Gran Simulacro Global (30 Retos • Bloques 1 al 6)
+      </button>
+    </div>
   </header>
 
   <main>
@@ -74,6 +106,7 @@
         <div class="card-actions">
           <a class="btn btn-primary" href="infograf_a_interactiva_n_meros_enteros.html">🎮 Abrir Laboratorio Táctil</a>
           <button class="btn btn-secondary" onclick="verGuia('gu_a_did_ctica_bloque_1_los_n_meros_enteros_y_el_rascacielos.md', 'Bloque 1: Rascacielos y Enteros')">📖 Ver Guía Didáctica</button>
+          <button class="btn btn-retos" onclick="abrirModalBateria(1)">🎲 10 Retos Bloque 1</button>
         </div>
       </article>
 
@@ -85,8 +118,9 @@
           <p>La regla de los dos equipos para sumas y restas, y la regla de amigos/enemigos para multiplicación y división.</p>
         </div>
         <div class="card-actions">
-          <a class="btn btn-primary" href="infograf_a_interactiva_jerarqu_a_de_operaciones.html">🎮 Abrir Laboratorio Táctil</a>
+          <a class="btn btn-primary" href="infograf_a_interactiva_operaciones_y_signos.html">🎮 Abrir Laboratorio Táctil</a>
           <button class="btn btn-secondary" onclick="verGuia('gu_a_did_ctica_bloque_2_operaciones_y_signos.md', 'Bloque 2: Operaciones y Signos')">📖 Ver Guía Didáctica</button>
+          <button class="btn btn-retos" onclick="abrirModalBateria(2)">🎲 10 Retos Bloque 2</button>
         </div>
       </article>
 
@@ -100,6 +134,7 @@
         <div class="card-actions">
           <a class="btn btn-primary" href="infograf_a_interactiva_jerarqu_a_de_operaciones.html">🎮 Abrir Laboratorio Táctil</a>
           <button class="btn btn-secondary" onclick="verGuia('gu_a_did_ctica_bloque_3_jerarqu_a_militar_y_supergl.md', 'Bloque 3: Jerarquía de Operaciones')">📖 Ver Guía Didáctica</button>
+          <button class="btn btn-retos" onclick="abrirModalBateria(3)">🎲 10 Retos Bloque 3</button>
         </div>
       </article>
 
@@ -113,6 +148,7 @@
         <div class="card-actions">
           <a class="btn btn-primary" href="infograf_a_interactiva_potencias_y_signos.html">🎮 Abrir Laboratorio Táctil</a>
           <button class="btn btn-secondary" onclick="verGuia('gu_a_did_ctica_bloque_4_laboratorio_de_potencias_y_parejas.md', 'Bloque 4: Potencias y Cascos')">📖 Ver Guía Didáctica</button>
+          <button class="btn btn-retos" onclick="abrirModalBateria(4)">🎲 10 Retos Bloque 4</button>
         </div>
       </article>
 
@@ -126,6 +162,7 @@
         <div class="card-actions">
           <a class="btn btn-primary" href="infograf_a_interactiva_descomposici_n_y_fracciones_de_potencias.html">🎮 Abrir Laboratorio Táctil</a>
           <button class="btn btn-secondary" onclick="verGuia('gu_a_did_ctica_bloque_5_descomposici_n_y_fracciones_de_potencias.md', 'Bloque 5: Descomposición LEGO')">📖 Ver Guía Didáctica</button>
+          <button class="btn btn-retos" onclick="abrirModalBateria(5)">🎲 10 Retos Bloque 5</button>
         </div>
       </article>
 
@@ -139,6 +176,7 @@
         <div class="card-actions">
           <a class="btn btn-primary" href="infograf_a_interactiva_ra_ces_cuadradas_y_c_bicas.html">🎮 Abrir Laboratorio Táctil</a>
           <button class="btn btn-secondary" onclick="verGuia('gu_a_did_ctica_bloque_6_ra_ces_cuadradas_y_c_bicas.md', 'Bloque 6: Raíces Cuadradas y Cúbicas')">📖 Ver Guía Didáctica</button>
+          <button class="btn btn-retos" onclick="abrirModalBateria(6)">🎲 10 Retos Bloque 6</button>
         </div>
       </article>
     </div>
@@ -148,6 +186,36 @@
     <p>Material pedagógico de refuerzo para 2º de ESO. Diseñado para acompañamiento familiar y trabajo autónomo.</p>
   </footer>
 
+  <!-- MODAL DE BATERÍA DE ENTRENAMIENTO -->
+  <div id="modalBateria" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h3 id="bateriaTitulo">Batería de Entrenamiento</h3>
+          <p id="bateriaSub">Retos procedimentales aleatorios</p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <button onclick="window.print()" class="btn-print-modal">🖨️ Imprimir Hoja</button>
+          <button onclick="cerrarModalBateria()" class="btn-close">✕</button>
+        </div>
+      </div>
+
+      <div id="bateriaContenedor" class="modal-body">
+        <!-- Preguntas inyectadas proceduralmente por generador.js -->
+      </div>
+
+      <div class="modal-footer">
+        <button onclick="toggleSoluciones()" id="btnToggleSol" class="btn-toggle-sol">
+          👁️ Mostrar Solucionario Guiado
+        </button>
+        <button onclick="regenerarBateriaActual()" class="btn-regenerar">
+          🎲 Generar Otra Tanda Nueva
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT DEL VISOR DE GUÍAS -->
   <script>
     async function verGuia(archivo, titulo) {
       const ventana = window.open('', '_blank');
@@ -198,7 +266,7 @@
         const respuesta = await fetch(archivo);
         let texto = await respuesta.text();
 
-        // 1. Proteger las barras de valor absoluto dentro de tablas antes del parser Markdown
+        // 1. Proteger barras de valor absoluto dentro de tablas
         texto = texto.replace(/\|-([^|]+)\|/g, '&#124;-$1&#124;');
         texto = texto.replace(/\|([0-9]+)\|/g, '&#124;$1&#124;');
         texto = texto.replace(/\|\s*([a-zA-Z])\s*\|/g, '&#124;$1&#124;');
@@ -207,7 +275,7 @@
         const htmlParseado = marked.parse(texto);
         ventana.document.getElementById('content').innerHTML = htmlParseado;
 
-        // 3. Renderizar fórmulas matemáticas KaTeX
+        // 3. Renderizar fórmulas KaTeX
         renderMathInElement(ventana.document.getElementById('content'), {
           delimiters: [
             {left: '$$', right: '$$', display: true},
@@ -220,5 +288,8 @@
       }
     }
   </script>
+
+  <!-- SCRIPT DEL MOTOR PROCEDURAL -->
+  <script src="generador.js"></script>
 </body>
 </html>
