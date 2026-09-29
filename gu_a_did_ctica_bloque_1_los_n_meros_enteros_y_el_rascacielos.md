@@ -1,71 +1,285 @@
-# BLOQUE 1: El Rascacielos Infinito de los Números Enteros (ℤ)
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloque 1: El Rascacielos Infinito de los Enteros (ℤ)</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --card-border: #334155;
+      --primary: #06b6d4;
+      --primary-dark: #0891b2;
+      --pos: #10b981;
+      --neg: #ef4444;
+      --zero: #f59e0b;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: var(--bg); color: var(--text); line-height: 1.6; padding: 1.5rem; max-width: 950px; margin: 0 auto; }
+    
+    header { text-align: center; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--card-border); }
+    .badge { display: inline-block; background: rgba(6, 182, 212, 0.15); border: 1px solid rgba(6, 182, 212, 0.4); color: var(--primary); font-size: 0.85rem; font-weight: 700; padding: 0.35rem 0.85rem; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
+    h1 { font-size: 2.1rem; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+    p.sub { color: var(--muted); font-size: 1.05rem; }
 
-Los números naturales (1, 2, 3, 4...) servían para contar ovejas, cromos o lápices, pero el mundo real necesita expresar cosas que están por debajo de cero: plantas de sótano, deudas en la panadería o temperaturas bajo cero en invierno.
+    .section-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.75rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3); }
+    h2 { font-size: 1.35rem; margin-bottom: 1rem; color: var(--primary); display: flex; align-items: center; gap: 0.5rem; }
 
-Para resolver esto nació el universo de los **números enteros (ℤ)**. Imagina un **rascacielos infinito** con ascensor de cristal: sube hacia el cielo luminoso, se detiene a nivel de calle y baja a las profundidades de la tierra.
+    /* MÓDULO 1: ASCENSOR DINÁMICO */
+    .elevator-container { display: grid; grid-template-columns: 160px 1fr; gap: 1.5rem; align-items: center; }
+    .shaft { background: #0b1120; border-radius: 0.75rem; padding: 0.5rem; border: 2px dashed #475569; display: flex; flex-direction: column; gap: 0.35rem; }
+    .floor-btn { padding: 0.5rem; text-align: center; font-weight: 700; border-radius: 0.4rem; font-size: 0.9rem; cursor: pointer; border: none; transition: transform 0.15s ease; color: inherit; width: 100%; }
+    .floor-btn:hover { transform: scale(1.02); }
+    .f-pos { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+    .f-zero { background: rgba(245, 158, 11, 0.25); color: #fbbf24; border: 1px solid #f59e0b; }
+    .f-neg { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+    .floor-btn.active { outline: 3px solid #38bdf8; font-weight: 900; transform: scale(1.05); }
 
----
+    .display-panel { background: #0b1120; border: 1px solid var(--card-border); border-radius: 0.75rem; padding: 1.5rem; }
+    .status-pill { font-size: 0.8rem; text-transform: uppercase; font-weight: 800; letter-spacing: 0.05em; padding: 0.25rem 0.6rem; border-radius: 0.25rem; display: inline-block; margin-bottom: 0.75rem; }
+    .big-value { font-size: 3.5rem; font-weight: 900; line-height: 1; margin-bottom: 0.75rem; }
+    .meta-box { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--card-border); border-radius: 0.5rem; padding: 0.75rem; margin-top: 1rem; font-size: 0.9rem; }
 
-## 1. Anatomía y Concepto Clave: ¿Quién es quién en el Rascacielos?
+    /* MÓDULO 2: COMPARADOR COCODRILO */
+    .compare-wrapper { display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 1.5rem 0; flex-wrap: wrap; }
+    .num-select { background: #0b1120; border: 1px solid var(--card-border); color: #fff; padding: 0.75rem 1rem; border-radius: 0.5rem; font-size: 1.2rem; font-weight: 700; outline: none; }
+    .croc-box { font-size: 2.2rem; font-weight: 900; padding: 0.5rem 1.25rem; background: #0b1120; border-radius: 0.5rem; border: 2px solid var(--primary); min-width: 70px; text-align: center; }
+    .rule-callout { background: rgba(6, 182, 212, 0.1); border-left: 4px solid var(--primary); padding: 0.75rem 1rem; border-radius: 0 0.5rem 0.5rem 0; font-size: 0.95rem; }
 
-| Zona del Rascacielos | Símbolo Matemático | Ejemplos Cotidianos | Significado Intuitivo |
-| :--- | :--- | :--- | :--- |
-| **Los Pisos Luminosos** | Enteros Positivos (ℤ⁺) | +1, +2, +3, +10... | Pisos altos, dinero en el bolsillo, grados de calor sobre cero. |
-| **La Calle (Frontera)** | Cero Neutral (0) | 0 | La acera de entrada. Ni sube ni baja, no tiene signo (+ ni -). |
-| **Los Sótanos Oscuros** | Enteros Negativos (ℤ⁻) | -1, -2, -3, -18... | Aparcamientos bajo tierra, deudas a pagar, grados bajo cero. |
+    /* MÓDULO 3: SUPERPODERES */
+    .powers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+    .power-card { background: #0b1120; border: 1px solid var(--card-border); border-radius: 0.75rem; padding: 1.25rem; text-align: center; }
+    .power-res { font-size: 1.7rem; font-weight: 800; margin: 0.6rem 0; color: #38bdf8; font-family: monospace; }
 
----
+    /* MÓDULO 4: DESAFÍO RÁPIDO */
+    .quiz-box { background: #0b1120; border-radius: 0.75rem; padding: 1.25rem; border: 1px solid var(--card-border); }
+    .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1rem; }
+    .quiz-btn { background: #1e293b; border: 1px solid var(--card-border); color: #f8fafc; padding: 0.75rem; border-radius: 0.5rem; font-weight: 700; cursor: pointer; transition: all 0.2s; font-size: 1rem; }
+    .quiz-btn:hover { background: #334155; }
+    .quiz-feedback { margin-top: 0.75rem; font-weight: 700; font-size: 0.95rem; min-height: 1.4rem; }
 
-## 2. La Ley Principal: El Ascensor y la Regla del Cocodrilo
+    .nav-footer { text-align: center; margin-top: 2rem; }
+    .back-btn { display: inline-flex; align-items: center; justify-content: center; background: #334155; color: #fff; text-decoration: none; padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: 600; }
+    .back-btn:hover { background: #475569; }
 
-### La Ley de la Altura
-> **Cuanto más arriba esté un número en el rascacielos, mayor es su valor.**
+    @media (max-width: 650px) {
+      .elevator-container, .powers-grid, .quiz-options { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
 
-* En los pisos luminosos es evidente: el piso +8 está más alto que el +3, por tanto +8 > +3.
-* Entre la calle y el sótano: la calle (0) está más alta que cualquier sótano, por tanto 0 > -5.
-* **La gran trampa de los sótanos:** el sótano -2 está **más alto** (más cerca del sol) que el sótano -8. Por tanto:
-  **-2 > -8**
+  <header>
+    <div class="badge">Laboratorio Táctil • Bloque 1</div>
+    <h1>El Rascacielos Infinito de los Enteros (ℤ)</h1>
+    <p class="sub">Metáforas visuales, leyes de ordenación y superpoderes de los números con signo.</p>
+  </header>
 
-### La Mnemotecnia del Cocodrilo Comilón (> y <)
-El cocodrilo tiene un apetito insaciable y **siempre abre su boca hacia el número situado en el piso más alto**:
-* Si pones a competir -3 y +4: el cocodrilo abre la boca hacia el +4: **-3 < +4**.
-* Si pones a competir -1 y -9: el cocodrilo abre la boca hacia el -1: **-1 > -9**.
+  <!-- SECCIÓN 1: EL ASCENSOR -->
+  <section class="section-card">
+    <h2>🏢 1. El Ascensor de Cristal</h2>
+    <p style="color:var(--muted); margin-bottom: 1rem;">Selecciona una planta para observar su comportamiento visual y su altura respecto a la acera:</p>
+    
+    <div class="elevator-container">
+      <div class="shaft">
+        <button class="floor-btn f-pos" onclick="moverAscensor(3)">+3 Ático</button>
+        <button class="floor-btn f-pos" onclick="moverAscensor(2)">+2 Viviendas</button>
+        <button class="floor-btn f-pos" onclick="moverAscensor(1)">+1 Oficinas</button>
+        <button class="floor-btn f-zero active" onclick="moverAscensor(0)">0 Calle</button>
+        <button class="floor-btn f-neg" onclick="moverAscensor(-1)">-1 Parking 1</button>
+        <button class="floor-btn f-neg" onclick="moverAscensor(-2)">-2 Parking 2</button>
+        <button class="floor-btn f-neg" onclick="moverAscensor(-3)">-3 Calderas</button>
+      </div>
+      
+      <div class="display-panel">
+        <span id="tagPiso" class="status-pill" style="background:#f59e0b; color:#000;">Nivel Neutral</span>
+        <div id="numPiso" class="big-value" style="color:#fbbf24;">0</div>
+        <p id="descPiso">La calle es la frontera neutral. Ni sube ni baja, no tiene signo positivo ni negativo.</p>
+        <div class="meta-box" id="analogiaPiso">
+          📍 <strong>Ejemplo real:</strong> Nivel del mar (0 m) o saldo exacto sin deudas ni ahorros.
+        </div>
+      </div>
+    </div>
+  </section>
 
----
+  <!-- SECCIÓN 2: COMPARADOR (LEY DEL COCODRILO) -->
+  <section class="section-card">
+    <h2>🐊 2. La Ley de la Altura y el Cocodrilo Comilón</h2>
+    <p style="color:var(--muted);">El cocodrilo siempre abre su boca hacia el número situado en el piso más alto.</p>
+    
+    <div class="compare-wrapper">
+      <select id="pisoA" class="num-select" onchange="comparar()">
+        <option value="3">+3</option>
+        <option value="2">+2</option>
+        <option value="1">+1</option>
+        <option value="0">0</option>
+        <option value="-1">-1</option>
+        <option value="-2" selected>-2</option>
+        <option value="-3">-3</option>
+      </select>
 
-## 3. Los Dos Superpoderes: El Cuentapasos y el Espejo
+      <div id="simboloComp" class="croc-box">&gt;</div>
 
-| Superpoder | Notación | Metáfora Visual | Acción Concreta | Regla de Oro |
-| :--- | :--- | :--- | :--- | :--- |
-| **Valor Absoluto** | &#124;a&#124; | **La Lavadora / Cuentapasos** | Mide cuántos pisos de distancia hay hasta la calle (0). Lava el signo menos. | **NUNCA** puede dar negativo. Siempre da positivo o cero (&#124;-7&#124; = 7). |
-| **Opuesto** | op(a) | **El Espejo Mágico** | Refleja el número exactamente a la misma distancia al otro lado del cero. | Cambia la camiseta: si es positiva la hace negativa, y viceversa (op(-6) = +6). |
+      <select id="pisoB" class="num-select" onchange="comparar()">
+        <option value="3">+3</option>
+        <option value="2">+2</option>
+        <option value="1">+1</option>
+        <option value="0">0</option>
+        <option value="-1">-1</option>
+        <option value="-2">-2</option>
+        <option value="-3" selected>-3</option>
+      </select>
+    </div>
 
----
+    <div id="razonComp" class="rule-callout">
+      El sótano <strong>-2</strong> está más arriba (más cerca de la luz) que el sótano <strong>-3</strong>. Por eso: <strong>-2 &gt; -3</strong>.
+    </div>
+  </section>
 
-## 4. Alerta Trampa de Examen: Ordenar Letras con Operaciones
+  <!-- SECCIÓN 3: SUPERPODERES -->
+  <section class="section-card">
+    <h2>⚡ 3. Los Dos Superpoderes Matemáticos</h2>
+    <p style="color:var(--muted); margin-bottom: 1rem;">Escribe cualquier valor entero para activar el cuentapasos y el espejo:</p>
+    
+    <div style="text-align:center; margin-bottom:1.25rem;">
+      <label style="font-weight:700; margin-right:0.5rem;">Introduce un número:</label>
+      <input type="number" id="superInput" value="-14" style="background:#0b1120; border:1px solid var(--card-border); color:#fff; padding:0.5rem 1rem; border-radius:0.5rem; font-size:1.1rem; width:110px; text-align:center;" oninput="actualizarPoderes()">
+    </div>
 
-En los exámenes de 2º de ESO es clásico el ejercicio con letras trampa:
-> *Ordena de menor a mayor: A = -15 + 8, B = op(+13), C = &#124;-9&#124;, D = -4 - 7*
+    <div class="powers-grid">
+      <div class="power-card">
+        <h3>🧺 Valor Absoluto: |a|</h3>
+        <p style="font-size:0.85rem; color:var(--muted);">Mide la distancia física hasta el cero. Lava el signo:</p>
+        <div id="resAbs" class="power-res">|-14| = 14</div>
+        <p style="font-size:0.8rem; color:#94a3b8;">Nunca da negativo; cuenta plantas de separación.</p>
+      </div>
 
-### El Camino Erróneo vs. El Camino Ninja
+      <div class="power-card">
+        <h3>🪞 Opuesto: op(a)</h3>
+        <p style="font-size:0.85rem; color:var(--muted);">El reflejo simétrico al otro lado de la calle:</p>
+        <div id="resOp" class="power-res">op(-14) = +14</div>
+        <p style="font-size:0.8rem; color:#94a3b8;">Invierte el signo del número.</p>
+      </div>
+    </div>
+  </section>
 
-| Trampa Común (Error del 90%) | El Protocolo Ninja (Paso a Paso) |
-| :--- | :--- |
-| Intentar comparar las letras a ojo directamente con los números que aparecen escritos dentro, liándose con los signos interiores. | **Paso 1:** Calcular en sucio el valor numérico limpio de cada letra.<br>**Paso 2:** Situar cada resultado en la torre del ascensor.<br>**Paso 3:** Escribir la cadena ordenada usando el símbolo < (menor a mayor). |
+  <!-- SECCIÓN 4: DESAFÍO NINJA -->
+  <section class="section-card">
+    <h2>🎯 4. Mini-Desafío Rápido</h2>
+    <div class="quiz-box">
+      <p id="preguntaTexto" style="font-size:1.05rem; font-weight:700;">¿Cuál de las siguientes relaciones es VERDADERA?</p>
+      <div class="quiz-options">
+        <button class="quiz-btn" onclick="responder(0)">-8 &gt; -2</button>
+        <button class="quiz-btn" onclick="responder(1)">-5 &gt; 0</button>
+        <button class="quiz-btn" onclick="responder(2)">|-7| = -7</button>
+        <button class="quiz-btn" onclick="responder(3)">-1 &gt; -10</button>
+      </div>
+      <div id="feedbackQuiz" class="quiz-feedback"></div>
+    </div>
+  </section>
 
----
+  <div class="nav-footer">
+    <a href="index.html" class="back-btn">← Volver al Centro de Mando</a>
+  </div>
 
-## 5. Esquema de Pizarra: La Recta Vertical
+  <script>
+    function moverAscensor(piso) {
+      document.querySelectorAll('.floor-btn').forEach(b => b.classList.remove('active'));
+      const botones = Array.from(document.querySelectorAll('.floor-btn'));
+      const indices = { 3:0, 2:1, 1:2, 0:3, '-1':4, '-2':5, '-3':6 };
+      if (botones[indices[piso]]) botones[indices[piso]].classList.add('active');
 
-```text
-    ▲
-+4  │   Piso 4 (Muy alto)
-+3  │   Piso 3
-+2  │   Piso 2
-+1  │   Piso 1
- 0 ─┼── NIVEL CALLE (Frontera neutral)
--1  │   Sótano 1
--2  │   Sótano 2  (Más alto que -4)
--3  │   Sótano 3
--4  │   Sótano 4  (Más profundo)
-    ▼
+      const tag = document.getElementById('tagPiso');
+      const num = document.getElementById('numPiso');
+      const desc = document.getElementById('descPiso');
+      const extra = document.getElementById('analogiaPiso');
+
+      if (piso > 0) {
+        tag.textContent = "Entero Positivo (ℤ⁺)";
+        tag.style.background = "#10b981";
+        tag.style.color = "#000";
+        num.textContent = "+" + piso;
+        num.style.color = "#34d399";
+        desc.textContent = "Planta iluminada sobre la acera. Representa altura, saldo en cuenta o temperaturas cálidas.";
+        extra.innerHTML = `📍 <strong>Ejemplo real:</strong> Estás a +${piso * 3} metros de altura sobre el suelo.`;
+      } else if (piso < 0) {
+        tag.textContent = "Entero Negativo (ℤ⁻)";
+        tag.style.background = "#ef4444";
+        tag.style.color = "#fff";
+        num.textContent = piso;
+        num.style.color = "#f87171";
+        desc.textContent = "Sótano subterráneo. Cuanto mayor es el número negativo, más hondo y bajo se encuentra.";
+        extra.innerHTML = `📍 <strong>Ejemplo real:</strong> Hay que descender ${Math.abs(piso)} plantas bajo tierra.`;
+      } else {
+        tag.textContent = "Nivel Neutral";
+        tag.style.background = "#f59e0b";
+        tag.style.color = "#000";
+        num.textContent = "0";
+        num.style.color = "#fbbf24";
+        desc.textContent = "La calle es la frontera neutral. Ni sube ni baja, no tiene signo positivo ni negativo.";
+        extra.innerHTML = `📍 <strong>Ejemplo real:</strong> Nivel del mar (0 m) o saldo exacto sin deudas ni ahorros.`;
+      }
+    }
+
+    function comparar() {
+      const a = parseInt(document.getElementById('pisoA').value, 10);
+      const b = parseInt(document.getElementById('pisoB').value, 10);
+      const visor = document.getElementById('simboloComp');
+      const nota = document.getElementById('razonComp');
+
+      const cadA = a > 0 ? "+" + a : a;
+      const cadB = b > 0 ? "+" + b : b;
+
+      if (a > b) {
+        visor.textContent = ">";
+        visor.style.borderColor = "#10b981";
+        nota.innerHTML = `El piso <strong>${cadA}</strong> está <strong>más alto</strong> que <strong>${cadB}</strong>. Por tanto: <strong>${cadA} &gt; ${cadB}</strong>.`;
+      } else if (a < b) {
+        visor.textContent = "<";
+        visor.style.borderColor = "#ef4444";
+        nota.innerHTML = `El piso <strong>${cadA}</strong> está <strong>más bajo</strong> que <strong>${cadB}</strong>. Por tanto: <strong>${cadA} &lt; ${cadB}</strong>.`;
+      } else {
+        visor.textContent = "=";
+        visor.style.borderColor = "#f59e0b";
+        nota.innerHTML = `Ambos números señalan la <strong>misma planta</strong>: <strong>${cadA} = ${cadB}</strong>.`;
+      }
+    }
+
+    function actualizarPoderes() {
+      const entrada = parseInt(document.getElementById('superInput').value, 10);
+      if (isNaN(entrada)) return;
+
+      const valorAbs = Math.abs(entrada);
+      const opuesto = -entrada;
+
+      const cadOrig = entrada > 0 ? "+" + entrada : entrada;
+      const cadOp = opuesto > 0 ? "+" + opuesto : opuesto;
+
+      document.getElementById('resAbs').textContent = `|${cadOrig}| = ${valorAbs}`;
+      document.getElementById('resOp').textContent = `op(${cadOrig}) = ${cadOp}`;
+    }
+
+    function responder(indice) {
+      const feed = document.getElementById('feedbackQuiz');
+      if (indice === 3) {
+        feed.style.color = "#34d399";
+        feed.textContent = "¡Exacto! El sótano -1 está mucho más cerca de la calle que el sótano -10 (-1 > -10).";
+      } else if (indice === 0) {
+        feed.style.color = "#f87171";
+        feed.textContent = "Incorrecto: el sótano -8 está más hondo que -2, luego -8 < -2.";
+      } else if (indice === 1) {
+        feed.style.color = "#f87171";
+        feed.textContent = "Incorrecto: cualquier sótano bajo cero es menor que la calle (0).";
+      } else {
+        feed.style.color = "#f87171";
+        feed.textContent = "Incorrecto: el valor absoluto mide distancia y NUNCA puede dar un número negativo.";
+      }
+    }
+
+    actualizarPoderes();
+  </script>
+</body>
+</html>
